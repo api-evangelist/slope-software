@@ -1,0 +1,287 @@
+openapi: 3.0.4
+info:
+  title: Slope Arrays TableStructures API
+  version: '1.0'
+tags:
+- name: TableStructures
+paths:
+  /api/v1/TableStructures/{TableStructureId}:
+    get:
+      tags:
+      - TableStructures
+      summary: Get a table structure by id.
+      operationId: GetTableStructureById
+      parameters:
+      - name: TableStructureId
+        in: path
+        description: Table Structure Id
+        required: true
+        schema:
+          type: integer
+          description: Table Structure Id
+          format: int32
+      - name: Fields
+        in: query
+        description: "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTableStructureResponseV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+  /api/v1/TableStructures/{TableStructureId}/DataTables:
+    get:
+      tags:
+      - TableStructures
+      summary: Get a list of Data Tables given a Table Structure Id
+      operationId: GetDataTablesByTableStructureId
+      parameters:
+      - name: TableStructureId
+        in: path
+        description: Table Structure ID
+        required: true
+        schema:
+          type: integer
+          description: Table Structure ID
+          format: int32
+      - name: Fields
+        in: query
+        description: "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+        schema:
+          type: string
+      - name: Limit
+        in: query
+        description: Optional parameter to limit the number of items returned. Default is 200.
+        schema:
+          type: integer
+          format: int32
+      - name: Offset
+        in: query
+        description: Optional parameter to offset the items returned. Default is 0.
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResponseGetTableStructureDataTablesResponseItemV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+  /api/v1/TableStructures/{TableStructureId}/Columns:
+    get:
+      tags:
+      - TableStructures
+      summary: Get a list of Columns given a Table Structure Id
+      operationId: GetColumnsByTableStructureId
+      parameters:
+      - name: TableStructureId
+        in: path
+        description: Table Structure ID
+        required: true
+        schema:
+          type: integer
+          description: Table Structure ID
+          format: int32
+      - name: Fields
+        in: query
+        description: "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+        schema:
+          type: string
+      - name: Limit
+        in: query
+        description: Optional parameter to limit the number of items returned. Default is 200.
+        schema:
+          type: integer
+          format: int32
+      - name: Offset
+        in: query
+        description: Optional parameter to offset the items returned. Default is 0.
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResponseGetTableStructureColumnsResponseItemV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+components:
+  schemas:
+    GetTableStructureDataTablesResponseItemV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Data Table ID
+          format: int32
+        name:
+          type: string
+          description: Data Table Name
+          nullable: true
+        version:
+          type: integer
+          description: Data Table Version
+          format: int32
+        isLatestVersion:
+          type: boolean
+          description: Is Latest Version?
+        tableStructureId:
+          type: integer
+          description: Table Structure ID
+          format: int32
+          nullable: true
+        tableStructureName:
+          type: string
+          description: Table Structure Name
+          nullable: true
+      additionalProperties: false
+    PaginatedResponseGetTableStructureDataTablesResponseItemV1:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetTableStructureDataTablesResponseItemV1'
+          description: Items within the page
+          nullable: true
+        offset:
+          type: integer
+          description: Offset to retrieve the next page. Null when there are no further records.
+          format: int32
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+      description: Paginated response that will only return an offset if there are remaining pages
+    TableStructureColumnType:
+      enum:
+      - Integer
+      - Decimal
+      - String
+      - Date
+      - Boolean
+      - MortalityTable
+      - DataTable
+      - DropDownList
+      - ScenarioTable
+      type: string
+    GetTableStructureResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Table Structure ID
+          format: int32
+        modelId:
+          type: integer
+          description: Model ID
+          format: int32
+        name:
+          type: string
+          description: Table Structure Name
+          nullable: true
+        description:
+          type: string
+          description: Table Structure Description
+          nullable: true
+      additionalProperties: false
+    GetTableStructureColumnsResponseItemV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Column ID
+          format: int32
+        name:
+          type: string
+          description: Column Name
+          nullable: true
+        dataType:
+          $ref: '#/components/schemas/TableStructureColumnType'
+        tableStructureId:
+          type: integer
+          description: Nested Table Structure ID (when DataType is DataTable)
+          format: int32
+          nullable: true
+        dropDownListArrayId:
+          type: integer
+          description: Array ID (when DataType is DropDownList)
+          format: int32
+          nullable: true
+        isIndex:
+          type: boolean
+          description: Is Index?
+        sortOrder:
+          type: integer
+          description: Sort Order
+          format: int32
+      additionalProperties: false
+    PaginatedResponseGetTableStructureColumnsResponseItemV1:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetTableStructureColumnsResponseItemV1'
+          description: Items within the page
+          nullable: true
+        offset:
+          type: integer
+          description: Offset to retrieve the next page. Null when there are no further records.
+          format: int32
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+      description: Paginated response that will only return an offset if there are remaining pages
+  securitySchemes:
+    API Token:
+      type: http
+      description: The API token received from the Authorize endpoint goes here.
+      scheme: Bearer
+      bearerFormat: JWT

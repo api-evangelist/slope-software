@@ -1,0 +1,240 @@
+openapi: 3.0.4
+info:
+  title: Slope Arrays DecrementTables API
+  version: '1.0'
+tags:
+- name: DecrementTables
+paths:
+  /api/v1/DecrementTables/{DecrementTableId}:
+    get:
+      tags:
+      - DecrementTables
+      summary: Get a decrement table.
+      operationId: GetDecrementTableById
+      parameters:
+      - name: DecrementTableId
+        in: path
+        description: Decrement Table Id
+        required: true
+        schema:
+          type: integer
+          description: Decrement Table Id
+          format: int32
+      - name: Fields
+        in: query
+        description: "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetDecrementTableResponseV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+    delete:
+      tags:
+      - DecrementTables
+      summary: Delete a decrement table.
+      operationId: DeleteDecrementTableById
+      parameters:
+      - name: DecrementTableId
+        in: path
+        description: Decrement Table Id
+        required: true
+        schema:
+          type: integer
+          description: Decrement Table Id
+          format: int32
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+  /api/v1/DecrementTables:
+    post:
+      tags:
+      - DecrementTables
+      summary: Create a decrement table using an existing file.
+      operationId: CreateDecrementTable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDecrementTableRequestV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CreateDecrementTableRequestV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CreateDecrementTableRequestV1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateOrUpdateDecrementTableResponseV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+        '409':
+          description: Decrement table name already exists
+      security:
+      - API Token: []
+components:
+  schemas:
+    SelectPeriodFrequencyType:
+      enum:
+      - Annual
+      - Monthly
+      type: string
+    CreateOrUpdateDecrementTableResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Decrement Table ID
+          format: int32
+        name:
+          type: string
+          description: Decrement Table Name
+          nullable: true
+        type:
+          $ref: '#/components/schemas/MortalityTableType'
+        version:
+          type: integer
+          description: Decrement Table Version
+          format: int32
+      additionalProperties: false
+    MortalityTableType:
+      enum:
+      - Standard
+      - Improving
+      - SelectAndUltimate
+      type: string
+    GetDecrementTableResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Decrement Table ID
+          format: int32
+        modelId:
+          type: integer
+          description: Model ID
+          format: int32
+        name:
+          type: string
+          description: Decrement Table Name
+          nullable: true
+        description:
+          type: string
+          description: Decrement Table Description
+          nullable: true
+        decrementTableType:
+          $ref: '#/components/schemas/MortalityTableType'
+        improvementBaseYear:
+          type: integer
+          description: Improvement Base Year
+          format: int32
+          nullable: true
+        selectPeriodFrequency:
+          $ref: '#/components/schemas/SelectPeriodFrequencyType'
+        selectPeriod:
+          type: integer
+          description: Select Period
+          format: int32
+          nullable: true
+        version:
+          type: integer
+          description: Decrement Table Version
+          format: int32
+        isLatestVersion:
+          type: boolean
+          description: Is Latest Version?
+      additionalProperties: false
+    CreateDecrementTableRequestV1:
+      type: object
+      properties:
+        fileId:
+          type: integer
+          description: File ID
+          format: int32
+          nullable: true
+        filePath:
+          type: string
+          description: File Path
+          nullable: true
+        fileVersion:
+          type: integer
+          description: File Version
+          format: int32
+          nullable: true
+        delimiter:
+          type: string
+          description: Delimiter
+          nullable: true
+        excelSheetName:
+          type: string
+          description: Excel Sheet Name
+          nullable: true
+        modelId:
+          type: integer
+          description: Model ID
+          format: int32
+        name:
+          type: string
+          description: Decrement Table Name
+          nullable: true
+        decrementTableType:
+          $ref: '#/components/schemas/MortalityTableType'
+        improvementBaseYear:
+          type: integer
+          description: Improvement Base Year
+          format: int32
+          nullable: true
+        selectPeriodFrequency:
+          $ref: '#/components/schemas/SelectPeriodFrequencyType'
+      additionalProperties: false
+  securitySchemes:
+    API Token:
+      type: http
+      description: The API token received from the Authorize endpoint goes here.
+      scheme: Bearer
+      bearerFormat: JWT

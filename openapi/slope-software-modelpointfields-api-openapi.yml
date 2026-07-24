@@ -1,0 +1,329 @@
+openapi: 3.0.4
+info:
+  title: Slope Arrays ModelPointFields API
+  version: '1.0'
+tags:
+- name: ModelPointFields
+paths:
+  /api/v1/ModelPointFields:
+    post:
+      tags:
+      - ModelPointFields
+      summary: Create a new model point field for a product.
+      description: 'This endpoint will:
+
+        - Validate the user has permission to modify the model
+
+        - Ensure the model is not in production
+
+        - Validate field name and alias uniqueness
+
+        - Validate data type rules (e.g., only Decimal fields can scale)
+
+        - Trigger validation on dependent entities
+
+        - Initiate async file validation
+
+
+        Field names and aliases must be unique within the product''s model point file definition.
+
+        Only Decimal fields can be configured to scale on purchase or sale.'
+      operationId: CreateModelPointField
+      requestBody:
+        description: The model point field creation request.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateModelPointFieldRequestV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CreateModelPointFieldRequestV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CreateModelPointFieldRequestV1'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateModelPointFieldResponseV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+  /api/v1/ModelPointFields/{modelPointFieldId}:
+    delete:
+      tags:
+      - ModelPointFields
+      summary: Delete a model point field by its ID.
+      description: 'This endpoint will:
+
+        - Validate the user has permission to modify the model
+
+        - Ensure the model is not in production
+
+        - Prevent deletion of system model point fields (e.g., Issue Date)
+
+        - Trigger validation on dependent entities
+
+        - Initiate async file validation
+
+
+        Only one model point field can be deleted at a time.'
+      operationId: DeleteModelPointField
+      parameters:
+      - name: modelPointFieldId
+        in: path
+        description: The ID of the model point field to delete.
+        required: true
+        schema:
+          type: integer
+          description: The ID of the model point field to delete
+          format: int32
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+    patch:
+      tags:
+      - ModelPointFields
+      summary: Update an existing model point field.
+      description: 'This endpoint will:
+
+        - Validate the user has permission to modify the model
+
+        - Ensure the model is not in production
+
+        - Support partial updates (only send fields to be updated)
+
+        - Validate field name and alias uniqueness
+
+        - Enforce system field restrictions (cannot update DataType, IsRequired, or IsScaledOnPurchaseOrSale for system fields)
+
+        - Validate data type rules (e.g., only Decimal fields can scale)
+
+        - Prevent changing DataType to non-Decimal when IsScaledOnPurchaseOrSale is true
+
+        - Trigger validation on model point files when critical properties change
+
+
+        For system model point fields, the Data Type, IsRequired flag, and Scales on Purchase or Sale flag cannot be updated.
+
+        Field names and aliases must remain unique within the product''s model point file definition.'
+      operationId: UpdateModelPointField
+      parameters:
+      - name: modelPointFieldId
+        in: path
+        description: The ID of the model point field to update.
+        required: true
+        schema:
+          type: integer
+          description: The ID of the model point field to update
+          format: int32
+      requestBody:
+        description: The model point field update request with partial update support.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateModelPointFieldRequestV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateModelPointFieldRequestV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateModelPointFieldRequestV1'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateModelPointFieldResponseV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+components:
+  schemas:
+    UpdateModelPointFieldResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the updated model point field.
+          format: int32
+        name:
+          type: string
+          description: The name of the updated model point field.
+          nullable: true
+        dataType:
+          $ref: '#/components/schemas/FieldDataType'
+        isRequired:
+          type: boolean
+          description: Whether the field is required in model point files.
+        isScaledOnPurchaseOrSale:
+          type: boolean
+          description: Whether the field scales on purchase or sale.
+        defaultValueSource:
+          $ref: '#/components/schemas/ModelPointFieldDefaultMethodType'
+        defaultValue:
+          type: string
+          description: The default value if using defined value method.
+          nullable: true
+        aliases:
+          type: array
+          items:
+            type: string
+          description: Alternative names for this field.
+          nullable: true
+      additionalProperties: false
+      description: Response model for model point field update.
+    ModelPointFieldDefaultMethodType:
+      enum:
+      - None
+      - DefinedValue
+      type: string
+    CreateModelPointFieldRequestV1:
+      required:
+      - dataType
+      - isRequired
+      - isScaledOnPurchaseOrSale
+      - name
+      - productId
+      type: object
+      properties:
+        productId:
+          type: integer
+          description: The ID of the product to add the model point field to.
+          format: int32
+        name:
+          maxLength: 64
+          minLength: 0
+          type: string
+          description: The name of the model point field. Must be unique within the product.
+        dataType:
+          $ref: '#/components/schemas/FieldDataType'
+        isRequired:
+          type: boolean
+          description: Whether the field is required in model point files.
+        isScaledOnPurchaseOrSale:
+          type: boolean
+          description: Whether the field scales on purchase or sale. Only applicable to Decimal fields.
+        defaultValueSource:
+          $ref: '#/components/schemas/ModelPointFieldDefaultMethodType'
+        defaultValue:
+          type: string
+          description: The default value when DefaultMethodType is DefinedValue.
+          nullable: true
+        aliases:
+          type: array
+          items:
+            type: string
+          description: Alternative names for this field. Must be unique within the product.
+          nullable: true
+      additionalProperties: false
+      description: Request model for creating a new model point field.
+    CreateModelPointFieldResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the newly created model point field.
+          format: int32
+        name:
+          type: string
+          description: The name of the newly created model point field.
+          nullable: true
+      additionalProperties: false
+      description: Response model for model point field creation.
+    FieldDataType:
+      enum:
+      - Integer
+      - Decimal
+      - String
+      - Date
+      - Invalid
+      - Boolean
+      - DataTable
+      - DecrementTable
+      - Dynamic
+      - ScenarioTable
+      - YieldCurve
+      type: string
+    UpdateModelPointFieldRequestV1:
+      type: object
+      properties:
+        name:
+          maxLength: 64
+          minLength: 0
+          type: string
+          description: The updated name of the model point field. Must be unique within the product.
+          nullable: true
+        dataType:
+          $ref: '#/components/schemas/FieldDataType'
+        isRequired:
+          type: boolean
+          description: Whether the field is required in model point files. Cannot be changed for system fields.
+          nullable: true
+        isScaledOnPurchaseOrSale:
+          type: boolean
+          description: Whether the field scales on purchase or sale. Only applicable to Decimal fields. Cannot be changed for system fields.
+          nullable: true
+        defaultValueSource:
+          $ref: '#/components/schemas/ModelPointFieldDefaultMethodType'
+        defaultValue:
+          type: string
+          description: The default value when DefaultMethodType is DefinedValue.
+          nullable: true
+        aliases:
+          type: array
+          items:
+            type: string
+          description: Alternative names for this field. Must be unique within the product.
+          nullable: true
+      additionalProperties: false
+      description: 'Request model for updating an existing model point field.
+
+        All fields are optional to support partial updates.'
+  securitySchemes:
+    API Token:
+      type: http
+      description: The API token received from the Authorize endpoint goes here.
+      scheme: Bearer
+      bearerFormat: JWT

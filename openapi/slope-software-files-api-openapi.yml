@@ -1,0 +1,302 @@
+openapi: 3.0.4
+info:
+  title: Slope Arrays Files API
+  version: '1.0'
+tags:
+- name: Files
+paths:
+  /api/v1/Files/GetFiles:
+    get:
+      tags:
+      - Files
+      summary: Get all currently available latest-version files.
+      operationId: GetFiles
+      parameters:
+      - name: Folders
+        in: query
+        description: 'Optional parameter to filter files to specific folders. The list must be in CSV format. If folder contains a comma, make sure to surround it with double quotes. Example: folder1,folder2,"folder,3"'
+        schema:
+          type: string
+      - name: Fields
+        in: query
+        description: "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+        schema:
+          type: string
+      - name: Limit
+        in: query
+        description: Optional parameter to limit the number of items returned. Default is 200.
+        schema:
+          type: integer
+          format: int32
+      - name: Offset
+        in: query
+        description: Optional parameter to offset the items returned. Default is 0.
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResponseGetFilesResponseItemV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+  /api/v1/Files/GetDownloadUrl:
+    post:
+      tags:
+      - Files
+      summary: Get a temporary URL to download a file.
+      operationId: GetDownloadUrl
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FilePathAndVersionDtoV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/FilePathAndVersionDtoV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/FilePathAndVersionDtoV1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetDownloadUrlResponseV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+  /api/v1/Files/GetUploadUrl:
+    post:
+      tags:
+      - Files
+      summary: Get a temporary URL to upload a file to a certain file path via a PUT request with the file data.
+      description: Passing in the ContentType and ContentMD5 values is optional. If provided, they will be included in the signature, but are not stored at this point. <br/><br/>Exclude the <i>'Content-Type'</i> header from the PUT request if this is not set. <br/>If included, the <i>'Content-Type'</i> header in the PUT request must match the provided ContentType value. <br/><br/>Exclude the <i>'ContentMD5'</i> header from the PUT request if this is not set. <br/>If included, the <i>'Content-MD5'</i> header in the PUT request must match the provided ContentMD5 value. <br/><br/><b>NOTE:</b> There is a 5GB limit on the size of the file.
+      operationId: GetUploadUrl
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetUploadUrlFilePathDtoV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GetUploadUrlFilePathDtoV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GetUploadUrlFilePathDtoV1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUploadUrlResponseV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+  /api/v1/Files/SaveUpload:
+    post:
+      tags:
+      - Files
+      summary: Save the file that was uploaded via the upload url returned by the GetUploadUrl endpoint.
+      operationId: SaveUpload
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveUploadFilePathDtoV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SaveUploadFilePathDtoV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SaveUploadFilePathDtoV1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SaveUploadResponseV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+components:
+  schemas:
+    SaveUploadFilePathDtoV1:
+      type: object
+      properties:
+        filePath:
+          type: string
+          description: File Path
+          nullable: true
+        contentMD5:
+          type: string
+          description: Optional MD5 Hash for File Content
+          nullable: true
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+            nullable: true
+          description: Metadata to include with the file when saved
+          nullable: true
+      additionalProperties: false
+    GetDownloadUrlResponseV1:
+      type: object
+      properties:
+        downloadUrl:
+          type: string
+          description: URL to use to download file content
+          nullable: true
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+            nullable: true
+          description: Metadata for the download file
+          nullable: true
+      additionalProperties: false
+    SaveUploadResponseV1:
+      type: object
+      properties:
+        fileId:
+          type: integer
+          description: File ID of the saved file at the provided path
+          format: int32
+      additionalProperties: false
+    GetUploadUrlResponseV1:
+      type: object
+      properties:
+        uploadUrl:
+          type: string
+          description: URL to use to upload file content
+          nullable: true
+      additionalProperties: false
+    GetUploadUrlFilePathDtoV1:
+      type: object
+      properties:
+        filePath:
+          type: string
+          description: File Path
+          nullable: true
+        contentType:
+          type: string
+          description: Optional File Content Type
+          nullable: true
+        contentMD5:
+          type: string
+          description: Optional MD5 Hash for File Content
+          nullable: true
+      additionalProperties: false
+    PaginatedResponseGetFilesResponseItemV1:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetFilesResponseItemV1'
+          description: Items within the page
+          nullable: true
+        offset:
+          type: integer
+          description: Offset to retrieve the next page. Null when there are no further records.
+          format: int32
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+      description: Paginated response that will only return an offset if there are remaining pages
+    GetFilesResponseItemV1:
+      type: object
+      properties:
+        fileId:
+          type: integer
+          format: int32
+        fileKey:
+          type: string
+          nullable: true
+        folder:
+          type: string
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        sizeInBytes:
+          type: integer
+          format: int64
+        uploadedOnUtc:
+          type: string
+          format: date-time
+          nullable: true
+        version:
+          type: integer
+          format: int32
+      additionalProperties: false
+    FilePathAndVersionDtoV1:
+      type: object
+      properties:
+        filePath:
+          type: string
+          description: File Path
+          nullable: true
+        version:
+          type: integer
+          description: File Version
+          format: int32
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    API Token:
+      type: http
+      description: The API token received from the Authorize endpoint goes here.
+      scheme: Bearer
+      bearerFormat: JWT

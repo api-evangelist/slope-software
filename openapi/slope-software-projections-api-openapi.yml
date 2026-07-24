@@ -1,0 +1,881 @@
+openapi: 3.0.4
+info:
+  title: Slope Arrays Projections API
+  version: '1.0'
+tags:
+- name: Projections
+paths:
+  /api/v1/Projections:
+    get:
+      tags:
+      - Projections
+      summary: Get a paginated list of projections in the workspace.
+      description: Returns projections accessible to the current user. Workspace API tokens see all projections; Personal API tokens only see projections for models the user has access to.
+      operationId: ListProjections
+      parameters:
+      - name: Fields
+        in: query
+        description: "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+        schema:
+          type: string
+      - name: Limit
+        in: query
+        description: Optional parameter to limit the number of items returned. Default is 200.
+        schema:
+          type: integer
+          format: int32
+      - name: Offset
+        in: query
+        description: Optional parameter to offset the items returned. Default is 0.
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResponseListProjectionsResponseItemV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+    post:
+      tags:
+      - Projections
+      summary: Create a projection using an existing projection template.
+      operationId: CreateProjectionFromTemplate
+      parameters:
+      - name: TemplateId
+        in: query
+        description: Template ID
+        schema:
+          type: integer
+          description: Template ID
+          format: int32
+      - name: Name
+        in: query
+        description: Projection Name
+        schema:
+          type: string
+          description: Projection Name
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProjectionFromTemplateRequestV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CreateProjectionFromTemplateRequestV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CreateProjectionFromTemplateRequestV1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateProjectionFromTemplateResponseV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+  /api/v1/Projections/{projectionId}:
+    get:
+      tags:
+      - Projections
+      summary: Get Projection Details by Id.
+      operationId: GetProjectionById
+      parameters:
+      - name: projectionId
+        in: path
+        description: Projection ID
+        required: true
+        schema:
+          type: integer
+          description: Projection ID
+          format: int32
+      - name: Fields
+        in: query
+        description: 'Optional parameter to filter the top-level fields that are returned. The list must be in CSV format.
+
+          Example: field1,field2,field3'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetProjectionResponseV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+    patch:
+      tags:
+      - Projections
+      summary: Update projection properties.
+      description: Validating model point files is limited to 100K rows with 20 columns.<br/><b>For larger model point files set ValidateModelPointFiles to false.</b>
+      operationId: UpdateExistingProjection
+      parameters:
+      - name: projectionId
+        in: path
+        description: Projection ID
+        required: true
+        schema:
+          type: integer
+          description: Projection ID
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProjectionRequestV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProjectionRequestV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateProjectionRequestV1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetProjectionResponseV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+  /api/v1/Projections/{projectionId}/Run:
+    post:
+      tags:
+      - Projections
+      summary: Start a projection run.
+      operationId: RunProjectionById
+      parameters:
+      - name: projectionId
+        in: path
+        description: Projection ID
+        required: true
+        schema:
+          type: integer
+          description: Projection ID
+          format: int32
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+  /api/v1/Projections/Portfolios/{portfolioId}/Products:
+    post:
+      tags:
+      - Projections
+      summary: Add a new product to a portfolio on a projection.
+      operationId: AddProductToPortfolio
+      parameters:
+      - name: portfolioId
+        in: path
+        description: Portfolio ID on the projection
+        required: true
+        schema:
+          type: integer
+          description: Portfolio ID on the projection
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddProductToPortfolioRequestV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AddProductToPortfolioRequestV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AddProductToPortfolioRequestV1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddProductToPortfolioResponseV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+  /api/v1/Projections/{projectionId}/Copy:
+    post:
+      tags:
+      - Projections
+      summary: Copies a projection.
+      description: SetTablesToLatestVersion will default to True if omitted.<br/>ProjectionName will default to the copied projection's name if omitted.
+      operationId: CopyProjection
+      parameters:
+      - name: projectionId
+        in: path
+        description: Projection ID
+        required: true
+        schema:
+          type: integer
+          description: Projection ID
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CopyProjectionRequestV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CopyProjectionRequestV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CopyProjectionRequestV1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CopyProjectionResponseV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+  /api/v1/Projections/Portfolios/Products/{productId}:
+    delete:
+      tags:
+      - Projections
+      summary: Remove a product from a projection's portfolio.
+      operationId: DeletePortfolioProduct
+      parameters:
+      - name: productId
+        in: path
+        description: Product ID
+        required: true
+        schema:
+          type: integer
+          description: Product ID
+          format: int32
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+components:
+  schemas:
+    UpdateProjectionRequestV1:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Projection Name - Can be updated for projections in any status
+          nullable: true
+        scenarioTableId:
+          type: integer
+          description: Scenario Table ID
+          format: int32
+          nullable: true
+        scenarioSubset:
+          type: string
+          description: Scenario Subset
+          nullable: true
+        startDate:
+          type: string
+          description: Start Date
+          format: date-time
+          nullable: true
+        periodInMonths:
+          type: integer
+          description: Period in Months
+          format: int32
+          nullable: true
+        outputAllResults:
+          type: boolean
+          description: Output All Results
+          nullable: true
+        disableModelPointOutput:
+          type: boolean
+          description: Disable Model Point Output
+          nullable: true
+        forceStaticProcessing:
+          type: boolean
+          description: Force Static Processing
+          nullable: true
+        numberOfCores:
+          type: integer
+          description: Number of Cores
+          format: int32
+          nullable: true
+        validateModelPointFiles:
+          type: boolean
+          description: Validate Model Point Files
+          nullable: true
+        dataTables:
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdateProjectionDataTableDto'
+          description: Projection Data Tables
+          nullable: true
+        portfolios:
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdateProjectionPortfolioDto'
+          description: Projection Portfolios
+          nullable: true
+        virtualFolders:
+          type: array
+          items:
+            type: string
+          description: Virtual Folders - Array of folder paths. Projections can exist in multiple folders. If empty array is passed, all folders are cleared. If not passed, folders are not updated. Can be updated for projections in any status.
+          nullable: true
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags - Array of tag names. If empty array is passed, all tags are cleared. If not passed, tags are not updated. Can be updated for projections in any status.
+          nullable: true
+        isLocked:
+          type: boolean
+          description: Lock or unlock a projection. Locking requires LockProjections permission or a workspace token. Unlocking requires UnlockProjections permission or a workspace token. Only projections in a completed/failed status can be locked.
+          nullable: true
+      additionalProperties: false
+    ListProjectionsResponseItemV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        status:
+          $ref: '#/components/schemas/ProjectionRunStatus'
+        startDate:
+          type: string
+          format: date-time
+        isRunning:
+          type: boolean
+        isLocked:
+          type: boolean
+        virtualFolders:
+          type: array
+          items:
+            type: string
+          nullable: true
+        tags:
+          type: array
+          items:
+            type: string
+          nullable: true
+        runStartDateUtc:
+          type: string
+          format: date-time
+          nullable: true
+        runCompletedDateUtc:
+          type: string
+          format: date-time
+          nullable: true
+        modelId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ProjectionRunStatus:
+      enum:
+      - NotStarted
+      - Running
+      - Completed
+      - Failed
+      - Queued
+      - Cancelled
+      - CompletedWithErrors
+      - ErrorLimitReached
+      - WaitingForInserts
+      - Queuing
+      - Deleting
+      - Preparing
+      - FailedToStart
+      - Validating
+      - ValidationFailed
+      - CompletedWithWarnings
+      type: string
+    GetProjectionDataTableV1:
+      type: object
+      properties:
+        tableStructureId:
+          type: integer
+          format: int32
+          nullable: true
+        tableStructureName:
+          type: string
+          nullable: true
+        dataTableId:
+          type: integer
+          format: int32
+          nullable: true
+        dataTableName:
+          type: string
+          nullable: true
+        dataTableVersionNumber:
+          type: integer
+          format: int32
+          nullable: true
+        isRequired:
+          type: boolean
+      additionalProperties: false
+    AddProductToPortfolioResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+      additionalProperties: false
+    AddProductModelPointFileRequestV1:
+      type: object
+      properties:
+        fileId:
+          type: integer
+          description: File ID
+          format: int32
+          nullable: true
+        filePath:
+          type: string
+          description: File Path
+          nullable: true
+        fileVersion:
+          type: integer
+          description: File Version
+          format: int32
+          nullable: true
+        delimiter:
+          type: string
+          description: Delimiter (max 2 characters)
+          nullable: true
+        excelSheetName:
+          type: string
+          description: Excel Sheet Name
+          nullable: true
+      additionalProperties: false
+    GetProjectionPortfolioProductV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        productId:
+          type: integer
+          format: int32
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        productType:
+          $ref: '#/components/schemas/ProductType'
+        modelPointFile:
+          $ref: '#/components/schemas/FileReferenceDto'
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetProjectionProductModelPointFilterV1'
+          nullable: true
+        productOutputGroupings:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+      additionalProperties: false
+    CreateProjectionFromTemplateRequestV1:
+      type: object
+      properties:
+        templateId:
+          type: integer
+          description: Template ID
+          format: int32
+          nullable: true
+        name:
+          type: string
+          description: Projection Name
+          nullable: true
+      additionalProperties: {}
+    ProductType:
+      enum:
+      - Asset
+      - Liability
+      type: string
+    CreateProjectionFromTemplateResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+      additionalProperties: false
+    GetProjectionProductModelPointFilterV1:
+      type: object
+      properties:
+        field:
+          type: string
+          nullable: true
+        value:
+          type: string
+          nullable: true
+      additionalProperties: false
+    AddProductFilterRequestV1:
+      required:
+      - field
+      - value
+      type: object
+      properties:
+        field:
+          minLength: 1
+          type: string
+          description: Model Point Field Name
+        value:
+          minLength: 1
+          type: string
+          description: Filter Value
+      additionalProperties: false
+    UpdateProjectionDataTableDto:
+      type: object
+      properties:
+        tableStructureId:
+          type: integer
+          description: Table Structure ID
+          format: int32
+          nullable: true
+        tableStructureName:
+          type: string
+          description: Table Structure Name
+          nullable: true
+        dataTableId:
+          type: integer
+          description: Data Table ID
+          format: int32
+          nullable: true
+        dataTableName:
+          type: string
+          description: Data Table Name
+          nullable: true
+        dataTableVersion:
+          type: integer
+          description: Data Table Version
+          format: int32
+          nullable: true
+      additionalProperties: false
+    UpdateProjectionProductDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Product ID
+          format: int32
+          nullable: true
+        name:
+          type: string
+          description: Product Name
+          nullable: true
+        modelPointFile:
+          $ref: '#/components/schemas/FileReferenceDto'
+        modelPointFilters:
+          type: object
+          additionalProperties:
+            type: string
+            nullable: true
+          description: Model Point Filters
+          nullable: true
+      additionalProperties: false
+    GetProjectionModelV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+      additionalProperties: false
+    FileReferenceDto:
+      type: object
+      properties:
+        fileId:
+          type: integer
+          format: int32
+          nullable: true
+        filePath:
+          type: string
+          nullable: true
+        fileVersion:
+          type: integer
+          format: int32
+          nullable: true
+        delimiter:
+          type: string
+          nullable: true
+        excelSheetName:
+          type: string
+          nullable: true
+      additionalProperties: false
+    UpdateProjectionPortfolioDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Portfolio ID
+          format: int32
+          nullable: true
+        name:
+          type: string
+          description: Portfolio Name
+          nullable: true
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdateProjectionProductDto'
+          description: Portfolio Products
+          nullable: true
+      additionalProperties: false
+    GetProjectionPortfolioV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetProjectionPortfolioProductV1'
+          nullable: true
+      additionalProperties: false
+    CopyProjectionRequestV1:
+      type: object
+      properties:
+        projectionName:
+          type: string
+          nullable: true
+        setTablesToLatestVersion:
+          type: boolean
+      additionalProperties: {}
+    AddProductToPortfolioRequestV1:
+      required:
+      - name
+      - productId
+      type: object
+      properties:
+        productId:
+          type: integer
+          description: Product ID from the model
+          format: int32
+        name:
+          maxLength: 128
+          minLength: 0
+          type: string
+          description: Product Name
+        modelPointFile:
+          $ref: '#/components/schemas/AddProductModelPointFileRequestV1'
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddProductFilterRequestV1'
+          description: Model Point Filters
+          nullable: true
+        productOutputGroupings:
+          type: array
+          items:
+            type: integer
+            format: int32
+          description: Product Output Grouping IDs
+          nullable: true
+      additionalProperties: {}
+    GetProjectionResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        status:
+          $ref: '#/components/schemas/ProjectionRunStatus'
+        isRunning:
+          type: boolean
+        startDate:
+          type: string
+          format: date-time
+        periodInMonths:
+          type: integer
+          format: int32
+        runStartDateUtc:
+          type: string
+          format: date-time
+          nullable: true
+        runCompletedDateUtc:
+          type: string
+          format: date-time
+          nullable: true
+        outputAllResults:
+          type: boolean
+        disableModelPointOutput:
+          type: boolean
+        forceStaticProcessing:
+          type: boolean
+        isLocked:
+          type: boolean
+        numberOfCores:
+          type: integer
+          format: int32
+        scenarioTableId:
+          type: integer
+          format: int32
+          nullable: true
+        model:
+          $ref: '#/components/schemas/GetProjectionModelV1'
+        portfolios:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetProjectionPortfolioV1'
+          nullable: true
+        virtualFolders:
+          type: array
+          items:
+            type: string
+          nullable: true
+        tags:
+          type: array
+          items:
+            type: string
+          nullable: true
+        dataTables:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetProjectionDataTableV1'
+          nullable: true
+      additionalProperties: false
+    PaginatedResponseListProjectionsResponseItemV1:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListProjectionsResponseItemV1'
+          description: Items within the page
+          nullable: true
+        offset:
+          type: integer
+          description: Offset to retrieve the next page. Null when there are no further records.
+          format: int32
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+      description: Paginated response that will only return an offset if there are remaining pages
+    CopyProjectionResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    API Token:
+      type: http
+      description: The API token received from the Authorize endpoint goes here.
+      scheme: Bearer
+      bearerFormat: JWT

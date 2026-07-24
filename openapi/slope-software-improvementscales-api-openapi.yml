@@ -1,0 +1,191 @@
+openapi: 3.0.4
+info:
+  title: Slope Arrays ImprovementScales API
+  version: '1.0'
+tags:
+- name: ImprovementScales
+paths:
+  /api/v1/ImprovementScales/{ImprovementScaleId}:
+    get:
+      tags:
+      - ImprovementScales
+      summary: Get an improvement scale.
+      operationId: GetImprovementScaleById
+      parameters:
+      - name: ImprovementScaleId
+        in: path
+        description: Improvement Scale ID
+        required: true
+        schema:
+          type: integer
+          description: Improvement Scale ID
+          format: int32
+      - name: Fields
+        in: query
+        description: "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetImprovementScaleResponseV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+  /api/v1/ImprovementScales:
+    post:
+      tags:
+      - ImprovementScales
+      summary: Create an improvement scale using an existing file.
+      operationId: CreateImprovementScale
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateImprovementScaleRequestV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CreateImprovementScaleRequestV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CreateImprovementScaleRequestV1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateOrUpdateImprovementScaleResponseV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+        '409':
+          description: Improvement scale name already exists
+      security:
+      - API Token: []
+components:
+  schemas:
+    ImprovementScaleType:
+      enum:
+      - Standard
+      - Generational
+      type: string
+    GetImprovementScaleResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Improvement Scale ID
+          format: int32
+        modelId:
+          type: integer
+          description: Improvement Scale Model ID
+          format: int32
+        name:
+          type: string
+          description: Improvement Scale Name
+          nullable: true
+        description:
+          type: string
+          description: Improvement Scale Description
+          nullable: true
+        improvementScaleType:
+          $ref: '#/components/schemas/ImprovementScaleType'
+        firstCalendarYear:
+          type: integer
+          description: First Calendar Year
+          format: int32
+          nullable: true
+        ultimateCalendarYear:
+          type: integer
+          description: Ultimate Calendar Year
+          format: int32
+          nullable: true
+        version:
+          type: integer
+          description: Improvement Scale Version
+          format: int32
+      additionalProperties: false
+    CreateImprovementScaleRequestV1:
+      type: object
+      properties:
+        fileId:
+          type: integer
+          description: File ID
+          format: int32
+          nullable: true
+        filePath:
+          type: string
+          description: File Path
+          nullable: true
+        fileVersion:
+          type: integer
+          description: File Version
+          format: int32
+          nullable: true
+        delimiter:
+          type: string
+          description: Delimiter
+          nullable: true
+        excelSheetName:
+          type: string
+          description: Excel Sheet Name
+          nullable: true
+        modelId:
+          type: integer
+          description: Model ID
+          format: int32
+        name:
+          type: string
+          description: Improvement Scale Name
+          nullable: true
+        improvementScaleType:
+          $ref: '#/components/schemas/ImprovementScaleType'
+      additionalProperties: false
+    CreateOrUpdateImprovementScaleResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Improvement Scale ID
+          format: int32
+        name:
+          type: string
+          description: Improvement Scale Name
+          nullable: true
+        type:
+          $ref: '#/components/schemas/ImprovementScaleType'
+        version:
+          type: integer
+          description: Improvement Scale Version
+          format: int32
+      additionalProperties: false
+  securitySchemes:
+    API Token:
+      type: http
+      description: The API token received from the Authorize endpoint goes here.
+      scheme: Bearer
+      bearerFormat: JWT

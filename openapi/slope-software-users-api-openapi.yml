@@ -1,0 +1,85 @@
+openapi: 3.0.4
+info:
+  title: Slope Arrays Users API
+  version: '1.0'
+tags:
+- name: Users
+paths:
+  /api/v1/Users:
+    get:
+      tags:
+      - Users
+      summary: Get a paginated list of users.
+      description: 'Possible status values: Locked (account has been locked), Activated (user has logged in at least once), Invited (invited but has not yet verified their email), Pending login (verified email but has not yet logged in).'
+      parameters:
+      - name: Limit
+        in: query
+        description: Optional parameter to limit the number of items returned. Default is 200 and the max is 200.
+        schema:
+          type: integer
+          format: int32
+      - name: Fields
+        in: query
+        description: "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+        schema:
+          type: string
+      - name: Offset
+        in: query
+        description: Optional parameter to offset the items returned. Default is 0.
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUsersResponseItemV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+components:
+  schemas:
+    GetUsersResponseItemV1:
+      type: object
+      properties:
+        userEmail:
+          type: string
+          description: User's Email
+          nullable: true
+        userName:
+          type: string
+          description: User's Name
+          nullable: true
+        roles:
+          type: string
+          description: User's Roles
+          nullable: true
+        status:
+          type: string
+          description: User's Status
+          nullable: true
+        lastVisitDate:
+          type: string
+          description: User's Last Visit Date
+          format: date-time
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    API Token:
+      type: http
+      description: The API token received from the Authorize endpoint goes here.
+      scheme: Bearer
+      bearerFormat: JWT

@@ -1,0 +1,113 @@
+openapi: 3.0.4
+info:
+  title: Slope Arrays Authorize API
+  version: '1.0'
+tags:
+- name: Authorize
+paths:
+  /api/v1/Authorize:
+    post:
+      tags:
+      - Authorize
+      summary: Required for getting the API token which is needed to access the other endpoints.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorizeParametersV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AuthorizeParametersV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AuthorizeParametersV1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiTokenDto'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+  /api/v1/Authorize/Refresh:
+    post:
+      tags:
+      - Authorize
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshParametersV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RefreshParametersV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RefreshParametersV1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiTokenDto'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+components:
+  schemas:
+    ApiTokenDto:
+      type: object
+      properties:
+        accessToken:
+          type: string
+          nullable: true
+        expiresIn:
+          type: integer
+          format: int64
+        refreshToken:
+          type: string
+          format: uuid
+        expires:
+          type: string
+          nullable: true
+      additionalProperties: false
+    AuthorizeParametersV1:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          format: uuid
+        apiSecretKey:
+          type: string
+          format: uuid
+      additionalProperties: false
+    RefreshParametersV1:
+      type: object
+      properties:
+        refreshToken:
+          type: string
+          format: uuid
+      additionalProperties: false
+  securitySchemes:
+    API Token:
+      type: http
+      description: The API token received from the Authorize endpoint goes here.
+      scheme: Bearer
+      bearerFormat: JWT

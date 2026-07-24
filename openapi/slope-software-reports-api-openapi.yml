@@ -1,0 +1,161 @@
+openapi: 3.0.4
+info:
+  title: Slope Arrays Reports API
+  version: '1.0'
+tags:
+- name: Reports
+paths:
+  /api/v1/Reports/Workbooks/{workbookId}/Generate:
+    post:
+      tags:
+      - Reports
+      summary: Start a workbook report generation. Use the returned URL to check the status of the report generation.
+      operationId: GenerateWorkbookReport
+      parameters:
+      - name: workbookId
+        in: path
+        description: Workbook ID
+        required: true
+        schema:
+          type: string
+          description: Workbook ID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateWorkbookReportRequestV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GenerateWorkbookReportRequestV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GenerateWorkbookReportRequestV1'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateWorkbookReportResponseV1'
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+  /api/v1/Reports/Workbooks/Status/{generationId}:
+    get:
+      tags:
+      - Reports
+      summary: Get workbook report generation status. If successful, then a URL will be available to download the report.
+      operationId: GetWorkbookReportGenerationStatus
+      parameters:
+      - name: generationId
+        in: path
+        description: Generation ID
+        required: true
+        schema:
+          type: string
+          description: Generation ID
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetWorkbookReportGenerationStatusResponseV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+components:
+  schemas:
+    WorkbookReportFormatType:
+      enum:
+      - Csv
+      - Excel
+      - Png
+      type: string
+    GetWorkbookReportGenerationStatusResponseV1:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/ReportGenerationStatus'
+        downloadUrl:
+          type: string
+          description: Download URL
+          nullable: true
+        message:
+          type: string
+          description: Message
+          nullable: true
+      additionalProperties: false
+    ReportGenerationStatus:
+      enum:
+      - Running
+      - Completed
+      - Failed
+      type: string
+    GenerateWorkbookReportRequestV1:
+      type: object
+      properties:
+        elementId:
+          type: string
+          description: Workbook Element ID
+          nullable: true
+        reportFormat:
+          $ref: '#/components/schemas/WorkbookReportFormatType'
+        rowLimit:
+          type: integer
+          description: Row Limit
+          format: int32
+          nullable: true
+        offset:
+          type: integer
+          description: Offset
+          format: int32
+          nullable: true
+        parameters:
+          type: object
+          additionalProperties:
+            type: string
+            nullable: true
+          description: Parameters
+          nullable: true
+      additionalProperties: false
+    GenerateWorkbookReportResponseV1:
+      type: object
+      properties:
+        generationId:
+          type: string
+          description: Generation ID
+          nullable: true
+        reportStatusUrl:
+          type: string
+          description: The status URL to use with the generation ID.
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    API Token:
+      type: http
+      description: The API token received from the Authorize endpoint goes here.
+      scheme: Bearer
+      bearerFormat: JWT

@@ -1,0 +1,864 @@
+openapi: 3.0.4
+info:
+  title: Slope Arrays DataTables API
+  version: '1.0'
+tags:
+- name: DataTables
+paths:
+  /api/v2/DataTables:
+    post:
+      tags:
+      - DataTables
+      summary: Creates a new data table without a file using row data provided in the request.
+      description: 'Creates a new data table using row data provided directly in the request body.
+
+
+        **Limits:**
+
+        - Minimum: 1 row
+
+        - Maximum: 100,000 rows
+
+        - Request size: 10MB
+
+
+        **Row Format:**
+
+        Each row is an array of strings where values are **positional** - each position corresponds to a column in table structure order. Use empty string `""` for null/empty values at any position.
+
+
+        **Example 1:** For columns [Name (String), Age (Integer), Rate (Decimal)]:
+
+        - `["John", "25", "0.05"]` - all values
+
+        - `["John", "", "0.05"]` - Age is empty
+
+        - `["", "25", ""]` - Name and Rate are empty
+
+
+        **Example 2:** For columns [Name (String), Scenario (ScenarioTable), Active (Boolean)]:
+
+        - `["Base", "15", "true"]` - references ScenarioTable ID 15
+
+        - `["Alt", "", "true"]` - no ScenarioTable reference (empty string)
+
+
+        **Example 3:** For columns [Name (String), Mortality (MortalityTable), Nested (DataTable)]:
+
+        - `["Row1", "16757", "499", "42"]` - MortalityTable uses 2 positions, DataTable uses 1
+
+        - `["Row2", "", "", ""]` - all reference columns empty
+
+
+        **Supported Column Types:**
+
+        | Type | Values | Example |
+
+        |------|--------|--------|
+
+        | Integer (1) | 1 value | "100" |
+
+        | Decimal (2) | 1 value | "0.0123" |
+
+        | String (3) | 1 value | "Male" |
+
+        | Date (4) | 1 value | "2024-01-15" |
+
+        | Boolean (5) | 1 value | "true" or "false" |
+
+        | MortalityTable (6) | **2 values** | "16757", "499" |
+
+        | DataTable (7) | 1 value | "42" or "" |
+
+        | DropDownList (8) | 1 value | "Option1" |
+
+        | ScenarioTable (9) | 1 value | "15" or "" |
+
+
+        **Important:**
+
+        - MortalityTable columns expand to **2 positions** in the row array (decrementTableId, improvementScaleId)
+
+        - All other column types use **1 position** each
+
+        - Row length must equal: (column count) + (number of MortalityTable columns)
+
+        - Invalid DataTable/ScenarioTable reference IDs are silently cleared to empty
+
+        - Format matches GET /api/v1/DataTables/{id}/Data response'
+      operationId: CreateDataTableV2
+      requestBody:
+        description: Create request containing table structure, name, and row data
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDataTableRequestV2'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CreateDataTableRequestV2'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CreateDataTableRequestV2'
+      responses:
+        '200':
+          description: Data table created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportDataTableResponseV2'
+        '201':
+          description: Created
+        '400':
+          description: Invalid request parameters or validation errors
+        '403':
+          description: Forbidden - insufficient permissions
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Table structure not found
+        '401':
+          description: Unauthorized
+        '409':
+          description: Data table with the same name already exists for this table structure
+      security:
+      - API Token: []
+  /api/v2/DataTables/Import:
+    post:
+      tags:
+      - DataTables
+      summary: Creates a new data table from an imported file.
+      description: Creates a new data table using an existing file. This endpoint cannot be used to update existing data tables. The excel sheet name field is required for excel files and the delimiter field, which defaults to a comma if not set, is required for non-excel files. The limit for the number of rows is 25,000 for data tables that aren't file only.
+      operationId: ImportDataTable
+      requestBody:
+        description: Import request containing table structure, name, and file reference
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportDataTableRequestV2'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ImportDataTableRequestV2'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ImportDataTableRequestV2'
+      responses:
+        '200':
+          description: Data table created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportDataTableResponseV2'
+        '201':
+          description: Created
+        '400':
+          description: Invalid request parameters
+        '403':
+          description: Forbidden - insufficient permissions
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+        '409':
+          description: Data table with the same name already exists for this table structure
+      security:
+      - API Token: []
+  /api/v2/DataTables/{dataTableId}/Import:
+    put:
+      tags:
+      - DataTables
+      summary: Overwrites an existing data table from an imported file.
+      description: Overwrites the contents of an existing data table using the specified file. Library and Production models cannot be updated using this endpoint. The excel sheet name field is required for excel files and the delimiter field, which defaults to a comma if not set, is required for non-excel files. The limit for the number of rows is 25,000 for data tables that aren't file only.
+      operationId: OverwriteDataTable
+      parameters:
+      - name: dataTableId
+        in: path
+        description: The ID of the data table to overwrite
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Import request containing file reference
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OverwriteDataTableRequestV2'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/OverwriteDataTableRequestV2'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/OverwriteDataTableRequestV2'
+      responses:
+        '200':
+          description: Data table overwritten successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportDataTableResponseV2'
+        '201':
+          description: Created
+        '400':
+          description: Invalid request parameters or Library/Production model
+        '403':
+          description: Forbidden - insufficient permissions
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Data table not found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+  /api/v2/DataTables/{dataTableId}:
+    patch:
+      tags:
+      - DataTables
+      summary: Updates individual properties of an existing data table.
+      description: 'This endpoint cannot be used on production models. Only development models can be updated.
+
+        If the data table indexes are being updated and the table is used in any projections, a new version will be created automatically to preserve projection integrity.
+
+        Name-only updates do not trigger versioning.'
+      operationId: UpdateDataTableProperties
+      parameters:
+      - name: dataTableId
+        in: path
+        description: The ID of the data table to update
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: Update request containing optional Name and/or Indexes
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDataTableRequestV2'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDataTableRequestV2'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateDataTableRequestV2'
+      responses:
+        '200':
+          description: Data table updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateDataTableResponseV2'
+        '201':
+          description: Created
+        '400':
+          description: Invalid request parameters or no properties provided
+        '403':
+          description: Forbidden - cannot update production models or insufficient permissions
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Data table not found
+        '401':
+          description: Unauthorized
+        '409':
+          description: Data table with the same name already exists for this table structure
+      security:
+      - API Token: []
+  /api/v1/DataTables/Data:
+    get:
+      tags:
+      - DataTables
+      summary: Get a data table's data.
+      description: Either the data table ID must be provided, or the data table's name along with its associated table structure ID must be provided. <br/>If the data table is file only, then a file path to the file along with the file version will be returned so that it can be used with the GetDownloadUrl endpoint. <br/>For other data tables the rows are returned in the response up to the limit. The default limit is 2,000 and the max limit is 10,000. <br/>If the row limit is reached, then an offset is returned that can be used in a subsequent request to get the next set of rows. <br/>The response includes the TableStructureId of the table structure the data table is a part of, even when the requested data table is not the latest version.
+      operationId: GetDataTableData
+      parameters:
+      - name: DataTableId
+        in: query
+        description: Data Table ID
+        schema:
+          type: integer
+          format: int32
+      - name: Name
+        in: query
+        description: Data Table Name
+        schema:
+          type: string
+      - name: Version
+        in: query
+        description: Data Table Version
+        schema:
+          type: integer
+          format: int32
+      - name: TableStructureId
+        in: query
+        description: Table Structure ID
+        schema:
+          type: integer
+          format: int32
+      - name: Fields
+        in: query
+        description: "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+        schema:
+          type: string
+      - name: Limit
+        in: query
+        description: Optional parameter to limit the number of items returned. Default is 200.
+        schema:
+          type: integer
+          format: int32
+      - name: Offset
+        in: query
+        description: Optional parameter to offset the items returned. Default is 0.
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetDataTableResponseV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+  /api/v1/DataTables:
+    patch:
+      tags:
+      - DataTables
+      summary: Update a data table using an existing file.
+      description: This endpoint has the same limitations mentioned in the create data table POST endpoint. <br/>In addition, be aware that a successful request might cause the table to be versioned, thus returning a new data table id that represents the versioned table. <br/>A table will be versioned if it's been used in a projection since the last time it was modified.
+      operationId: UpdateDataTable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDataTableRequestV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDataTableRequestV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateDataTableRequestV1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateOrUpdateDataTableResponseV1'
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '403':
+          description: Not Allowed To Access
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Not Found
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+  /api/v1/DataTables/{DataTableId}/Data:
+    put:
+      tags:
+      - DataTables
+      summary: Update a data table's row data without uploading a file.
+      description: 'Pass row data directly to update the data table without needing to upload a file first. Rows should be formatted as arrays of string values matching the column order from the GET /Data endpoint. Index columns come first (sorted by SortOrder), then data columns (sorted by SortOrder). For MortalityTable columns, pass two values: DecrementTableId and ImprovementScaleId. Maximum of 100,000 rows. Note: There is also a 10MB request size limit. A successful request might cause the table to be versioned if it has been used in a projection since the last modification.'
+      operationId: UpdateDataTableData
+      parameters:
+      - name: DataTableId
+        in: path
+        description: The ID of the data table to update.
+        required: true
+        schema:
+          type: integer
+          description: Data Table Id
+          format: int32
+      requestBody:
+        description: The row data to replace existing data.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDataTableDataRequestV1'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDataTableDataRequestV1'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateDataTableDataRequestV1'
+      responses:
+        '200':
+          description: Data table data updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateDataTableDataResponseV1'
+        '201':
+          description: Created
+        '400':
+          description: Invalid request (file-only table, validation errors, row limit exceeded).
+        '403':
+          description: Cannot update data tables on production models or no model access.
+        '429':
+          description: Too Many Requests
+        '404':
+          description: Data table not found.
+        '401':
+          description: Unauthorized
+      security:
+      - API Token: []
+components:
+  schemas:
+    UpdateDataTableRequestV2:
+      type: object
+      properties:
+        name:
+          maxLength: 128
+          minLength: 0
+          type: string
+          description: 'Updated name for the data table (optional).
+
+            If not provided, the existing name will be retained.'
+          nullable: true
+          example: Updated Pension Conversion Table
+        indexes:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataTableIndexV2'
+          description: 'Updated list of indexes for the data table (optional).
+
+            If not provided, existing indexes will be retained.
+
+            Pass an empty array to remove all indexes.'
+          nullable: true
+          example:
+          - columnName: Age
+            indexReadMethod: ExactMatch
+          - columnName: Duration
+            indexReadMethod: RangeLowerBound
+      additionalProperties: false
+      description: 'Request model for updating individual properties of a data table.
+
+        Only properties that are provided will be updated.'
+    CreateDataTableRequestV2:
+      required:
+      - name
+      - rows
+      - tableStructureId
+      type: object
+      properties:
+        tableStructureId:
+          type: integer
+          description: Table Structure ID (required)
+          format: int32
+          example: 1
+        name:
+          maxLength: 200
+          minLength: 0
+          type: string
+          description: Data Table Name (required)
+          example: 2024 Mortality Assumptions
+        rows:
+          maxItems: 100000
+          minItems: 1
+          type: array
+          items:
+            type: array
+            items:
+              type: string
+          description: 'Table rows as a 2D array of string values. Values are positional - each position
+
+            corresponds to a column in table structure order. Use empty string "" for null/empty values.'
+          example:
+          - - '100'
+            - Male
+            - '0.0123'
+            - '2024-01-15'
+            - 'true'
+            - '16757'
+            - '499'
+            - '42'
+            - Option1
+            - '15'
+          - - '101'
+            - Female
+            - '0.0098'
+            - '2024-02-20'
+            - 'false'
+            - '16758'
+            - '500'
+            - ''
+            - Option2
+            - ''
+        indexes:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataTableIndexRequestV2'
+          description: Optional list of column indexes for table lookup optimization
+          nullable: true
+      additionalProperties: false
+      description: Request model for creating a data table without a file
+    UpdateDataTableDataResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The data table ID (may differ from request if table was versioned).
+          format: int32
+        version:
+          type: integer
+          description: The current version number of the data table.
+          format: int32
+      additionalProperties: false
+      description: Response model for successful data table data update.
+    DataTableIndexReadMethod:
+      enum:
+      - ExactMatch
+      - RangeLowerBound
+      type: string
+    CreateOrUpdateDataTableResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        tableStructureId:
+          type: integer
+          format: int32
+        tableStructureName:
+          type: string
+          nullable: true
+        isFileOnly:
+          type: boolean
+        version:
+          type: integer
+          format: int32
+        isLatestVersion:
+          type: boolean
+      additionalProperties: false
+    DataTableIndexV1:
+      required:
+      - columnName
+      type: object
+      properties:
+        columnName:
+          type: string
+          nullable: true
+        indexReadMethod:
+          $ref: '#/components/schemas/DataTableIndexReadMethod'
+      additionalProperties: false
+    UpdateDataTableResponseV2:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the updated data table.
+          format: int32
+          example: 12345
+        version:
+          type: integer
+          description: 'The version number of the data table after the update.
+
+            This may be incremented if the table was versioned due to being used in projections.'
+          format: int32
+          example: 2
+      additionalProperties: false
+      description: Response model for data table update operations.
+    DataTableIndexV2:
+      required:
+      - columnName
+      type: object
+      properties:
+        columnName:
+          type: string
+          nullable: true
+        indexReadMethod:
+          $ref: '#/components/schemas/DataTableIndexReadMethod'
+      additionalProperties: false
+    UpdateDataTableRequestV1:
+      type: object
+      properties:
+        fileId:
+          type: integer
+          description: File ID
+          format: int32
+          nullable: true
+        filePath:
+          type: string
+          description: File Path
+          nullable: true
+        fileVersion:
+          type: integer
+          description: File Version
+          format: int32
+          nullable: true
+        delimiter:
+          type: string
+          description: Delimiter
+          nullable: true
+        excelSheetName:
+          type: string
+          description: Excel Sheet Name
+          nullable: true
+        dataTableId:
+          type: integer
+          description: Date Table ID
+          format: int32
+          nullable: true
+        tableStructureId:
+          type: integer
+          description: Table Structure ID
+          format: int32
+          nullable: true
+        name:
+          type: string
+          description: Date Table Name
+          nullable: true
+        isFileOnly:
+          type: boolean
+          description: Is File Only?
+        indexes:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataTableIndexV1'
+          nullable: true
+      additionalProperties: false
+    OverwriteDataTableRequestV2:
+      type: object
+      properties:
+        fileId:
+          type: integer
+          description: File ID
+          format: int32
+          nullable: true
+        filePath:
+          type: string
+          description: File Path
+          nullable: true
+        fileVersion:
+          type: integer
+          description: File Version
+          format: int32
+          nullable: true
+        delimiter:
+          type: string
+          description: Delimiter
+          nullable: true
+        excelSheetName:
+          type: string
+          description: Excel Sheet Name
+          nullable: true
+        isFileOnly:
+          type: boolean
+          description: Is File Only?
+        indexes:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataTableIndexV2'
+          description: Optional list of indexes to update index read methods.
+          nullable: true
+      additionalProperties: false
+      description: Request model for overwriting an existing data table from a file.
+    GetDataTableResponseColumnV1:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        order:
+          type: integer
+          format: int32
+        isIndex:
+          type: boolean
+        indexReadMethod:
+          type: string
+          nullable: true
+        dataType:
+          type: string
+          nullable: true
+        displayPrecision:
+          type: integer
+          format: int32
+          nullable: true
+        dropDownListArrayId:
+          type: integer
+          format: int32
+          nullable: true
+        nestedTableStructureId:
+          type: integer
+          format: int32
+          nullable: true
+      additionalProperties: false
+    ImportDataTableResponseV2:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        tableStructureId:
+          type: integer
+          format: int32
+        tableStructureName:
+          type: string
+          nullable: true
+        isFileOnly:
+          type: boolean
+        version:
+          type: integer
+          format: int32
+        isLatestVersion:
+          type: boolean
+      additionalProperties: false
+    UpdateDataTableDataRequestV1:
+      required:
+      - rows
+      type: object
+      properties:
+        rows:
+          type: array
+          items:
+            type: array
+            items:
+              type: string
+          description: 'Row data to replace existing table data.
+
+            Each row is an array of string values matching the column order from GET /Data endpoint.
+
+            Index columns first (sorted by SortOrder), then data columns (sorted by SortOrder).'
+        indexes:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataTableIndexV1'
+          description: 'Optional - Update index read methods while updating data.
+
+            If not provided, existing index read methods are preserved.'
+          nullable: true
+      additionalProperties: false
+      description: Request model for updating data table row data without a file upload.
+    GetDataTableResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        tableStructureId:
+          type: integer
+          format: int32
+          nullable: true
+        filePath:
+          type: string
+          nullable: true
+        fileVersion:
+          type: integer
+          format: int32
+          nullable: true
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetDataTableResponseColumnV1'
+          nullable: true
+        rows:
+          type: array
+          items:
+            type: array
+            items:
+              type: string
+          nullable: true
+        offset:
+          type: integer
+          format: int32
+          nullable: true
+      additionalProperties: false
+    DataTableIndexRequestV2:
+      required:
+      - columnName
+      type: object
+      properties:
+        columnName:
+          minLength: 1
+          type: string
+          description: Column name to index (required)
+          example: Age
+        indexReadMethod:
+          $ref: '#/components/schemas/DataTableIndexReadMethod'
+      additionalProperties: false
+      description: Defines an index on a data table column for optimized lookups
+    ImportDataTableRequestV2:
+      required:
+      - name
+      - tableStructureId
+      type: object
+      properties:
+        fileId:
+          type: integer
+          description: File ID
+          format: int32
+          nullable: true
+        filePath:
+          type: string
+          description: File Path
+          nullable: true
+        fileVersion:
+          type: integer
+          description: File Version
+          format: int32
+          nullable: true
+        delimiter:
+          type: string
+          description: Delimiter
+          nullable: true
+        excelSheetName:
+          type: string
+          description: Excel Sheet Name
+          nullable: true
+        tableStructureId:
+          type: integer
+          description: Table Structure ID (required)
+          format: int32
+          example: 1
+        name:
+          maxLength: 128
+          minLength: 0
+          type: string
+          description: Name (required)
+        isFileOnly:
+          type: boolean
+          description: Is File Only?
+        indexes:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataTableIndexV2'
+          description: Optional list of indexes
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    API Token:
+      type: http
+      description: The API token received from the Authorize endpoint goes here.
+      scheme: Bearer
+      bearerFormat: JWT
