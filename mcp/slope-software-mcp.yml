@@ -1,0 +1,173 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/slope-software-openapi-original.json
+note: No official hosted MCP server was found for Slope. This is a candidate tool list derived one-to-one
+  from the Slope API operations; auth is Bearer JWT obtained from /api/v1/Authorize.
+server:
+  name: slope-software
+  transport: http
+tools:
+- name: GetArrayDetails
+  description: Get detailed information about a specific array including all values and type-specific
+    properties.
+  source_operation: openapi/slope-software-openapi-original.json#GetArrayDetails
+- name: UpdateStaticArrayValues
+  description: Update the values in a static array.
+  source_operation: openapi/slope-software-openapi-original.json#UpdateStaticArrayValues
+- name: CreateDataTableV2
+  description: Creates a new data table without a file using row data provided in the request.
+  source_operation: openapi/slope-software-openapi-original.json#CreateDataTableV2
+- name: ImportDataTable
+  description: Creates a new data table from an imported file.
+  source_operation: openapi/slope-software-openapi-original.json#ImportDataTable
+- name: OverwriteDataTable
+  description: Overwrites an existing data table from an imported file.
+  source_operation: openapi/slope-software-openapi-original.json#OverwriteDataTable
+- name: UpdateDataTableProperties
+  description: Updates individual properties of an existing data table.
+  source_operation: openapi/slope-software-openapi-original.json#UpdateDataTableProperties
+- name: GetDataTableData
+  description: Get a data table's data.
+  source_operation: openapi/slope-software-openapi-original.json#GetDataTableData
+- name: UpdateDataTable
+  description: Update a data table using an existing file.
+  source_operation: openapi/slope-software-openapi-original.json#UpdateDataTable
+- name: UpdateDataTableData
+  description: Update a data table's row data without uploading a file.
+  source_operation: openapi/slope-software-openapi-original.json#UpdateDataTableData
+- name: GetDecrementTableById
+  description: Get a decrement table.
+  source_operation: openapi/slope-software-openapi-original.json#GetDecrementTableById
+- name: DeleteDecrementTableById
+  description: Delete a decrement table.
+  source_operation: openapi/slope-software-openapi-original.json#DeleteDecrementTableById
+- name: CreateDecrementTable
+  description: Create a decrement table using an existing file.
+  source_operation: openapi/slope-software-openapi-original.json#CreateDecrementTable
+- name: GetFiles
+  description: Get all currently available latest-version files.
+  source_operation: openapi/slope-software-openapi-original.json#GetFiles
+- name: GetDownloadUrl
+  description: Get a temporary URL to download a file.
+  source_operation: openapi/slope-software-openapi-original.json#GetDownloadUrl
+- name: GetUploadUrl
+  description: Get a temporary URL to upload a file to a certain file path via a PUT request with the
+    file data.
+  source_operation: openapi/slope-software-openapi-original.json#GetUploadUrl
+- name: SaveUpload
+  description: Save the file that was uploaded via the upload url returned by the GetUploadUrl endpoint.
+  source_operation: openapi/slope-software-openapi-original.json#SaveUpload
+- name: GetImprovementScaleById
+  description: Get an improvement scale.
+  source_operation: openapi/slope-software-openapi-original.json#GetImprovementScaleById
+- name: CreateImprovementScale
+  description: Create an improvement scale using an existing file.
+  source_operation: openapi/slope-software-openapi-original.json#CreateImprovementScale
+- name: CreateModelPointField
+  description: Create a new model point field for a product.
+  source_operation: openapi/slope-software-openapi-original.json#CreateModelPointField
+- name: DeleteModelPointField
+  description: Delete a model point field by its ID.
+  source_operation: openapi/slope-software-openapi-original.json#DeleteModelPointField
+- name: UpdateModelPointField
+  description: Update an existing model point field.
+  source_operation: openapi/slope-software-openapi-original.json#UpdateModelPointField
+- name: ListModels
+  description: Get a paginated list of models by type (Library, Workspace, or Production).
+  source_operation: openapi/slope-software-openapi-original.json#ListModels
+- name: GetProjectionTemplatesByModelId
+  description: Get model's projection templates.
+  source_operation: openapi/slope-software-openapi-original.json#GetProjectionTemplatesByModelId
+- name: GetDataTablesByModelId
+  description: Get model's data tables.
+  source_operation: openapi/slope-software-openapi-original.json#GetDataTablesByModelId
+- name: GetDecrementTablesByModelId
+  description: Get model's decrement tables.
+  source_operation: openapi/slope-software-openapi-original.json#GetDecrementTablesByModelId
+- name: GetScenarioTablesByModelId
+  description: Get model's scenario tables.
+  source_operation: openapi/slope-software-openapi-original.json#GetScenarioTablesByModelId
+- name: GetImprovementScalesByModelId
+  description: Get model's improvement scales.
+  source_operation: openapi/slope-software-openapi-original.json#GetImprovementScalesByModelId
+- name: GetTableStructuresByModelId
+  description: Get model's table structures.
+  source_operation: openapi/slope-software-openapi-original.json#GetTableStructuresByModelId
+- name: GetInvestmentStrategiesByModelId
+  description: Get model's investment strategies.
+  source_operation: openapi/slope-software-openapi-original.json#GetInvestmentStrategiesByModelId
+- name: GetProductsByModelId
+  description: Get model's products.
+  source_operation: openapi/slope-software-openapi-original.json#GetProductsByModelId
+- name: GetVariableRatesByModelId
+  description: Get model's variable rates.
+  source_operation: openapi/slope-software-openapi-original.json#GetVariableRatesByModelId
+- name: CopyModel
+  description: Initiate an asynchronous copy of a model. Returns a token to check copy status.
+  source_operation: openapi/slope-software-openapi-original.json#CopyModel
+- name: GetModelCopyStatus
+  description: Check the status of an asynchronous model copy operation.
+  source_operation: openapi/slope-software-openapi-original.json#GetModelCopyStatus
+- name: GetArraysByModelId
+  description: Get model's arrays.
+  source_operation: openapi/slope-software-openapi-original.json#GetArraysByModelId
+- name: GetModelPointFields
+  description: Get all model point fields for a product.
+  source_operation: openapi/slope-software-openapi-original.json#GetModelPointFields
+- name: ListProjections
+  description: Get a paginated list of projections in the workspace.
+  source_operation: openapi/slope-software-openapi-original.json#ListProjections
+- name: CreateProjectionFromTemplate
+  description: Create a projection using an existing projection template.
+  source_operation: openapi/slope-software-openapi-original.json#CreateProjectionFromTemplate
+- name: GetProjectionById
+  description: Get Projection Details by Id.
+  source_operation: openapi/slope-software-openapi-original.json#GetProjectionById
+- name: UpdateExistingProjection
+  description: Update projection properties.
+  source_operation: openapi/slope-software-openapi-original.json#UpdateExistingProjection
+- name: RunProjectionById
+  description: Start a projection run.
+  source_operation: openapi/slope-software-openapi-original.json#RunProjectionById
+- name: AddProductToPortfolio
+  description: Add a new product to a portfolio on a projection.
+  source_operation: openapi/slope-software-openapi-original.json#AddProductToPortfolio
+- name: CopyProjection
+  description: Copies a projection.
+  source_operation: openapi/slope-software-openapi-original.json#CopyProjection
+- name: DeletePortfolioProduct
+  description: Remove a product from a projection's portfolio.
+  source_operation: openapi/slope-software-openapi-original.json#DeletePortfolioProduct
+- name: GenerateWorkbookReport
+  description: Start a workbook report generation. Use the returned URL to check the status of the report
+    generation.
+  source_operation: openapi/slope-software-openapi-original.json#GenerateWorkbookReport
+- name: GetWorkbookReportGenerationStatus
+  description: Get workbook report generation status. If successful, then a URL will be available to download
+    the report.
+  source_operation: openapi/slope-software-openapi-original.json#GetWorkbookReportGenerationStatus
+- name: GetScenarioTableById
+  description: Get a scenario table.
+  source_operation: openapi/slope-software-openapi-original.json#GetScenarioTableById
+- name: UpdateExistingScenarioTable
+  description: Update a scenario table.
+  source_operation: openapi/slope-software-openapi-original.json#UpdateExistingScenarioTable
+- name: CreateScenarioTableFromFile
+  description: Create a scenario table using an existing file.
+  source_operation: openapi/slope-software-openapi-original.json#CreateScenarioTableFromFile
+- name: GenerateScenarioTableFromGenerator
+  description: Generate a scenario table from a generator.
+  source_operation: openapi/slope-software-openapi-original.json#GenerateScenarioTableFromGenerator
+- name: GetGenerateStatus
+  description: Get the status of a scenario table generation.
+  source_operation: openapi/slope-software-openapi-original.json#GetGenerateStatus
+- name: GetTableStructureById
+  description: Get a table structure by id.
+  source_operation: openapi/slope-software-openapi-original.json#GetTableStructureById
+- name: GetDataTablesByTableStructureId
+  description: Get a list of Data Tables given a Table Structure Id
+  source_operation: openapi/slope-software-openapi-original.json#GetDataTablesByTableStructureId
+- name: GetColumnsByTableStructureId
+  description: Get a list of Columns given a Table Structure Id
+  source_operation: openapi/slope-software-openapi-original.json#GetColumnsByTableStructureId

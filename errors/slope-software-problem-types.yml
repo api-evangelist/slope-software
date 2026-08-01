@@ -1,0 +1,56 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/slope-software-openapi-original.json
+format: rfc7807
+note: 'Errors use the ASP.NET Core ProblemDetails envelope (RFC 7807 shape: type, title, status, detail,
+  instance) returned as application/json (not application/problem+json).'
+envelope_schema: ProblemDetails
+problems:
+- status: 400
+  title: Bad Request — the request was malformed or failed validation.
+  envelope: ProblemDetails
+  media_type: application/json
+  example_operations:
+  - openapi/slope-software-openapi-original.json#AddProductToPortfolio
+  - openapi/slope-software-openapi-original.json#CopyModel
+  - openapi/slope-software-openapi-original.json#CopyProjection
+- status: 401
+  title: Unauthorized — missing or invalid API Token; call POST /api/v1/Authorize.
+  envelope: ProblemDetails
+  media_type: application/json
+  example_operations:
+  - openapi/slope-software-openapi-original.json#AddProductToPortfolio
+  - openapi/slope-software-openapi-original.json#CopyModel
+  - openapi/slope-software-openapi-original.json#CopyProjection
+- status: 403
+  title: Forbidden — the authenticated caller is not permitted to access this resource.
+  envelope: ProblemDetails
+  media_type: application/json
+  example_operations:
+  - openapi/slope-software-openapi-original.json#AddProductToPortfolio
+  - openapi/slope-software-openapi-original.json#CopyModel
+  - openapi/slope-software-openapi-original.json#CopyProjection
+- status: 404
+  title: Not Found — the referenced resource (model, projection, table, file) does not exist.
+  envelope: ProblemDetails
+  media_type: application/json
+  example_operations:
+  - openapi/slope-software-openapi-original.json#AddProductToPortfolio
+  - openapi/slope-software-openapi-original.json#CopyModel
+  - openapi/slope-software-openapi-original.json#CopyProjection
+- status: 409
+  title: Conflict — the request conflicts with the current state of the resource.
+  envelope: ProblemDetails
+  media_type: application/json
+  example_operations:
+  - openapi/slope-software-openapi-original.json#CreateDataTableV2
+  - openapi/slope-software-openapi-original.json#CreateDecrementTable
+  - openapi/slope-software-openapi-original.json#CreateImprovementScale
+- status: 429
+  title: Too Many Requests — API rate limit exceeded; back off and retry.
+  envelope: ProblemDetails
+  media_type: application/json
+  example_operations:
+  - openapi/slope-software-openapi-original.json#AddProductToPortfolio
+  - openapi/slope-software-openapi-original.json#CopyModel
+  - openapi/slope-software-openapi-original.json#CopyProjection

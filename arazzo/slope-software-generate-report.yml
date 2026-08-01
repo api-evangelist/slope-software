@@ -1,0 +1,42 @@
+arazzo: 1.0.1
+info:
+  title: Generate and download a SLOPE workbook report
+  version: 1.0.0
+  summary: Kick off a workbook report, poll for completion, and fetch a download URL.
+sourceDescriptions:
+- name: slopeApi
+  url: ../openapi/slope-software-openapi-original.json
+  type: openapi
+workflows:
+- workflowId: generate-workbook-report
+  summary: Generate a workbook report and download the output.
+  inputs:
+    type: object
+    properties:
+      apiToken:
+        type: string
+      workbookId:
+        type: string
+  steps:
+  - stepId: generate
+    operationId: GenerateWorkbookReport
+    parameters:
+    - name: workbookId
+      in: path
+      value: $inputs.workbookId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      generationId: $response.body#/generationId
+  - stepId: pollStatus
+    operationId: GetWorkbookReportGenerationStatus
+    parameters:
+    - name: generationId
+      in: path
+      value: $steps.generate.outputs.generationId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: getDownload
+    operationId: GetDownloadUrl
+    successCriteria:
+    - condition: $statusCode == 200

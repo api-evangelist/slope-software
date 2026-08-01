@@ -1,0 +1,40 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/slope-software-openapi-original.json
+docs: https://security.slopesoftware.com/
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: OpenAPI 3.0.4 document published at api.slopesoftware.com/swagger/1.0/swagger.json
+- id: rfc7807-problem-details
+  conforms: true
+  evidence: error responses use the ProblemDetails schema (type/title/status/detail/instance)
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors served as application/json, not application/problem+json
+- id: oauth2-bearer-jwt
+  conforms: true
+  evidence: http bearer JWT scheme 'API Token' from /api/v1/Authorize
+- id: openid-connect
+  conforms: true
+  evidence: platform SSO via Frontegg OIDC discovery at auth.slopesoftware.com
+- id: offset-limit-pagination
+  conforms: true
+  evidence: Offset/Limit query parameters on list endpoints
+- id: tls-1.3
+  conforms: true
+  evidence: SLOPE API overview states TLS 1.3; api host negotiates modern TLS
+- id: soc2-type2
+  conforms: true
+  evidence: published on security.slopesoftware.com (SafeBase trust center)
+- id: iso-27001
+  conforms: true
+  evidence: published on security.slopesoftware.com
+- id: hipaa
+  conforms: true
+  evidence: published on security.slopesoftware.com
+compliance_programs:
+- SOC 2 Type II
+- ISO 27001
+- HIPAA
+- CCPA

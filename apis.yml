@@ -1,7 +1,13 @@
 aid: slope-software
 name: Slope Software
-description: Slope Software is a company surfaced as a portfolio company of techstars and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Slope Software builds SLOPE, a cloud-native actuarial modeling platform for life, annuity, pension,
+  and supplemental health/disability/LTC insurers. SLOPE lets actuaries develop transparent, flexible
+  projection models, aggregate and manage assumptions and data tables, run high-performance valuation,
+  pricing, ALM, and experience-study calculations, and analyze results with dynamic reporting. The SLOPE
+  REST API automates the full valuation workflow end to end: ingesting scenario and data tables, uploading
+  model point files, creating projections from templates, kicking off runs, checking status, and pulling
+  results back down to integrate with downstream systems.
 url: https://raw.githubusercontent.com/api-evangelist/slope-software/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,17 +15,348 @@ x-backed-by:
 - techstars
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Actuarial
+- Insurance
+- Actuarial Modeling
+- Valuation
+- Financial Services
+- Life Insurance
+- Annuities
+- Pension
+- Risk Management
+- Cloud
+- Reporting
+image: https://slopesoftware.com/wp-content/uploads/2021/09/cropped-slope-fullcolor-logomark-square.png
+apis:
+- aid: slope-software:slope-software-arrays-api
+  name: Slope Software Arrays API
+  description: The Arrays API from Slope Software — 2 operation(s) for arrays.
+  humanURL: https://api.slopesoftware.com/
+  baseURL: https://api.slopesoftware.com
+  tags:
+  - Arrays
+  properties:
+  - type: OpenAPI
+    url: openapi/slope-software-arrays-api-openapi.yml
+  - type: Authentication
+    url: authentication/slope-software-authentication.yml
+  - type: ErrorCatalog
+    url: errors/slope-software-problem-types.yml
+  - type: Conventions
+    url: conventions/slope-software-conventions.yml
+  - type: DataModel
+    url: data-model/slope-software-data-model.yml
+- aid: slope-software:slope-software-authorize-api
+  name: Slope Software Authorize API
+  description: The Authorize API from Slope Software — 2 operation(s) for authorize.
+  humanURL: https://api.slopesoftware.com/
+  baseURL: https://api.slopesoftware.com
+  tags:
+  - Authorize
+  properties:
+  - type: OpenAPI
+    url: openapi/slope-software-authorize-api-openapi.yml
+  - type: Authentication
+    url: authentication/slope-software-authentication.yml
+  - type: ErrorCatalog
+    url: errors/slope-software-problem-types.yml
+  - type: Conventions
+    url: conventions/slope-software-conventions.yml
+  - type: DataModel
+    url: data-model/slope-software-data-model.yml
+- aid: slope-software:slope-software-datatables-api
+  name: Slope Software DataTables API
+  description: The DataTables API from Slope Software — 7 operation(s) for datatables.
+  humanURL: https://api.slopesoftware.com/
+  baseURL: https://api.slopesoftware.com
+  tags:
+  - DataTables
+  properties:
+  - type: OpenAPI
+    url: openapi/slope-software-datatables-api-openapi.yml
+  - type: Authentication
+    url: authentication/slope-software-authentication.yml
+  - type: ErrorCatalog
+    url: errors/slope-software-problem-types.yml
+  - type: Conventions
+    url: conventions/slope-software-conventions.yml
+  - type: DataModel
+    url: data-model/slope-software-data-model.yml
+- aid: slope-software:slope-software-decrementtables-api
+  name: Slope Software DecrementTables API
+  description: The DecrementTables API from Slope Software — 2 operation(s) for decrementtables.
+  humanURL: https://api.slopesoftware.com/
+  baseURL: https://api.slopesoftware.com
+  tags:
+  - DecrementTables
+  properties:
+  - type: OpenAPI
+    url: openapi/slope-software-decrementtables-api-openapi.yml
+  - type: Authentication
+    url: authentication/slope-software-authentication.yml
+  - type: ErrorCatalog
+    url: errors/slope-software-problem-types.yml
+  - type: Conventions
+    url: conventions/slope-software-conventions.yml
+  - type: DataModel
+    url: data-model/slope-software-data-model.yml
+- aid: slope-software:slope-software-files-api
+  name: Slope Software Files API
+  description: The Files API from Slope Software — 4 operation(s) for files.
+  humanURL: https://api.slopesoftware.com/
+  baseURL: https://api.slopesoftware.com
+  tags:
+  - Files
+  properties:
+  - type: OpenAPI
+    url: openapi/slope-software-files-api-openapi.yml
+  - type: Authentication
+    url: authentication/slope-software-authentication.yml
+  - type: ErrorCatalog
+    url: errors/slope-software-problem-types.yml
+  - type: Conventions
+    url: conventions/slope-software-conventions.yml
+  - type: DataModel
+    url: data-model/slope-software-data-model.yml
+- aid: slope-software:slope-software-improvementscales-api
+  name: Slope Software ImprovementScales API
+  description: The ImprovementScales API from Slope Software — 2 operation(s) for improvementscales.
+  humanURL: https://api.slopesoftware.com/
+  baseURL: https://api.slopesoftware.com
+  tags:
+  - ImprovementScales
+  properties:
+  - type: OpenAPI
+    url: openapi/slope-software-improvementscales-api-openapi.yml
+  - type: Authentication
+    url: authentication/slope-software-authentication.yml
+  - type: ErrorCatalog
+    url: errors/slope-software-problem-types.yml
+  - type: Conventions
+    url: conventions/slope-software-conventions.yml
+  - type: DataModel
+    url: data-model/slope-software-data-model.yml
+- aid: slope-software:slope-software-modelpointfields-api
+  name: Slope Software ModelPointFields API
+  description: The ModelPointFields API from Slope Software — 2 operation(s) for modelpointfields.
+  humanURL: https://api.slopesoftware.com/
+  baseURL: https://api.slopesoftware.com
+  tags:
+  - ModelPointFields
+  properties:
+  - type: OpenAPI
+    url: openapi/slope-software-modelpointfields-api-openapi.yml
+  - type: Authentication
+    url: authentication/slope-software-authentication.yml
+  - type: ErrorCatalog
+    url: errors/slope-software-problem-types.yml
+  - type: Conventions
+    url: conventions/slope-software-conventions.yml
+  - type: DataModel
+    url: data-model/slope-software-data-model.yml
+- aid: slope-software:slope-software-models-api
+  name: Slope Software Models API
+  description: The Models API from Slope Software — 13 operation(s) for models.
+  humanURL: https://api.slopesoftware.com/
+  baseURL: https://api.slopesoftware.com
+  tags:
+  - Models
+  properties:
+  - type: OpenAPI
+    url: openapi/slope-software-models-api-openapi.yml
+  - type: Authentication
+    url: authentication/slope-software-authentication.yml
+  - type: ErrorCatalog
+    url: errors/slope-software-problem-types.yml
+  - type: Conventions
+    url: conventions/slope-software-conventions.yml
+  - type: DataModel
+    url: data-model/slope-software-data-model.yml
+- aid: slope-software:slope-software-products-api
+  name: Slope Software Products API
+  description: The Products API from Slope Software — 1 operation(s) for products.
+  humanURL: https://api.slopesoftware.com/
+  baseURL: https://api.slopesoftware.com
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/slope-software-products-api-openapi.yml
+  - type: Authentication
+    url: authentication/slope-software-authentication.yml
+  - type: ErrorCatalog
+    url: errors/slope-software-problem-types.yml
+  - type: Conventions
+    url: conventions/slope-software-conventions.yml
+  - type: DataModel
+    url: data-model/slope-software-data-model.yml
+- aid: slope-software:slope-software-projections-api
+  name: Slope Software Projections API
+  description: The Projections API from Slope Software — 6 operation(s) for projections.
+  humanURL: https://api.slopesoftware.com/
+  baseURL: https://api.slopesoftware.com
+  tags:
+  - Projections
+  properties:
+  - type: OpenAPI
+    url: openapi/slope-software-projections-api-openapi.yml
+  - type: Authentication
+    url: authentication/slope-software-authentication.yml
+  - type: ErrorCatalog
+    url: errors/slope-software-problem-types.yml
+  - type: Conventions
+    url: conventions/slope-software-conventions.yml
+  - type: DataModel
+    url: data-model/slope-software-data-model.yml
+- aid: slope-software:slope-software-reports-api
+  name: Slope Software Reports API
+  description: The Reports API from Slope Software — 2 operation(s) for reports.
+  humanURL: https://api.slopesoftware.com/
+  baseURL: https://api.slopesoftware.com
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/slope-software-reports-api-openapi.yml
+  - type: Authentication
+    url: authentication/slope-software-authentication.yml
+  - type: ErrorCatalog
+    url: errors/slope-software-problem-types.yml
+  - type: Conventions
+    url: conventions/slope-software-conventions.yml
+  - type: DataModel
+    url: data-model/slope-software-data-model.yml
+- aid: slope-software:slope-software-scenariotables-api
+  name: Slope Software ScenarioTables API
+  description: The ScenarioTables API from Slope Software — 4 operation(s) for scenariotables.
+  humanURL: https://api.slopesoftware.com/
+  baseURL: https://api.slopesoftware.com
+  tags:
+  - ScenarioTables
+  properties:
+  - type: OpenAPI
+    url: openapi/slope-software-scenariotables-api-openapi.yml
+  - type: Authentication
+    url: authentication/slope-software-authentication.yml
+  - type: ErrorCatalog
+    url: errors/slope-software-problem-types.yml
+  - type: Conventions
+    url: conventions/slope-software-conventions.yml
+  - type: DataModel
+    url: data-model/slope-software-data-model.yml
+- aid: slope-software:slope-software-tablestructures-api
+  name: Slope Software TableStructures API
+  description: The TableStructures API from Slope Software — 3 operation(s) for tablestructures.
+  humanURL: https://api.slopesoftware.com/
+  baseURL: https://api.slopesoftware.com
+  tags:
+  - TableStructures
+  properties:
+  - type: OpenAPI
+    url: openapi/slope-software-tablestructures-api-openapi.yml
+  - type: Authentication
+    url: authentication/slope-software-authentication.yml
+  - type: ErrorCatalog
+    url: errors/slope-software-problem-types.yml
+  - type: Conventions
+    url: conventions/slope-software-conventions.yml
+  - type: DataModel
+    url: data-model/slope-software-data-model.yml
+- aid: slope-software:slope-software-users-api
+  name: Slope Software Users API
+  description: The Users API from Slope Software — 1 operation(s) for users.
+  humanURL: https://api.slopesoftware.com/
+  baseURL: https://api.slopesoftware.com
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/slope-software-users-api-openapi.yml
+  - type: Authentication
+    url: authentication/slope-software-authentication.yml
+  - type: ErrorCatalog
+    url: errors/slope-software-problem-types.yml
+  - type: Conventions
+    url: conventions/slope-software-conventions.yml
+  - type: DataModel
+    url: data-model/slope-software-data-model.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: TrustCenter
+  url: security/slope-software-trust-center.yml
+- type: DomainSecurity
+  url: security/slope-software-domain-security.yml
 - type: Website
   url: https://slopesoftware.com/
+- type: DeveloperPortal
+  url: https://api.slopesoftware.com/
+- type: Documentation
+  url: https://slopesoftware.com/wp-content/uploads/2022/02/SLOPE-API.pdf
+- type: APIReference
+  url: https://api.slopesoftware.com/
+- type: Blog
+  url: https://slopesoftware.com/blog/
+- type: StatusPage
+  url: https://status.slopesoftware.com/
+- type: SignUp
+  url: https://slopesoftware.com/demo/
+- type: Login
+  url: https://app.slopesoftware.com/
+- type: PrivacyPolicy
+  url: https://slopesoftware.com/privacy-policy/
+- type: Compliance
+  url: https://security.slopesoftware.com/
+- type: Authentication
+  url: authentication/slope-software-authentication.yml
+- type: ErrorCatalog
+  url: errors/slope-software-problem-types.yml
+- type: Conventions
+  url: conventions/slope-software-conventions.yml
+- type: DataModel
+  url: data-model/slope-software-data-model.yml
+- type: Lifecycle
+  url: lifecycle/slope-software-lifecycle.yml
+- type: Conformance
+  url: conformance/slope-software-conformance.yml
+- type: MCPServer
+  url: mcp/slope-software-mcp.yml
+- type: Overlay
+  url: overlays/slope-software-overlay.yaml
+- type: WellKnown
+  url: well-known/slope-software-well-known.yml
+- type: LLMsTxt
+  url: llms/slope-software-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Arazzo
+  name: Run a SLOPE projection from a template
+  url: arazzo/slope-software-run-projection.yml
+- type: Arazzo
+  name: Generate and download a SLOPE workbook report
+  url: arazzo/slope-software-generate-report.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 21
+  pass: local-v1

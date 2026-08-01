@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: generated
+skills:
+- file: slope-software-run-projection.md
+  name: Run a SLOPE projection from a template
+  api: openapi/slope-software-openapi-original.json
+  operations:
+  - ListModels
+  - GetProjectionTemplatesByModelId
+  - CreateProjectionFromTemplate
+  - RunProjectionById
+  - GetProjectionById
+- file: slope-software-manage-data-tables.md
+  name: Import and update SLOPE data tables
+  api: openapi/slope-software-openapi-original.json
+  operations:
+  - GetUploadUrl
+  - SaveUpload
+  - ImportDataTable
+  - GetDataTableData
+  - UpdateDataTableData
+- file: slope-software-generate-report.md
+  name: Generate and download a SLOPE workbook report
+  api: openapi/slope-software-openapi-original.json
+  operations:
+  - GenerateWorkbookReport
+  - GetWorkbookReportGenerationStatus
+  - GetDownloadUrl

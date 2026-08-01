@@ -1,0 +1,40 @@
+{
+  "provider": "slope-software",
+  "sources": [
+    "slope-software-arrays-api-openapi.yml",
+    "slope-software-authorize-api-openapi.yml",
+    "slope-software-datatables-api-openapi.yml",
+    "slope-software-decrementtables-api-openapi.yml",
+    "slope-software-files-api-openapi.yml",
+    "slope-software-improvementscales-api-openapi.yml",
+    "slope-software-modelpointfields-api-openapi.yml",
+    "slope-software-models-api-openapi.yml",
+    "slope-software-products-api-openapi.yml",
+    "slope-software-projections-api-openapi.yml",
+    "slope-software-reports-api-openapi.yml",
+    "slope-software-scenariotables-api-openapi.yml",
+    "slope-software-tablestructures-api-openapi.yml",
+    "slope-software-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "slope-software-arrays-api-openapi.yml",
+    "slope-software-authorize-api-openapi.yml",
+    "slope-software-datatables-api-openapi.yml",
+    "slope-software-decrementtables-api-openapi.yml",
+    "slope-software-files-api-openapi.yml",
+    "slope-software-improvementscales-api-openapi.yml",
+    "slope-software-modelpointfields-api-openapi.yml",
+    "slope-software-models-api-openapi.yml",
+    "slope-software-products-api-openapi.yml",
+    "slope-software-projections-api-openapi.yml",
+    "slope-software-reports-api-openapi.yml",
+    "slope-software-scenariotables-api-openapi.yml",
+    "slope-software-tablestructures-api-openapi.yml",
+    "slope-software-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

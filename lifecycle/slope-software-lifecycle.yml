@@ -1,0 +1,18 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/slope-software-openapi-original.json
+versioning:
+  scheme: uri-path
+  current: v1
+  also_present:
+  - v2
+  docs: https://api.slopesoftware.com/
+status_page: https://status.slopesoftware.com/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No public deprecation/sunset policy located.
+sla:
+  url: null
+  note: No public SLA/uptime commitment located; status page is public.
+deprecated_operations: []

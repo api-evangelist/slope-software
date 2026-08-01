@@ -1,0 +1,28 @@
+# Slope Software
+
+> Slope Software builds SLOPE, a cloud-native actuarial modeling platform for life, annuity, pension, and supplemental insurers. The SLOPE REST API automates the full valuation workflow: ingesting scenario and data tables, uploading model point files, creating projections from templates, running them, checking status, and pulling results into downstream systems.
+
+## API
+- [Slope API (OpenAPI 3.0.4)](https://api.slopesoftware.com/swagger/1.0/swagger.json): 51 paths / 56 operations across Models, Projections, DataTables, ScenarioTables, DecrementTables, ImprovementScales, Products, Reports, Files, Users. Bearer JWT auth via POST /api/v1/Authorize.
+- [Slope API Documentation (Swagger UI)](https://api.slopesoftware.com/)
+- [SLOPE API overview (PDF)](https://slopesoftware.com/wp-content/uploads/2022/02/SLOPE-API.pdf)
+
+## Platform
+- [SLOPE platform](https://slopesoftware.com/slope-platform/)
+- [Application login](https://app.slopesoftware.com/)
+- [Status page](https://status.slopesoftware.com/)
+- [Trust Center (SOC 2 Type II, ISO 27001, HIPAA)](https://security.slopesoftware.com/)
+- [Blog](https://slopesoftware.com/blog/)
+- [Request a demo](https://slopesoftware.com/demo/)
+
+## Repo artifacts
+- openapi/slope-software-openapi-original.json
+- authentication/slope-software-authentication.yml
+- errors/slope-software-problem-types.yml
+- conventions/slope-software-conventions.yml
+- data-model/slope-software-data-model.yml
+- lifecycle/slope-software-lifecycle.yml
+- conformance/slope-software-conformance.yml
+- mcp/slope-software-mcp.yml
+- skills/_index.yml
+- arazzo/_index.yml

@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/slope-software-openapi-original.json
+docs: https://api.slopesoftware.com/
+summary:
+  types:
+  - http-bearer
+  bearer_format: JWT
+  token_endpoint: /api/v1/Authorize
+  refresh_endpoint: /api/v1/Authorize/Refresh
+  console_sso: OpenID Connect via Frontegg (auth.slopesoftware.com)
+schemes:
+- name: API Token
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: 'JWT bearer access token. Exchange API credentials at POST /api/v1/Authorize to receive
+    an ApiTokenDto, send it as `Authorization: Bearer <token>` on every call, and renew it via POST /api/v1/Authorize/Refresh.
+    Documented in the SLOPE API overview (slopesoftware.com/wp-content/uploads/2022/02/SLOPE-API.pdf).'
+  sources:
+  - openapi/slope-software-openapi-original.json
+platform_auth:
+  name: Frontegg OpenID Connect
+  type: openIdConnect
+  issuer: https://auth.slopesoftware.com
+  discovery: https://auth.slopesoftware.com/.well-known/openid-configuration
+  grant_types:
+  - authorization_code
+  - refresh_token
+  - client_credentials
+  - urn:ietf:params:oauth:grant-type:token-exchange
+  - urn:ietf:params:oauth:grant-type:device_code
+  scopes:
+  - openid
+  - profile
+  - email
+  note: Console/SSO login for the SLOPE web application (app.slopesoftware.com); distinct from the API
+    Token used by the REST API.

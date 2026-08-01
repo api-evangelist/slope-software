@@ -1,0 +1,54 @@
+arazzo: 1.0.1
+info:
+  title: Run a SLOPE projection from a template
+  version: 1.0.0
+  summary: Find a model, create a projection from a template, run it, and poll for completion.
+sourceDescriptions:
+- name: slopeApi
+  url: ../openapi/slope-software-openapi-original.json
+  type: openapi
+workflows:
+- workflowId: run-projection-from-template
+  summary: Create a projection from a model template, run it, and poll status.
+  inputs:
+    type: object
+    properties:
+      apiToken:
+        type: string
+      modelId:
+        type: string
+  steps:
+  - stepId: listModels
+    operationId: ListModels
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: getTemplates
+    operationId: GetProjectionTemplatesByModelId
+    parameters:
+    - name: ModelId
+      in: path
+      value: $inputs.modelId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: createProjection
+    operationId: CreateProjectionFromTemplate
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      projectionId: $response.body#/projectionId
+  - stepId: runProjection
+    operationId: RunProjectionById
+    parameters:
+    - name: projectionId
+      in: path
+      value: $steps.createProjection.outputs.projectionId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: pollProjection
+    operationId: GetProjectionById
+    parameters:
+    - name: projectionId
+      in: path
+      value: $steps.createProjection.outputs.projectionId
+    successCriteria:
+    - condition: $statusCode == 200

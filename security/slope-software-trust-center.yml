@@ -1,0 +1,16 @@
+generated: '2026-07-21'
+method: searched
+probe: true
+source: https://security.slopesoftware.com/
+url: https://security.slopesoftware.com/
+certifications:
+- SOC 2
+- ISO 27001
+- HIPAA
+evidence:
+- source: https://security.slopesoftware.com/
+  keywords:
+  - soc 2
+  - iso/iec 27001
+  - hipaa
+  - trust center

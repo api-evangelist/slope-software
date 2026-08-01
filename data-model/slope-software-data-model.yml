@@ -1,0 +1,102 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/slope-software-openapi-original.json
+root_entity: Model
+entities:
+- Model
+- Projection
+- ProjectionTemplate
+- DataTable
+- DecrementTable
+- ScenarioTable
+- ImprovementScale
+- TableStructure
+- InvestmentStrategy
+- Product
+- VariableRate
+- Array
+- ModelPointField
+- Portfolio
+- Report
+- Workbook
+- File
+- User
+relationships:
+- from: Model
+  to: ProjectionTemplate
+  kind: has_many
+  via: ModelId
+  evidence: openapi/slope-software-openapi-original.json#GetProjectionTemplatesByModelId
+- from: Model
+  to: DataTable
+  kind: has_many
+  via: ModelId
+  evidence: openapi/slope-software-openapi-original.json#GetDataTablesByModelId
+- from: Model
+  to: DecrementTable
+  kind: has_many
+  via: ModelId
+  evidence: openapi/slope-software-openapi-original.json#GetDecrementTablesByModelId
+- from: Model
+  to: ScenarioTable
+  kind: has_many
+  via: ModelId
+  evidence: openapi/slope-software-openapi-original.json#GetScenarioTablesByModelId
+- from: Model
+  to: ImprovementScale
+  kind: has_many
+  via: ModelId
+  evidence: openapi/slope-software-openapi-original.json#GetImprovementScalesByModelId
+- from: Model
+  to: TableStructure
+  kind: has_many
+  via: ModelId
+  evidence: openapi/slope-software-openapi-original.json#GetTableStructuresByModelId
+- from: Model
+  to: InvestmentStrategie
+  kind: has_many
+  via: ModelId
+  evidence: openapi/slope-software-openapi-original.json#GetInvestmentStrategiesByModelId
+- from: Model
+  to: Product
+  kind: has_many
+  via: ModelId
+  evidence: openapi/slope-software-openapi-original.json#GetProductsByModelId
+- from: Model
+  to: VariableRate
+  kind: has_many
+  via: ModelId
+  evidence: openapi/slope-software-openapi-original.json#GetVariableRatesByModelId
+- from: Model
+  to: Array
+  kind: has_many
+  via: ModelId
+  evidence: openapi/slope-software-openapi-original.json#GetArraysByModelId
+- from: Product
+  to: ModelPointField
+  kind: has_many
+  via: ProductId
+  evidence: openapi/slope-software-openapi-original.json#GetModelPointFields
+- from: TableStructure
+  to: DataTable
+  kind: has_many
+  via: TableStructureId
+  evidence: openapi/slope-software-openapi-original.json#GetDataTablesByTableStructureId
+- from: TableStructure
+  to: Column
+  kind: has_many
+  via: TableStructureId
+  evidence: openapi/slope-software-openapi-original.json#GetColumnsByTableStructureId
+- from: Projection
+  to: Portfolio
+  kind: has_many
+  via: projectionId
+  evidence: openapi/slope-software-openapi-original.json#AddProductToPortfolio
+- from: Portfolio
+  to: Product
+  kind: has_many
+  via: portfolioId
+  evidence: openapi/slope-software-openapi-original.json#AddProductToPortfolio
+note: Derived from OpenAPI path parameters and nested collection endpoints. Model is the aggregate root;
+  actuarial building blocks (data/scenario/decrement tables, improvement scales, products, arrays) belong
+  to a Model, and Projections run a Model's Products against Scenario data.

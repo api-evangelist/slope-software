@@ -1,0 +1,11 @@
+generated: '2026-07-21'
+method: derived
+workflows:
+- file: slope-software-run-projection.yml
+  workflowId: run-projection-from-template
+  title: Run a SLOPE projection from a template
+  summary: Find a model, create a projection from a template, run it, and poll for completion.
+- file: slope-software-generate-report.yml
+  workflowId: generate-workbook-report
+  title: Generate and download a SLOPE workbook report
+  summary: Kick off a workbook report, poll for completion, and fetch a download URL.

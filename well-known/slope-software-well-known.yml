@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: searched
+hosts:
+- host: https://slopesoftware.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://api.slopesoftware.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+- host: https://auth.slopesoftware.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: slope-software-openid-configuration.json
+    note: Frontegg OIDC discovery for the SLOPE platform SSO
+- host: https://app.slopesoftware.com
+  documents:
+  - path: /.well-known/*
+    status: 200
+    note: 'SPA soft-404: the app returns the Frontegg login HTML for all paths; not a real well-known
+      document.'

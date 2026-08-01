@@ -1,0 +1,56 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/slope-software-openapi-original.json
+docs: https://api.slopesoftware.com/
+authentication:
+  style: Bearer JWT (API Token)
+  obtain: POST /api/v1/Authorize
+  refresh: POST /api/v1/Authorize/Refresh
+  ref: authentication/slope-software-authentication.yml
+versioning:
+  style: uri-path
+  versions_in_use:
+  - v1
+  - v2
+  note: Most resources are under /api/v1; DataTables have a /api/v2 revision. Versions coexist.
+pagination:
+  style: offset-limit
+  params:
+  - Offset
+  - Limit
+  note: List endpoints (e.g. ListModels, ListProjections) accept Offset and Limit query parameters.
+async_pattern:
+  style: poll-for-status
+  note: Long-running operations return a token/generation id; poll the paired status endpoint until complete.
+  operation_pairs:
+  - start: CopyModel
+    status: GetModelCopyStatus
+  - start: RunProjectionById
+    status: GetProjectionById
+  - start: GenerateScenarioTableFromGenerator
+    status: GetGenerateStatus
+  - start: GenerateWorkbookReport
+    status: GetWorkbookReportGenerationStatus
+file_transfer:
+  style: pre-signed-url
+  note: 'File uploads/downloads use pre-signed URLs: request a URL (GetUploadUrl / GetDownloadUrl), transfer
+    directly, then confirm (SaveUpload).'
+  operations:
+  - GetUploadUrl
+  - SaveUpload
+  - GetDownloadUrl
+  - GetFiles
+media_types:
+- application/json
+- text/json
+error_envelope:
+  shape: ProblemDetails (RFC 7807)
+  ref: errors/slope-software-problem-types.yml
+idempotency:
+  supported: false
+  note: No idempotency-key header is documented in the OpenAPI.
+rate_limiting:
+  signaled: unknown
+  note: A 429 Too Many Requests response is defined; no rate-limit response headers are documented in
+    the spec.
+rfc9457: false
