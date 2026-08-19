@@ -1,0 +1,2299 @@
+{
+  "item": [
+    {
+      "id": "16680db5-bba7-469f-852b-174a269cd46a",
+      "name": "ScenarioTables",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6aec5055-ad9c-4109-a80e-cb2809b6ce0f",
+          "name": "Get a scenario table.",
+          "request": {
+            "name": "Get a scenario table.",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "ScenarioTables",
+                ":ScenarioTableId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Fields",
+                  "value": "<string>",
+                  "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ScenarioTableId",
+                  "description": "(Required) Scenario Table Id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dd84e9e6-7506-4434-91f4-8ef610dd78a4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    ":ScenarioTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ScenarioTableId",
+                      "description": "(Required) Scenario Table Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5096,\n  \"modelId\": 382,\n  \"name\": \"string\",\n  \"startDate\": \"1971-07-21T00:57:49.734Z\",\n  \"yieldCurveRateType\": \"SpotRate\",\n  \"shortTermInterpolationMethod\": \"FromZero\",\n  \"version\": 1688,\n  \"fileId\": 4215,\n  \"filePath\": \"string\",\n  \"fileVersion\": 5279,\n  \"delimiter\": \"string\",\n  \"excelSheetName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "572e699b-2b8d-4b87-98df-6bf9865dc1dc",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    ":ScenarioTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ScenarioTableId",
+                      "description": "(Required) Scenario Table Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3f54e83c-dd0a-4e2e-9160-ff5bcd1966c8",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    ":ScenarioTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ScenarioTableId",
+                      "description": "(Required) Scenario Table Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "051fb47a-99a5-4bed-8d4d-1f207ca4c64a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    ":ScenarioTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ScenarioTableId",
+                      "description": "(Required) Scenario Table Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1a6a36ad-8344-4f82-b6b3-8da46a196c66",
+              "name": "Not Allowed To Access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    ":ScenarioTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ScenarioTableId",
+                      "description": "(Required) Scenario Table Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "229fa776-39f3-4496-a6a6-5971b1c23364",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    ":ScenarioTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ScenarioTableId",
+                      "description": "(Required) Scenario Table Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f44bdbff-6857-484a-980c-dffa7f00e7aa",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    ":ScenarioTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ScenarioTableId",
+                      "description": "(Required) Scenario Table Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97b3a1f3-7d7a-4f8f-aed2-ca1eeefe2996",
+          "name": "Update a scenario table.",
+          "request": {
+            "name": "Update a scenario table.",
+            "description": {
+              "content": "The excel sheet name field is required for excel files and the delimiter field, which defaults to a comma if not set, is required for non-excel files. <br/>The row limit is 150,000 for excel files and 2 million for csv files. <br/>To avoid request timeouts on large files, set validateFile to false to skip validation on upload; the file will then be validated when a projection is run.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "ScenarioTables",
+                ":ScenarioTableId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ScenarioTableId",
+                  "description": "(Required) Scenario Table Id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"shortTermInterpolationMethod\": \"<string>\",\n  \"validateFile\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ffed17fb-7dfb-4d7c-854f-b4b1d29b123e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    ":ScenarioTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ScenarioTableId",
+                      "description": "(Required) Scenario Table Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"shortTermInterpolationMethod\": \"<string>\",\n  \"validateFile\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2093,\n  \"modelId\": 5575,\n  \"name\": \"string\",\n  \"startDate\": \"2002-10-08T12:51:54.842Z\",\n  \"filePath\": \"string\",\n  \"version\": 2397\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5a856e4-504d-45ed-94d4-6d12aaf1a359",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    ":ScenarioTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ScenarioTableId",
+                      "description": "(Required) Scenario Table Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"shortTermInterpolationMethod\": \"<string>\",\n  \"validateFile\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6f9d0caf-62ff-451a-bad8-6c1a523ee3f6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    ":ScenarioTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ScenarioTableId",
+                      "description": "(Required) Scenario Table Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"shortTermInterpolationMethod\": \"<string>\",\n  \"validateFile\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0c774c6f-0004-4ab8-b423-5906f9449850",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    ":ScenarioTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ScenarioTableId",
+                      "description": "(Required) Scenario Table Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"shortTermInterpolationMethod\": \"<string>\",\n  \"validateFile\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0f939764-bbb9-43c1-b9c1-f7c17ea2e0ef",
+              "name": "Not Allowed To Access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    ":ScenarioTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ScenarioTableId",
+                      "description": "(Required) Scenario Table Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"shortTermInterpolationMethod\": \"<string>\",\n  \"validateFile\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "787d4ba0-64e7-452d-94b4-e5b82b8c84a4",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    ":ScenarioTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ScenarioTableId",
+                      "description": "(Required) Scenario Table Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"shortTermInterpolationMethod\": \"<string>\",\n  \"validateFile\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ae21c5aa-d5ca-46f8-b4c9-68292df01dce",
+              "name": "Scenario table description already exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    ":ScenarioTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ScenarioTableId",
+                      "description": "(Required) Scenario Table Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"shortTermInterpolationMethod\": \"<string>\",\n  \"validateFile\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f6a973e8-d3c9-4005-99dd-9a2210a111a4",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    ":ScenarioTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ScenarioTableId",
+                      "description": "(Required) Scenario Table Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"shortTermInterpolationMethod\": \"<string>\",\n  \"validateFile\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0165356-749a-41e9-bfe7-8a64faa288c1",
+          "name": "Create a scenario table using an existing file.",
+          "request": {
+            "name": "Create a scenario table using an existing file.",
+            "description": {
+              "content": "The excel sheet name field is required for excel files and the delimiter field, which defaults to a comma if not set, is required for non-excel files. <br/>The row limit is 150,000 for excel files and 2 million for csv files. <br/>To avoid request timeouts on large files, set validateFile to false to skip validation on upload; the file will then be validated when a projection is run.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "ScenarioTables"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"modelId\": \"<integer>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"shortTermInterpolationMethod\": \"<string>\",\n  \"validateFile\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ff3f51b2-d499-40f2-982a-350baa8b6752",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"modelId\": \"<integer>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"shortTermInterpolationMethod\": \"<string>\",\n  \"validateFile\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2093,\n  \"modelId\": 5575,\n  \"name\": \"string\",\n  \"startDate\": \"2002-10-08T12:51:54.842Z\",\n  \"filePath\": \"string\",\n  \"version\": 2397\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3e0b5b4-0d80-485e-a15b-e2d0f74d9cd6",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"modelId\": \"<integer>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"shortTermInterpolationMethod\": \"<string>\",\n  \"validateFile\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9b448f32-5c3e-41be-8f3a-0c09e7e01a50",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"modelId\": \"<integer>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"shortTermInterpolationMethod\": \"<string>\",\n  \"validateFile\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6a588beb-c61c-4e45-b4e8-731c7038f019",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"modelId\": \"<integer>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"shortTermInterpolationMethod\": \"<string>\",\n  \"validateFile\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d05d1b8a-6eb8-4cc9-87c9-69db63cbbed1",
+              "name": "Not Allowed To Access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"modelId\": \"<integer>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"shortTermInterpolationMethod\": \"<string>\",\n  \"validateFile\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dc91bf6d-5cb2-460c-b8d9-1bc93ebd8f7e",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"modelId\": \"<integer>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"shortTermInterpolationMethod\": \"<string>\",\n  \"validateFile\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "49f3a8b1-d838-418b-9c9f-9414ac314c86",
+              "name": "Scenario table description already exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"modelId\": \"<integer>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"shortTermInterpolationMethod\": \"<string>\",\n  \"validateFile\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ac8e02f1-c80a-4d47-97e9-e513b6c3e173",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"startDate\": \"<string>\",\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"modelId\": \"<integer>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"shortTermInterpolationMethod\": \"<string>\",\n  \"validateFile\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8abd51d-31aa-4942-a607-6be1e6c7b34e",
+          "name": "Generate a scenario table from a generator.",
+          "request": {
+            "name": "Generate a scenario table from a generator.",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "ScenarioTables",
+                "Generate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filePath\": \"<string>\",\n  \"modelId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"yearsToProject\": \"<integer>\",\n  \"generatorType\": \"<string>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"naicGeneratorParameters\": {\n    \"datasetDate\": \"<string>\",\n    \"scenarioSet\": \"<string>\",\n    \"numberOfScenarios\": \"<integer>\",\n    \"scenarioSubsetMethod\": \"<string>\",\n    \"scenarioNumbering\": \"<string>\",\n    \"variableRateMappings\": [\n      {\n        \"returnComponentName\": \"<string>\",\n        \"returnTypeName\": \"<string>\",\n        \"variableRateId\": \"<integer>\"\n      },\n      {\n        \"returnComponentName\": \"<string>\",\n        \"returnTypeName\": \"<string>\",\n        \"variableRateId\": \"<integer>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "abff8d5e-a0a1-4412-86d6-e86ac97cc2b5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    "Generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filePath\": \"<string>\",\n  \"modelId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"yearsToProject\": \"<integer>\",\n  \"generatorType\": \"<string>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"naicGeneratorParameters\": {\n    \"datasetDate\": \"<string>\",\n    \"scenarioSet\": \"<string>\",\n    \"numberOfScenarios\": \"<integer>\",\n    \"scenarioSubsetMethod\": \"<string>\",\n    \"scenarioNumbering\": \"<string>\",\n    \"variableRateMappings\": [\n      {\n        \"returnComponentName\": \"<string>\",\n        \"returnTypeName\": \"<string>\",\n        \"variableRateId\": \"<integer>\"\n      },\n      {\n        \"returnComponentName\": \"<string>\",\n        \"returnTypeName\": \"<string>\",\n        \"variableRateId\": \"<integer>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"generationId\": 4096\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96d1b50f-aa3d-475f-8791-dee8e6a09979",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    "Generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filePath\": \"<string>\",\n  \"modelId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"yearsToProject\": \"<integer>\",\n  \"generatorType\": \"<string>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"naicGeneratorParameters\": {\n    \"datasetDate\": \"<string>\",\n    \"scenarioSet\": \"<string>\",\n    \"numberOfScenarios\": \"<integer>\",\n    \"scenarioSubsetMethod\": \"<string>\",\n    \"scenarioNumbering\": \"<string>\",\n    \"variableRateMappings\": [\n      {\n        \"returnComponentName\": \"<string>\",\n        \"returnTypeName\": \"<string>\",\n        \"variableRateId\": \"<integer>\"\n      },\n      {\n        \"returnComponentName\": \"<string>\",\n        \"returnTypeName\": \"<string>\",\n        \"variableRateId\": \"<integer>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2b1cf2dd-9170-46d9-8f0a-ea7b33e33194",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    "Generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filePath\": \"<string>\",\n  \"modelId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"yearsToProject\": \"<integer>\",\n  \"generatorType\": \"<string>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"naicGeneratorParameters\": {\n    \"datasetDate\": \"<string>\",\n    \"scenarioSet\": \"<string>\",\n    \"numberOfScenarios\": \"<integer>\",\n    \"scenarioSubsetMethod\": \"<string>\",\n    \"scenarioNumbering\": \"<string>\",\n    \"variableRateMappings\": [\n      {\n        \"returnComponentName\": \"<string>\",\n        \"returnTypeName\": \"<string>\",\n        \"variableRateId\": \"<integer>\"\n      },\n      {\n        \"returnComponentName\": \"<string>\",\n        \"returnTypeName\": \"<string>\",\n        \"variableRateId\": \"<integer>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8a23e648-47a5-4a8f-9937-caa0f29164db",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    "Generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filePath\": \"<string>\",\n  \"modelId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"yearsToProject\": \"<integer>\",\n  \"generatorType\": \"<string>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"naicGeneratorParameters\": {\n    \"datasetDate\": \"<string>\",\n    \"scenarioSet\": \"<string>\",\n    \"numberOfScenarios\": \"<integer>\",\n    \"scenarioSubsetMethod\": \"<string>\",\n    \"scenarioNumbering\": \"<string>\",\n    \"variableRateMappings\": [\n      {\n        \"returnComponentName\": \"<string>\",\n        \"returnTypeName\": \"<string>\",\n        \"variableRateId\": \"<integer>\"\n      },\n      {\n        \"returnComponentName\": \"<string>\",\n        \"returnTypeName\": \"<string>\",\n        \"variableRateId\": \"<integer>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "10e4814c-3dd4-4de0-9431-0e54b0117a6e",
+              "name": "Not Allowed To Access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    "Generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filePath\": \"<string>\",\n  \"modelId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"yearsToProject\": \"<integer>\",\n  \"generatorType\": \"<string>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"naicGeneratorParameters\": {\n    \"datasetDate\": \"<string>\",\n    \"scenarioSet\": \"<string>\",\n    \"numberOfScenarios\": \"<integer>\",\n    \"scenarioSubsetMethod\": \"<string>\",\n    \"scenarioNumbering\": \"<string>\",\n    \"variableRateMappings\": [\n      {\n        \"returnComponentName\": \"<string>\",\n        \"returnTypeName\": \"<string>\",\n        \"variableRateId\": \"<integer>\"\n      },\n      {\n        \"returnComponentName\": \"<string>\",\n        \"returnTypeName\": \"<string>\",\n        \"variableRateId\": \"<integer>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0924b18d-09af-4a35-9336-ed824072af35",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    "Generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filePath\": \"<string>\",\n  \"modelId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"yearsToProject\": \"<integer>\",\n  \"generatorType\": \"<string>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"naicGeneratorParameters\": {\n    \"datasetDate\": \"<string>\",\n    \"scenarioSet\": \"<string>\",\n    \"numberOfScenarios\": \"<integer>\",\n    \"scenarioSubsetMethod\": \"<string>\",\n    \"scenarioNumbering\": \"<string>\",\n    \"variableRateMappings\": [\n      {\n        \"returnComponentName\": \"<string>\",\n        \"returnTypeName\": \"<string>\",\n        \"variableRateId\": \"<integer>\"\n      },\n      {\n        \"returnComponentName\": \"<string>\",\n        \"returnTypeName\": \"<string>\",\n        \"variableRateId\": \"<integer>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "28acbc39-6061-4fd7-899b-450710f007c3",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    "Generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filePath\": \"<string>\",\n  \"modelId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"yearsToProject\": \"<integer>\",\n  \"generatorType\": \"<string>\",\n  \"yieldCurveRateType\": \"<string>\",\n  \"naicGeneratorParameters\": {\n    \"datasetDate\": \"<string>\",\n    \"scenarioSet\": \"<string>\",\n    \"numberOfScenarios\": \"<integer>\",\n    \"scenarioSubsetMethod\": \"<string>\",\n    \"scenarioNumbering\": \"<string>\",\n    \"variableRateMappings\": [\n      {\n        \"returnComponentName\": \"<string>\",\n        \"returnTypeName\": \"<string>\",\n        \"variableRateId\": \"<integer>\"\n      },\n      {\n        \"returnComponentName\": \"<string>\",\n        \"returnTypeName\": \"<string>\",\n        \"variableRateId\": \"<integer>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "813bd142-f3b8-47ef-98c8-38f1a0b192da",
+          "name": "Get the status of a scenario table generation.",
+          "request": {
+            "name": "Get the status of a scenario table generation.",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "ScenarioTables",
+                "Generate",
+                "Status",
+                ":generationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "generationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b95cbe8f-dfad-4db3-be5a-77d33d72d2ef",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    "Generate",
+                    "Status",
+                    ":generationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "generationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"Completed\",\n  \"scenarioTableId\": 1546,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2c36655-9321-4dac-a45e-346c310055bb",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    "Generate",
+                    "Status",
+                    ":generationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "generationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "734b5564-14e1-45c1-8c6e-9c5a903ab018",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    "Generate",
+                    "Status",
+                    ":generationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "generationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1b325326-c27a-4a7c-a2cc-dc892beb6e99",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    "Generate",
+                    "Status",
+                    ":generationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "generationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c97ef31e-bc85-4461-aec5-884f96578bfa",
+              "name": "Not Allowed To Access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    "Generate",
+                    "Status",
+                    ":generationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "generationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c1a81829-4bcc-4928-bc10-3db6a0d3b44f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    "Generate",
+                    "Status",
+                    ":generationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "generationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "20a24cdd-7f1b-4ba5-8854-f5cb94f5c19e",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "ScenarioTables",
+                    "Generate",
+                    "Status",
+                    ":generationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "generationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "64c09923-965a-48e0-9d9d-2f56dfe31b31",
+    "name": "Slope Arrays ScenarioTables API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

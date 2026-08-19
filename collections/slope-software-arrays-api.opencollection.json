@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Slope Arrays API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Arrays",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get detailed information about a specific array including all values and type-specific properties.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/Arrays/:arrayId",
+            "params": [
+              {
+                "name": "arrayId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the array to retrieve."
+              }
+            ]
+          },
+          "docs": "This endpoint returns array details with properties varying based on the array type:\n            \n- **Static Arrays**: Returns a list of string values in order\n- **Product Output Grouping Arrays**: Returns the product output grouping ID\n- **Calculated Range Arrays**: Returns start/end/step value configurations (variable, constant, or time index)\n- **Data Table Arrays**: Returns the data table variable name and calculation level\n- **Multi-Dimensional Arrays**: Returns the IDs of both dimension ar"
+        },
+        {
+          "info": {
+            "name": "Update the values in a static array.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/Arrays/:ArrayId/Values",
+            "params": [
+              {
+                "name": "ArrayId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the static array to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint can be used to replace all existing values in a static array.\n            \nAll values must be unique and non-empty. Each value can be up to 200 characters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

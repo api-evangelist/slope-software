@@ -1,0 +1,187 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Slope Arrays DataTables API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DataTables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates a new data table without a file using row data provided in the request.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/DataTables",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new data table using row data provided directly in the request body.\n\n**Limits:**\n- Minimum: 1 row\n- Maximum: 100,000 rows\n- Request size: 10MB\n\n**Row Format:**\nEach row is an array of strings where values are **positional** - each position corresponds to a column in table structure order. Use empty string `\"\"` for null/empty values at any position.\n\n**Example 1:** For columns [Name (String), Age (Integer), Rate (Decimal)]:\n- `[\"John\", \"25\", \"0.05\"]` - all values\n- `[\"John\", \"\", \"0.05\""
+        },
+        {
+          "info": {
+            "name": "Creates a new data table from an imported file.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v2/DataTables/Import",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new data table using an existing file. This endpoint cannot be used to update existing data tables. The excel sheet name field is required for excel files and the delimiter field, which defaults to a comma if not set, is required for non-excel files. The limit for the number of rows is 25,000 for data tables that aren't file only."
+        },
+        {
+          "info": {
+            "name": "Overwrites an existing data table from an imported file.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v2/DataTables/:dataTableId/Import",
+            "params": [
+              {
+                "name": "dataTableId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the data table to overwrite"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Overwrites the contents of an existing data table using the specified file. Library and Production models cannot be updated using this endpoint. The excel sheet name field is required for excel files and the delimiter field, which defaults to a comma if not set, is required for non-excel files. The limit for the number of rows is 25,000 for data tables that aren't file only."
+        },
+        {
+          "info": {
+            "name": "Updates individual properties of an existing data table.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v2/DataTables/:dataTableId",
+            "params": [
+              {
+                "name": "dataTableId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the data table to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint cannot be used on production models. Only development models can be updated.\nIf the data table indexes are being updated and the table is used in any projections, a new version will be created automatically to preserve projection integrity.\nName-only updates do not trigger versioning."
+        },
+        {
+          "info": {
+            "name": "Get a data table's data.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/DataTables/Data",
+            "params": [
+              {
+                "name": "DataTableId",
+                "value": "",
+                "type": "query",
+                "description": "Data Table ID"
+              },
+              {
+                "name": "Name",
+                "value": "",
+                "type": "query",
+                "description": "Data Table Name"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "Data Table Version"
+              },
+              {
+                "name": "TableStructureId",
+                "value": "",
+                "type": "query",
+                "description": "Table Structure ID"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              },
+              {
+                "name": "Limit",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to limit the number of items returned. Default is 200."
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to offset the items returned. Default is 0."
+              }
+            ]
+          },
+          "docs": "Either the data table ID must be provided, or the data table's name along with its associated table structure ID must be provided. <br/>If the data table is file only, then a file path to the file along with the file version will be returned so that it can be used with the GetDownloadUrl endpoint. <br/>For other data tables the rows are returned in the response up to the limit. The default limit is 2,000 and the max limit is 10,000. <br/>If the row limit is reached, then an offset is returned th"
+        },
+        {
+          "info": {
+            "name": "Update a data table using an existing file.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v1/DataTables",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint has the same limitations mentioned in the create data table POST endpoint. <br/>In addition, be aware that a successful request might cause the table to be versioned, thus returning a new data table id that represents the versioned table. <br/>A table will be versioned if it's been used in a projection since the last time it was modified."
+        },
+        {
+          "info": {
+            "name": "Update a data table's row data without uploading a file.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/v1/DataTables/:DataTableId/Data",
+            "params": [
+              {
+                "name": "DataTableId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the data table to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pass row data directly to update the data table without needing to upload a file first. Rows should be formatted as arrays of string values matching the column order from the GET /Data endpoint. Index columns come first (sorted by SortOrder), then data columns (sorted by SortOrder). For MortalityTable columns, pass two values: DecrementTableId and ImprovementScaleId. Maximum of 100,000 rows. Note: There is also a 10MB request size limit. A successful request might cause the table to be versioned"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Slope Arrays ModelPointFields API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ModelPointFields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new model point field for a product.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/ModelPointFields",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint will:\n- Validate the user has permission to modify the model\n- Ensure the model is not in production\n- Validate field name and alias uniqueness\n- Validate data type rules (e.g., only Decimal fields can scale)\n- Trigger validation on dependent entities\n- Initiate async file validation\n\nField names and aliases must be unique within the product's model point file definition.\nOnly Decimal fields can be configured to scale on purchase or sale."
+        },
+        {
+          "info": {
+            "name": "Update an existing model point field.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v1/ModelPointFields/:modelPointFieldId",
+            "params": [
+              {
+                "name": "modelPointFieldId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the model point field to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint will:\n- Validate the user has permission to modify the model\n- Ensure the model is not in production\n- Support partial updates (only send fields to be updated)\n- Validate field name and alias uniqueness\n- Enforce system field restrictions (cannot update DataType, IsRequired, or IsScaledOnPurchaseOrSale for system fields)\n- Validate data type rules (e.g., only Decimal fields can scale)\n- Prevent changing DataType to non-Decimal when IsScaledOnPurchaseOrSale is true\n- Trigger validat"
+        },
+        {
+          "info": {
+            "name": "Delete a model point field by its ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/ModelPointFields/:modelPointFieldId",
+            "params": [
+              {
+                "name": "modelPointFieldId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the model point field to delete."
+              }
+            ]
+          },
+          "docs": "This endpoint will:\n- Validate the user has permission to modify the model\n- Ensure the model is not in production\n- Prevent deletion of system model point fields (e.g., Issue Date)\n- Trigger validation on dependent entities\n- Initiate async file validation\n\nOnly one model point field can be deleted at a time."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

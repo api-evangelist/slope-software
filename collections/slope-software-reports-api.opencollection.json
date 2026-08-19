@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Slope Arrays Reports API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start a workbook report generation. Use the returned URL to check the status of the report generation.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/Reports/Workbooks/:workbookId/Generate",
+            "params": [
+              {
+                "name": "workbookId",
+                "value": "",
+                "type": "path",
+                "description": "Workbook ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a workbook report generation. Use the returned URL to check the status of the report generation."
+        },
+        {
+          "info": {
+            "name": "Get workbook report generation status. If successful, then a URL will be available to download the report.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/Reports/Workbooks/Status/:generationId",
+            "params": [
+              {
+                "name": "generationId",
+                "value": "",
+                "type": "path",
+                "description": "Generation ID"
+              }
+            ]
+          },
+          "docs": "Get workbook report generation status. If successful, then a URL will be available to download the report."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

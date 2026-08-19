@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Slope Arrays ScenarioTables API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ScenarioTables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a scenario table.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/ScenarioTables/:ScenarioTableId",
+            "params": [
+              {
+                "name": "ScenarioTableId",
+                "value": "",
+                "type": "path",
+                "description": "Scenario Table Id"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              }
+            ]
+          },
+          "docs": "Get a scenario table."
+        },
+        {
+          "info": {
+            "name": "Update a scenario table.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v1/ScenarioTables/:ScenarioTableId",
+            "params": [
+              {
+                "name": "ScenarioTableId",
+                "value": "",
+                "type": "path",
+                "description": "Scenario Table Id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The excel sheet name field is required for excel files and the delimiter field, which defaults to a comma if not set, is required for non-excel files. <br/>The row limit is 150,000 for excel files and 2 million for csv files. <br/>To avoid request timeouts on large files, set validateFile to false to skip validation on upload; the file will then be validated when a projection is run."
+        },
+        {
+          "info": {
+            "name": "Create a scenario table using an existing file.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/ScenarioTables",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The excel sheet name field is required for excel files and the delimiter field, which defaults to a comma if not set, is required for non-excel files. <br/>The row limit is 150,000 for excel files and 2 million for csv files. <br/>To avoid request timeouts on large files, set validateFile to false to skip validation on upload; the file will then be validated when a projection is run."
+        },
+        {
+          "info": {
+            "name": "Generate a scenario table from a generator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/ScenarioTables/Generate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a scenario table from a generator."
+        },
+        {
+          "info": {
+            "name": "Get the status of a scenario table generation.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/ScenarioTables/Generate/Status/:generationId",
+            "params": [
+              {
+                "name": "generationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the status of a scenario table generation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

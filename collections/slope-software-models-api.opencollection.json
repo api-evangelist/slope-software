@@ -1,0 +1,473 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Slope Arrays Models API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a paginated list of models by type (Library, Workspace, or Production).",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/Models",
+            "params": [
+              {
+                "name": "ModelType",
+                "value": "",
+                "type": "query",
+                "description": "Type of models to retrieve: Library, Workspace, or Production"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              },
+              {
+                "name": "Limit",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to limit the number of items returned. Default is 200."
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to offset the items returned. Default is 0."
+              }
+            ]
+          },
+          "docs": "Get a paginated list of models by type (Library, Workspace, or Production)."
+        },
+        {
+          "info": {
+            "name": "Get model's projection templates.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/Models/:ModelId/ProjectionTemplates",
+            "params": [
+              {
+                "name": "ModelId",
+                "value": "",
+                "type": "path",
+                "description": "Model Id"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              },
+              {
+                "name": "Limit",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to limit the number of items returned. Default is 200."
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to offset the items returned. Default is 0."
+              }
+            ]
+          },
+          "docs": "Get model's projection templates."
+        },
+        {
+          "info": {
+            "name": "Get model's data tables.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/Models/:ModelId/DataTables",
+            "params": [
+              {
+                "name": "ModelId",
+                "value": "",
+                "type": "path",
+                "description": "Model Id"
+              },
+              {
+                "name": "TableStructureName",
+                "value": "",
+                "type": "query",
+                "description": "Optional Table Structure Name filter"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              },
+              {
+                "name": "Limit",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to limit the number of items returned. Default is 200."
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to offset the items returned. Default is 0."
+              }
+            ]
+          },
+          "docs": "Get model's data tables."
+        },
+        {
+          "info": {
+            "name": "Get model's decrement tables.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/Models/:ModelId/DecrementTables",
+            "params": [
+              {
+                "name": "ModelId",
+                "value": "",
+                "type": "path",
+                "description": "Model Id"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              },
+              {
+                "name": "Limit",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to limit the number of items returned. Default is 200."
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to offset the items returned. Default is 0."
+              }
+            ]
+          },
+          "docs": "Get model's decrement tables."
+        },
+        {
+          "info": {
+            "name": "Get model's scenario tables.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/Models/:ModelId/ScenarioTables",
+            "params": [
+              {
+                "name": "ModelId",
+                "value": "",
+                "type": "path",
+                "description": "Model Id"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              },
+              {
+                "name": "Limit",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to limit the number of items returned. Default is 200."
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to offset the items returned. Default is 0."
+              }
+            ]
+          },
+          "docs": "Get model's scenario tables."
+        },
+        {
+          "info": {
+            "name": "Get model's improvement scales.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/Models/:ModelId/ImprovementScales",
+            "params": [
+              {
+                "name": "ModelId",
+                "value": "",
+                "type": "path",
+                "description": "Model Id"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              },
+              {
+                "name": "Limit",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to limit the number of items returned. Default is 200."
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to offset the items returned. Default is 0."
+              }
+            ]
+          },
+          "docs": "Get model's improvement scales."
+        },
+        {
+          "info": {
+            "name": "Get model's table structures.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/Models/:ModelId/TableStructures",
+            "params": [
+              {
+                "name": "ModelId",
+                "value": "",
+                "type": "path",
+                "description": "Model Id"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              },
+              {
+                "name": "Limit",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to limit the number of items returned. Default is 200."
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to offset the items returned. Default is 0."
+              }
+            ]
+          },
+          "docs": "Get model's table structures."
+        },
+        {
+          "info": {
+            "name": "Get model's investment strategies.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/Models/:ModelId/InvestmentStrategies",
+            "params": [
+              {
+                "name": "ModelId",
+                "value": "",
+                "type": "path",
+                "description": "Model Id"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              },
+              {
+                "name": "Limit",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to limit the number of items returned. Default is 200."
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to offset the items returned. Default is 0."
+              }
+            ]
+          },
+          "docs": "Get model's investment strategies."
+        },
+        {
+          "info": {
+            "name": "Get model's products.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/Models/:ModelId/Products",
+            "params": [
+              {
+                "name": "ModelId",
+                "value": "",
+                "type": "path",
+                "description": "Model Id"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              },
+              {
+                "name": "Limit",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to limit the number of items returned. Default is 200."
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to offset the items returned. Default is 0."
+              }
+            ]
+          },
+          "docs": "Get model's products."
+        },
+        {
+          "info": {
+            "name": "Get model's variable rates.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/Models/:ModelId/VariableRates",
+            "params": [
+              {
+                "name": "ModelId",
+                "value": "",
+                "type": "path",
+                "description": "Model Id"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              },
+              {
+                "name": "Limit",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to limit the number of items returned. Default is 200."
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to offset the items returned. Default is 0."
+              }
+            ]
+          },
+          "docs": "Get model's variable rates."
+        },
+        {
+          "info": {
+            "name": "Initiate an asynchronous copy of a model. Returns a token to check copy status.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/Models/:ModelId/Copy",
+            "params": [
+              {
+                "name": "ModelId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the model to copy"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a full copy of the specified model. The copy is performed asynchronously in the background. Use the returned copy token to check the status of the copy operation. Note: Copy tokens are only valid for 24 hours after the copy is initiated. Library models cannot be copied in this version."
+        },
+        {
+          "info": {
+            "name": "Check the status of an asynchronous model copy operation.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/Models/CopyStatus/:Token",
+            "params": [
+              {
+                "name": "Token",
+                "value": "",
+                "type": "path",
+                "description": "The copy token returned from the Copy endpoint"
+              }
+            ]
+          },
+          "docs": "Returns the current status of a model copy operation initiated via the Copy endpoint. The status can be Running, Completed, or Failed. When completed, the response includes the ID of the newly created model. When failed, the response includes an error message. Note: Copy tokens are only valid for 24 hours."
+        },
+        {
+          "info": {
+            "name": "Get model's arrays.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/Models/:ModelId/Arrays",
+            "params": [
+              {
+                "name": "ModelId",
+                "value": "",
+                "type": "path",
+                "description": "Model Id"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              },
+              {
+                "name": "Limit",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to limit the number of items returned. Default is 200."
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to offset the items returned. Default is 0."
+              }
+            ]
+          },
+          "docs": "Get model's arrays."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

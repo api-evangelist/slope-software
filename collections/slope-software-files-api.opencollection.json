@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Slope Arrays Files API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all currently available latest-version files.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/Files/GetFiles",
+            "params": [
+              {
+                "name": "Folders",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter files to specific folders. The list must be in CSV format. If folder contains a comma, make sure to surround it with double quotes. Example: folder1,folder2,\"folder,3\""
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              },
+              {
+                "name": "Limit",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to limit the number of items returned. Default is 200."
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to offset the items returned. Default is 0."
+              }
+            ]
+          },
+          "docs": "Get all currently available latest-version files."
+        },
+        {
+          "info": {
+            "name": "Get a temporary URL to download a file.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/Files/GetDownloadUrl",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get a temporary URL to download a file."
+        },
+        {
+          "info": {
+            "name": "Get a temporary URL to upload a file to a certain file path via a PUT request with the file data.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/Files/GetUploadUrl",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Passing in the ContentType and ContentMD5 values is optional. If provided, they will be included in the signature, but are not stored at this point. <br/><br/>Exclude the <i>'Content-Type'</i> header from the PUT request if this is not set. <br/>If included, the <i>'Content-Type'</i> header in the PUT request must match the provided ContentType value. <br/><br/>Exclude the <i>'ContentMD5'</i> header from the PUT request if this is not set. <br/>If included, the <i>'Content-MD5'</i> header in the"
+        },
+        {
+          "info": {
+            "name": "Save the file that was uploaded via the upload url returned by the GetUploadUrl endpoint.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/Files/SaveUpload",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Save the file that was uploaded via the upload url returned by the GetUploadUrl endpoint."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

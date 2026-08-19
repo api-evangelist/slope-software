@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Slope Arrays Authorize API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authorize",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Required for getting the API token which is needed to access the other endpoints.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/Authorize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Required for getting the API token which is needed to access the other endpoints."
+        },
+        {
+          "info": {
+            "name": "POST /api/v1/Authorize/Refresh",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/Authorize/Refresh",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -171,3 +171,9 @@ tools:
 - name: GetColumnsByTableStructureId
   description: Get a list of Columns given a Table Structure Id
   source_operation: openapi/slope-software-openapi-original.json#GetColumnsByTableStructureId
+deployment:
+  mode: none
+  verified: derived
+  tools: 53
+  checked: '2026-08-12'
+  source: catalog MCP census

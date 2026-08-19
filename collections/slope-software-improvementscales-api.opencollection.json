@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Slope Arrays ImprovementScales API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ImprovementScales",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get an improvement scale.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/ImprovementScales/:ImprovementScaleId",
+            "params": [
+              {
+                "name": "ImprovementScaleId",
+                "value": "",
+                "type": "path",
+                "description": "Improvement Scale ID"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              }
+            ]
+          },
+          "docs": "Get an improvement scale."
+        },
+        {
+          "info": {
+            "name": "Create an improvement scale using an existing file.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/ImprovementScales",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an improvement scale using an existing file."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Slope Arrays Users API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a paginated list of users.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/Users",
+            "params": [
+              {
+                "name": "Limit",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to limit the number of items returned. Default is 200 and the max is 200."
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to offset the items returned. Default is 0."
+              }
+            ]
+          },
+          "docs": "Possible status values: Locked (account has been locked), Activated (user has logged in at least once), Invited (invited but has not yet verified their email), Pending login (verified email but has not yet logged in)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,3449 @@
+{
+  "item": [
+    {
+      "id": "62434045-a288-4128-b823-ae69b038bde1",
+      "name": "DataTables",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "01b9e87a-6bd0-4324-8740-09aa9a08ae83",
+          "name": "Creates a new data table without a file using row data provided in the request.",
+          "request": {
+            "name": "Creates a new data table without a file using row data provided in the request.",
+            "description": {
+              "content": "Creates a new data table using row data provided directly in the request body.\n\n**Limits:**\n- Minimum: 1 row\n- Maximum: 100,000 rows\n- Request size: 10MB\n\n**Row Format:**\nEach row is an array of strings where values are **positional** - each position corresponds to a column in table structure order. Use empty string `\"\"` for null/empty values at any position.\n\n**Example 1:** For columns [Name (String), Age (Integer), Rate (Decimal)]:\n- `[\"John\", \"25\", \"0.05\"]` - all values\n- `[\"John\", \"\", \"0.05\"]` - Age is empty\n- `[\"\", \"25\", \"\"]` - Name and Rate are empty\n\n**Example 2:** For columns [Name (String), Scenario (ScenarioTable), Active (Boolean)]:\n- `[\"Base\", \"15\", \"true\"]` - references ScenarioTable ID 15\n- `[\"Alt\", \"\", \"true\"]` - no ScenarioTable reference (empty string)\n\n**Example 3:** For columns [Name (String), Mortality (MortalityTable), Nested (DataTable)]:\n- `[\"Row1\", \"16757\", \"499\", \"42\"]` - MortalityTable uses 2 positions, DataTable uses 1\n- `[\"Row2\", \"\", \"\", \"\"]` - all reference columns empty\n\n**Supported Column Types:**\n| Type | Values | Example |\n|------|--------|--------|\n| Integer (1) | 1 value | \"100\" |\n| Decimal (2) | 1 value | \"0.0123\" |\n| String (3) | 1 value | \"Male\" |\n| Date (4) | 1 value | \"2024-01-15\" |\n| Boolean (5) | 1 value | \"true\" or \"false\" |\n| MortalityTable (6) | **2 values** | \"16757\", \"499\" |\n| DataTable (7) | 1 value | \"42\" or \"\" |\n| DropDownList (8) | 1 value | \"Option1\" |\n| ScenarioTable (9) | 1 value | \"15\" or \"\" |\n\n**Important:**\n- MortalityTable columns expand to **2 positions** in the row array (decrementTableId, improvementScaleId)\n- All other column types use **1 position** each\n- Row length must equal: (column count) + (number of MortalityTable columns)\n- Invalid DataTable/ScenarioTable reference IDs are silently cleared to empty\n- Format matches GET /api/v1/DataTables/{id}/Data response",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "DataTables"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"rows\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"tableStructureId\": \"<integer>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b420bcdb-b886-40bc-83b3-966bb37f6b6d",
+              "name": "Data table created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"2024 Mortality Assumptions\",\n  \"rows\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"tableStructureId\": 1,\n  \"indexes\": [\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8418,\n  \"name\": \"string\",\n  \"tableStructureId\": 5264,\n  \"tableStructureName\": \"string\",\n  \"isFileOnly\": true,\n  \"version\": 634,\n  \"isLatestVersion\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d646154-459d-44e5-bc4c-282efbe82b6c",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"2024 Mortality Assumptions\",\n  \"rows\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"tableStructureId\": 1,\n  \"indexes\": [\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f026f72d-48af-463c-932a-b4fa6d415b5c",
+              "name": "Invalid request parameters or validation errors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"2024 Mortality Assumptions\",\n  \"rows\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"tableStructureId\": 1,\n  \"indexes\": [\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "87fb7c72-65d0-4a79-8190-da142c036bc7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"2024 Mortality Assumptions\",\n  \"rows\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"tableStructureId\": 1,\n  \"indexes\": [\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4244abbd-8469-4c0d-b9b5-0f531d284141",
+              "name": "Forbidden - insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"2024 Mortality Assumptions\",\n  \"rows\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"tableStructureId\": 1,\n  \"indexes\": [\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "12313542-96e1-4dba-a43c-4319affe696b",
+              "name": "Table structure not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"2024 Mortality Assumptions\",\n  \"rows\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"tableStructureId\": 1,\n  \"indexes\": [\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5b12750c-f42a-4370-987c-ed9d9b8f4971",
+              "name": "Data table with the same name already exists for this table structure",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"2024 Mortality Assumptions\",\n  \"rows\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"tableStructureId\": 1,\n  \"indexes\": [\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "948e7aec-7fb5-4049-bf68-04e30c423ba6",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"2024 Mortality Assumptions\",\n  \"rows\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"tableStructureId\": 1,\n  \"indexes\": [\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f9278ad6-6049-433c-83e5-cb5a00afafb9",
+          "name": "Creates a new data table from an imported file.",
+          "request": {
+            "name": "Creates a new data table from an imported file.",
+            "description": {
+              "content": "Creates a new data table using an existing file. This endpoint cannot be used to update existing data tables. The excel sheet name field is required for excel files and the delimiter field, which defaults to a comma if not set, is required for non-excel files. The limit for the number of rows is 25,000 for data tables that aren't file only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "DataTables",
+                "Import"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"tableStructureId\": \"<integer>\",\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "13808197-37c2-4939-96f4-fe35bfabc69e",
+              "name": "Data table created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tableStructureId\": 1,\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8418,\n  \"name\": \"string\",\n  \"tableStructureId\": 5264,\n  \"tableStructureName\": \"string\",\n  \"isFileOnly\": true,\n  \"version\": 634,\n  \"isLatestVersion\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00233733-dad4-4daf-baac-61e22270b654",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tableStructureId\": 1,\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "257443cc-9ba5-4cc5-a86c-8d53604ac4ca",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tableStructureId\": 1,\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "64ac27f8-3cf3-49ae-b9fa-f5e249c22fff",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tableStructureId\": 1,\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bcacaf61-841d-49a2-80f8-dc17aa7a4752",
+              "name": "Forbidden - insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tableStructureId\": 1,\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eda05656-f9c6-40d4-ac50-a6dc7c0524db",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tableStructureId\": 1,\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9dcbff13-c33b-4b01-bbe1-059b898116f0",
+              "name": "Data table with the same name already exists for this table structure",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tableStructureId\": 1,\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "df3d1f9d-d619-413d-b14f-6569aa17c02e",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tableStructureId\": 1,\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c99661d6-66e1-4913-adbb-2adfc47d982d",
+          "name": "Overwrites an existing data table from an imported file.",
+          "request": {
+            "name": "Overwrites an existing data table from an imported file.",
+            "description": {
+              "content": "Overwrites the contents of an existing data table using the specified file. Library and Production models cannot be updated using this endpoint. The excel sheet name field is required for excel files and the delimiter field, which defaults to a comma if not set, is required for non-excel files. The limit for the number of rows is 25,000 for data tables that aren't file only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "DataTables",
+                ":dataTableId",
+                "Import"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "dataTableId",
+                  "description": "(Required) The ID of the data table to overwrite"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "46a2af31-16d5-444b-a83a-a9484c0b9c22",
+              "name": "Data table overwritten successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    ":dataTableId",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dataTableId",
+                      "description": "(Required) The ID of the data table to overwrite"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8418,\n  \"name\": \"string\",\n  \"tableStructureId\": 5264,\n  \"tableStructureName\": \"string\",\n  \"isFileOnly\": true,\n  \"version\": 634,\n  \"isLatestVersion\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06de74cd-346a-4b6c-aa99-eadc6b18838d",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    ":dataTableId",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dataTableId",
+                      "description": "(Required) The ID of the data table to overwrite"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "661bf5d8-d915-4a29-86b2-ef8369bf065a",
+              "name": "Invalid request parameters or Library/Production model",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    ":dataTableId",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dataTableId",
+                      "description": "(Required) The ID of the data table to overwrite"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b7e03792-e799-4710-82b5-89e44581d797",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    ":dataTableId",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dataTableId",
+                      "description": "(Required) The ID of the data table to overwrite"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "27cee9fb-c9b1-450c-bb75-3d8c54393e9e",
+              "name": "Forbidden - insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    ":dataTableId",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dataTableId",
+                      "description": "(Required) The ID of the data table to overwrite"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b0504980-c77f-46f7-9dfd-e3812c0b67f9",
+              "name": "Data table not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    ":dataTableId",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dataTableId",
+                      "description": "(Required) The ID of the data table to overwrite"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "69153006-c2f7-476e-affe-41a620fbc7d4",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    ":dataTableId",
+                    "Import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dataTableId",
+                      "description": "(Required) The ID of the data table to overwrite"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8919d00-30f0-4a70-b968-2a6f56179287",
+          "name": "Updates individual properties of an existing data table.",
+          "request": {
+            "name": "Updates individual properties of an existing data table.",
+            "description": {
+              "content": "This endpoint cannot be used on production models. Only development models can be updated.\nIf the data table indexes are being updated and the table is used in any projections, a new version will be created automatically to preserve projection integrity.\nName-only updates do not trigger versioning.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "DataTables",
+                ":dataTableId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "dataTableId",
+                  "description": "(Required) The ID of the data table to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5d3f6b5b-43ce-45c2-9d70-e7eec8e1de10",
+              "name": "Data table updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    ":dataTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dataTableId",
+                      "description": "(Required) The ID of the data table to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Updated Pension Conversion Table\",\n  \"indexes\": [\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"ExactMatch\"\n    },\n    {\n      \"columnName\": \"Duration\",\n      \"indexReadMethod\": \"RangeLowerBound\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 12345,\n  \"version\": 2\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc231e57-5d6e-419c-ab36-ec0355f19793",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    ":dataTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dataTableId",
+                      "description": "(Required) The ID of the data table to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Updated Pension Conversion Table\",\n  \"indexes\": [\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"ExactMatch\"\n    },\n    {\n      \"columnName\": \"Duration\",\n      \"indexReadMethod\": \"RangeLowerBound\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c00a1669-0dfd-4aed-8cfc-5ce6cf448c81",
+              "name": "Invalid request parameters or no properties provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    ":dataTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dataTableId",
+                      "description": "(Required) The ID of the data table to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Updated Pension Conversion Table\",\n  \"indexes\": [\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"ExactMatch\"\n    },\n    {\n      \"columnName\": \"Duration\",\n      \"indexReadMethod\": \"RangeLowerBound\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "48760d06-98e6-4865-a928-fa93b4352fa9",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    ":dataTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dataTableId",
+                      "description": "(Required) The ID of the data table to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Updated Pension Conversion Table\",\n  \"indexes\": [\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"ExactMatch\"\n    },\n    {\n      \"columnName\": \"Duration\",\n      \"indexReadMethod\": \"RangeLowerBound\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3adce22b-37e5-4fad-bad5-209e3f1bf04c",
+              "name": "Forbidden - cannot update production models or insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    ":dataTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dataTableId",
+                      "description": "(Required) The ID of the data table to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Updated Pension Conversion Table\",\n  \"indexes\": [\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"ExactMatch\"\n    },\n    {\n      \"columnName\": \"Duration\",\n      \"indexReadMethod\": \"RangeLowerBound\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "15bfed0c-e776-4cdd-b481-a2858fa17957",
+              "name": "Data table not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    ":dataTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dataTableId",
+                      "description": "(Required) The ID of the data table to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Updated Pension Conversion Table\",\n  \"indexes\": [\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"ExactMatch\"\n    },\n    {\n      \"columnName\": \"Duration\",\n      \"indexReadMethod\": \"RangeLowerBound\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "feaf3662-74c7-4ff9-b0a6-0b1d0b396395",
+              "name": "Data table with the same name already exists for this table structure",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    ":dataTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dataTableId",
+                      "description": "(Required) The ID of the data table to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Updated Pension Conversion Table\",\n  \"indexes\": [\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"ExactMatch\"\n    },\n    {\n      \"columnName\": \"Duration\",\n      \"indexReadMethod\": \"RangeLowerBound\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2358e449-d2f1-4941-a2c7-4248ebe44739",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "DataTables",
+                    ":dataTableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "dataTableId",
+                      "description": "(Required) The ID of the data table to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Updated Pension Conversion Table\",\n  \"indexes\": [\n    {\n      \"columnName\": \"Age\",\n      \"indexReadMethod\": \"ExactMatch\"\n    },\n    {\n      \"columnName\": \"Duration\",\n      \"indexReadMethod\": \"RangeLowerBound\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "731bca38-3289-4b48-a972-b39c6ef764f3",
+          "name": "Get a data table's data.",
+          "request": {
+            "name": "Get a data table's data.",
+            "description": {
+              "content": "Either the data table ID must be provided, or the data table's name along with its associated table structure ID must be provided. <br/>If the data table is file only, then a file path to the file along with the file version will be returned so that it can be used with the GetDownloadUrl endpoint. <br/>For other data tables the rows are returned in the response up to the limit. The default limit is 2,000 and the max limit is 10,000. <br/>If the row limit is reached, then an offset is returned that can be used in a subsequent request to get the next set of rows. <br/>The response includes the TableStructureId of the table structure the data table is a part of, even when the requested data table is not the latest version.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "DataTables",
+                "Data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "DataTableId",
+                  "value": "<integer>",
+                  "description": "Data Table ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "Name",
+                  "value": "<string>",
+                  "description": "Data Table Name"
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<integer>",
+                  "description": "Data Table Version"
+                },
+                {
+                  "disabled": false,
+                  "key": "TableStructureId",
+                  "value": "<integer>",
+                  "description": "Table Structure ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "Fields",
+                  "value": "<string>",
+                  "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+                },
+                {
+                  "disabled": false,
+                  "key": "Limit",
+                  "value": "<integer>",
+                  "description": "Optional parameter to limit the number of items returned. Default is 200."
+                },
+                {
+                  "disabled": false,
+                  "key": "Offset",
+                  "value": "<integer>",
+                  "description": "Optional parameter to offset the items returned. Default is 0."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "682f1d97-139d-4f4d-b16c-b15502485188",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables",
+                    "Data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "DataTableId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "TableStructureId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2764,\n  \"name\": \"string\",\n  \"tableStructureId\": 4780,\n  \"filePath\": \"string\",\n  \"fileVersion\": 7457,\n  \"columns\": [\n    {\n      \"name\": \"string\",\n      \"order\": 6601,\n      \"isIndex\": false,\n      \"indexReadMethod\": \"string\",\n      \"dataType\": \"string\",\n      \"displayPrecision\": 474,\n      \"dropDownListArrayId\": 8265,\n      \"nestedTableStructureId\": 5222\n    },\n    {\n      \"name\": \"string\",\n      \"order\": 5431,\n      \"isIndex\": false,\n      \"indexReadMethod\": \"string\",\n      \"dataType\": \"string\",\n      \"displayPrecision\": 3052,\n      \"dropDownListArrayId\": 4980,\n      \"nestedTableStructureId\": 952\n    }\n  ],\n  \"rows\": [\n    [\n      \"string\",\n      \"string\"\n    ],\n    [\n      \"string\",\n      \"string\"\n    ]\n  ],\n  \"offset\": 2581\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "887b7f83-b1ac-45c8-a41f-8fa32f934e48",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables",
+                    "Data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "DataTableId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "TableStructureId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c35a7f13-4744-4f79-a35e-be3a1ea026e1",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables",
+                    "Data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "DataTableId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "TableStructureId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "35f9ca06-c3f3-4623-a249-9a54e540b421",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables",
+                    "Data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "DataTableId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "TableStructureId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a934023f-66d4-4351-858b-b9b172408366",
+              "name": "Not Allowed To Access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables",
+                    "Data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "DataTableId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "TableStructureId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f8f3f284-e114-49ad-a3d3-82d9a198a870",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables",
+                    "Data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "DataTableId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "TableStructureId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "884f0949-1534-4f7b-8fed-9a54b2a0af34",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables",
+                    "Data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "DataTableId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "TableStructureId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00d1781f-2e57-42b6-91ca-a84a75f7172f",
+          "name": "Update a data table using an existing file.",
+          "request": {
+            "name": "Update a data table using an existing file.",
+            "description": {
+              "content": "This endpoint has the same limitations mentioned in the create data table POST endpoint. <br/>In addition, be aware that a successful request might cause the table to be versioned, thus returning a new data table id that represents the versioned table. <br/>A table will be versioned if it's been used in a projection since the last time it was modified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "DataTables"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"dataTableId\": \"<integer>\",\n  \"tableStructureId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ed8d7d8e-27e4-47d4-959a-88e074f14fa6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"dataTableId\": \"<integer>\",\n  \"tableStructureId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8418,\n  \"name\": \"string\",\n  \"tableStructureId\": 5264,\n  \"tableStructureName\": \"string\",\n  \"isFileOnly\": true,\n  \"version\": 634,\n  \"isLatestVersion\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54b9101c-37eb-4ec6-b504-7e28c98e1e60",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"dataTableId\": \"<integer>\",\n  \"tableStructureId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5f84138f-1032-4f6d-b81b-85634a7a48d7",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"dataTableId\": \"<integer>\",\n  \"tableStructureId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "04b91334-8408-4187-9448-04ce44ea9ecb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"dataTableId\": \"<integer>\",\n  \"tableStructureId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5da61309-f5a1-44fe-8f42-384c74bcd448",
+              "name": "Not Allowed To Access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"dataTableId\": \"<integer>\",\n  \"tableStructureId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b0a51c58-00df-4281-859d-28dd91e22a36",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"dataTableId\": \"<integer>\",\n  \"tableStructureId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b22c8c09-2c0f-4b96-a304-897555d6a4d8",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileId\": \"<integer>\",\n  \"filePath\": \"<string>\",\n  \"fileVersion\": \"<integer>\",\n  \"delimiter\": \"<string>\",\n  \"excelSheetName\": \"<string>\",\n  \"dataTableId\": \"<integer>\",\n  \"tableStructureId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"isFileOnly\": \"<boolean>\",\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e12f713-8e11-4afa-b9f5-951f625b2b06",
+          "name": "Update a data table's row data without uploading a file.",
+          "request": {
+            "name": "Update a data table's row data without uploading a file.",
+            "description": {
+              "content": "Pass row data directly to update the data table without needing to upload a file first. Rows should be formatted as arrays of string values matching the column order from the GET /Data endpoint. Index columns come first (sorted by SortOrder), then data columns (sorted by SortOrder). For MortalityTable columns, pass two values: DecrementTableId and ImprovementScaleId. Maximum of 100,000 rows. Note: There is also a 10MB request size limit. A successful request might cause the table to be versioned if it has been used in a projection since the last modification.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "DataTables",
+                ":DataTableId",
+                "Data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "DataTableId",
+                  "description": "(Required) The ID of the data table to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rows\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3697d86d-8668-4bf7-b67b-e3c81f68ae55",
+              "name": "Data table data updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables",
+                    ":DataTableId",
+                    "Data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "DataTableId",
+                      "description": "(Required) The ID of the data table to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rows\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5854,\n  \"version\": 6244\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28863ee4-f77e-488b-b1cd-8250553cc3e6",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables",
+                    ":DataTableId",
+                    "Data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "DataTableId",
+                      "description": "(Required) The ID of the data table to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rows\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b9fb0a49-c087-4623-a2ff-717df4520c78",
+              "name": "Invalid request (file-only table, validation errors, row limit exceeded).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables",
+                    ":DataTableId",
+                    "Data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "DataTableId",
+                      "description": "(Required) The ID of the data table to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rows\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f6474f5a-ab28-407c-bb50-c6dcb6457750",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables",
+                    ":DataTableId",
+                    "Data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "DataTableId",
+                      "description": "(Required) The ID of the data table to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rows\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "978dc09c-a0ff-4900-97bf-0b170d36fbfa",
+              "name": "Cannot update data tables on production models or no model access.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables",
+                    ":DataTableId",
+                    "Data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "DataTableId",
+                      "description": "(Required) The ID of the data table to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rows\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "afc3e942-2a91-4e13-98c1-f4f3f17729ba",
+              "name": "Data table not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables",
+                    ":DataTableId",
+                    "Data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "DataTableId",
+                      "description": "(Required) The ID of the data table to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rows\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "168a5f94-347a-4d7f-b479-5b657c8e6a52",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "DataTables",
+                    ":DataTableId",
+                    "Data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "DataTableId",
+                      "description": "(Required) The ID of the data table to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rows\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"indexes\": [\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    },\n    {\n      \"columnName\": \"<string>\",\n      \"indexReadMethod\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "476b4729-d01d-427d-bdfc-d51a8e41e127",
+    "name": "Slope Arrays DataTables API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

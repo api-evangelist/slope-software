@@ -1,0 +1,3669 @@
+{
+  "item": [
+    {
+      "id": "420f2bac-7790-4cbe-ad08-c8638c8587a6",
+      "name": "Projections",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "91afe2f2-d1d9-4421-add5-64aa2113a50c",
+          "name": "Get a paginated list of projections in the workspace.",
+          "request": {
+            "name": "Get a paginated list of projections in the workspace.",
+            "description": {
+              "content": "Returns projections accessible to the current user. Workspace API tokens see all projections; Personal API tokens only see projections for models the user has access to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "Projections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Fields",
+                  "value": "<string>",
+                  "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+                },
+                {
+                  "disabled": false,
+                  "key": "Limit",
+                  "value": "<integer>",
+                  "description": "Optional parameter to limit the number of items returned. Default is 200."
+                },
+                {
+                  "disabled": false,
+                  "key": "Offset",
+                  "value": "<integer>",
+                  "description": "Optional parameter to offset the items returned. Default is 0."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f4128897-e45f-4ec5-a353-40d08e099380",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": 4486,\n      \"name\": \"string\",\n      \"status\": \"ValidationFailed\",\n      \"startDate\": \"1958-05-13T00:31:38.591Z\",\n      \"isRunning\": false,\n      \"isLocked\": true,\n      \"virtualFolders\": [\n        \"string\",\n        \"string\"\n      ],\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"runStartDateUtc\": \"1963-11-12T09:16:45.269Z\",\n      \"runCompletedDateUtc\": \"1971-08-30T03:29:57.134Z\",\n      \"modelId\": 7173\n    },\n    {\n      \"id\": 761,\n      \"name\": \"string\",\n      \"status\": \"ValidationFailed\",\n      \"startDate\": \"1959-11-08T00:34:27.730Z\",\n      \"isRunning\": true,\n      \"isLocked\": false,\n      \"virtualFolders\": [\n        \"string\",\n        \"string\"\n      ],\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"runStartDateUtc\": \"1967-05-31T21:02:51.195Z\",\n      \"runCompletedDateUtc\": \"2026-02-04T07:58:44.735Z\",\n      \"modelId\": 7287\n    }\n  ],\n  \"offset\": 7149\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86c34503-c136-4f28-986d-508c7331ee10",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ffc23b05-1250-4960-9915-ebc764089fa9",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "90fb11e5-4ffc-4348-8e3e-a169dcce274c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "26519dc2-f3e8-4003-b17b-bd9cc95690e0",
+              "name": "Not Allowed To Access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb0c94df-da5e-426d-8918-7470d98e39c4",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a11add6d-25a5-4083-b805-63950b25cb5a",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab6b1845-424e-466f-b1f4-d43fce0d3053",
+          "name": "Create a projection using an existing projection template.",
+          "request": {
+            "name": "Create a projection using an existing projection template.",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "Projections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "TemplateId",
+                  "value": "<integer>",
+                  "description": "Template ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "Name",
+                  "value": "<string>",
+                  "description": "Projection Name"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"templateId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"key_0\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "95fba191-37b8-4903-91fd-fa8eebd3e638",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "TemplateId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"templateId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"key_0\": {},\n  \"key_1\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6377,\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12ca9f09-d8ef-4c8c-814d-d56687a750ab",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "TemplateId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"templateId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"key_0\": {},\n  \"key_1\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "986a796e-6a42-404e-9b7d-a2f7db399e33",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "TemplateId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"templateId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"key_0\": {},\n  \"key_1\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9f459843-9d50-4718-949c-6bfa456892e2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "TemplateId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"templateId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"key_0\": {},\n  \"key_1\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a41f179b-d1c2-42ed-bd06-b242394cffd7",
+              "name": "Not Allowed To Access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "TemplateId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"templateId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"key_0\": {},\n  \"key_1\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "52cb53e7-82fe-4305-a846-24590f37f1b2",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "TemplateId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"templateId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"key_0\": {},\n  \"key_1\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8634a37b-fbc1-44fb-9c30-60745835a57f",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "TemplateId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"templateId\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"key_0\": {},\n  \"key_1\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3cea340-0669-437e-9630-5ba0c761fd30",
+          "name": "Get Projection Details by Id.",
+          "request": {
+            "name": "Get Projection Details by Id.",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "Projections",
+                ":projectionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Fields",
+                  "value": "<string>",
+                  "description": "Optional parameter to filter the top-level fields that are returned. The list must be in CSV format.\nExample: field1,field2,field3"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "projectionId",
+                  "description": "(Required) Projection ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c564d6f4-38b0-4230-b327-da79256d9318",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 9691,\n  \"name\": \"string\",\n  \"status\": \"CompletedWithWarnings\",\n  \"isRunning\": true,\n  \"startDate\": \"1993-02-24T08:02:29.326Z\",\n  \"periodInMonths\": 839,\n  \"runStartDateUtc\": \"2021-05-27T05:57:15.455Z\",\n  \"runCompletedDateUtc\": \"1978-02-02T10:18:52.394Z\",\n  \"outputAllResults\": false,\n  \"disableModelPointOutput\": true,\n  \"forceStaticProcessing\": false,\n  \"isLocked\": false,\n  \"numberOfCores\": 7863,\n  \"scenarioTableId\": 7976,\n  \"model\": {\n    \"id\": 1148,\n    \"name\": \"string\"\n  },\n  \"portfolios\": [\n    {\n      \"id\": 9469,\n      \"name\": \"string\",\n      \"products\": [\n        {\n          \"id\": 603,\n          \"productId\": 5929,\n          \"name\": \"string\",\n          \"productType\": \"Asset\",\n          \"modelPointFile\": {\n            \"fileId\": 7047,\n            \"filePath\": \"string\",\n            \"fileVersion\": 6705,\n            \"delimiter\": \"string\",\n            \"excelSheetName\": \"string\"\n          },\n          \"filters\": [\n            {\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"productOutputGroupings\": [\n            1526,\n            5007\n          ]\n        },\n        {\n          \"id\": 7951,\n          \"productId\": 1311,\n          \"name\": \"string\",\n          \"productType\": \"Liability\",\n          \"modelPointFile\": {\n            \"fileId\": 8546,\n            \"filePath\": \"string\",\n            \"fileVersion\": 8261,\n            \"delimiter\": \"string\",\n            \"excelSheetName\": \"string\"\n          },\n          \"filters\": [\n            {\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"productOutputGroupings\": [\n            6454,\n            7879\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": 7739,\n      \"name\": \"string\",\n      \"products\": [\n        {\n          \"id\": 3891,\n          \"productId\": 1016,\n          \"name\": \"string\",\n          \"productType\": \"Asset\",\n          \"modelPointFile\": {\n            \"fileId\": 6647,\n            \"filePath\": \"string\",\n            \"fileVersion\": 4405,\n            \"delimiter\": \"string\",\n            \"excelSheetName\": \"string\"\n          },\n          \"filters\": [\n            {\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"productOutputGroupings\": [\n            4392,\n            1471\n          ]\n        },\n        {\n          \"id\": 4226,\n          \"productId\": 3801,\n          \"name\": \"string\",\n          \"productType\": \"Asset\",\n          \"modelPointFile\": {\n            \"fileId\": 8262,\n            \"filePath\": \"string\",\n            \"fileVersion\": 5057,\n            \"delimiter\": \"string\",\n            \"excelSheetName\": \"string\"\n          },\n          \"filters\": [\n            {\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"productOutputGroupings\": [\n            2578,\n            4297\n          ]\n        }\n      ]\n    }\n  ],\n  \"virtualFolders\": [\n    \"string\",\n    \"string\"\n  ],\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"dataTables\": [\n    {\n      \"tableStructureId\": 4904,\n      \"tableStructureName\": \"string\",\n      \"dataTableId\": 8945,\n      \"dataTableName\": \"string\",\n      \"dataTableVersionNumber\": 9069,\n      \"isRequired\": false\n    },\n    {\n      \"tableStructureId\": 5112,\n      \"tableStructureName\": \"string\",\n      \"dataTableId\": 667,\n      \"dataTableName\": \"string\",\n      \"dataTableVersionNumber\": 3975,\n      \"isRequired\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "848eccc6-283c-428f-9805-1950e22d3a67",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cc1a3e86-8934-46fb-b336-7bb1b57885fa",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bcf45d77-9e47-49b2-9cd8-a33b5ffd7dbf",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4d48a521-256a-4e17-bc63-296a15b1015e",
+              "name": "Not Allowed To Access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "adffc0b4-6f1c-418f-91aa-f41265e2ca9e",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3a948e9a-7660-4e39-8f30-06bc05a50ef2",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2395f578-dae1-47b8-bd65-dfad2930dc23",
+          "name": "Update projection properties.",
+          "request": {
+            "name": "Update projection properties.",
+            "description": {
+              "content": "Validating model point files is limited to 100K rows with 20 columns.<br/><b>For larger model point files set ValidateModelPointFiles to false.</b>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "Projections",
+                ":projectionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "projectionId",
+                  "description": "(Required) Projection ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"scenarioTableId\": \"<integer>\",\n  \"scenarioSubset\": \"<string>\",\n  \"startDate\": \"<dateTime>\",\n  \"periodInMonths\": \"<integer>\",\n  \"outputAllResults\": \"<boolean>\",\n  \"disableModelPointOutput\": \"<boolean>\",\n  \"forceStaticProcessing\": \"<boolean>\",\n  \"numberOfCores\": \"<integer>\",\n  \"validateModelPointFiles\": \"<boolean>\",\n  \"dataTables\": [\n    {\n      \"tableStructureId\": \"<integer>\",\n      \"tableStructureName\": \"<string>\",\n      \"dataTableId\": \"<integer>\",\n      \"dataTableName\": \"<string>\",\n      \"dataTableVersion\": \"<integer>\"\n    },\n    {\n      \"tableStructureId\": \"<integer>\",\n      \"tableStructureName\": \"<string>\",\n      \"dataTableId\": \"<integer>\",\n      \"dataTableName\": \"<string>\",\n      \"dataTableVersion\": \"<integer>\"\n    }\n  ],\n  \"portfolios\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"products\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"products\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"virtualFolders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isLocked\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "508e9ffc-aaf1-40e7-89ab-2b95dd94e805",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"scenarioTableId\": \"<integer>\",\n  \"scenarioSubset\": \"<string>\",\n  \"startDate\": \"<dateTime>\",\n  \"periodInMonths\": \"<integer>\",\n  \"outputAllResults\": \"<boolean>\",\n  \"disableModelPointOutput\": \"<boolean>\",\n  \"forceStaticProcessing\": \"<boolean>\",\n  \"numberOfCores\": \"<integer>\",\n  \"validateModelPointFiles\": \"<boolean>\",\n  \"dataTables\": [\n    {\n      \"tableStructureId\": \"<integer>\",\n      \"tableStructureName\": \"<string>\",\n      \"dataTableId\": \"<integer>\",\n      \"dataTableName\": \"<string>\",\n      \"dataTableVersion\": \"<integer>\"\n    },\n    {\n      \"tableStructureId\": \"<integer>\",\n      \"tableStructureName\": \"<string>\",\n      \"dataTableId\": \"<integer>\",\n      \"dataTableName\": \"<string>\",\n      \"dataTableVersion\": \"<integer>\"\n    }\n  ],\n  \"portfolios\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"products\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\",\n            \"key_2\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"products\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"virtualFolders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isLocked\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 398,\n  \"name\": \"string\",\n  \"status\": \"Running\",\n  \"isRunning\": false,\n  \"startDate\": \"1970-11-04T10:02:38.362Z\",\n  \"periodInMonths\": 6662,\n  \"runStartDateUtc\": \"1970-01-05T06:17:48.317Z\",\n  \"runCompletedDateUtc\": \"1991-12-27T02:10:34.704Z\",\n  \"outputAllResults\": true,\n  \"disableModelPointOutput\": false,\n  \"forceStaticProcessing\": true,\n  \"isLocked\": true,\n  \"numberOfCores\": 3400,\n  \"scenarioTableId\": 8671,\n  \"model\": {\n    \"id\": 3664,\n    \"name\": \"string\"\n  },\n  \"portfolios\": [\n    {\n      \"id\": 8803,\n      \"name\": \"string\",\n      \"products\": [\n        {\n          \"id\": 5884,\n          \"productId\": 2415,\n          \"name\": \"string\",\n          \"productType\": \"Asset\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"filters\": [\n            {\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"productOutputGroupings\": [\n            6814,\n            4138\n          ]\n        },\n        {\n          \"id\": 5853,\n          \"productId\": 6916,\n          \"name\": \"string\",\n          \"productType\": \"Asset\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"filters\": [\n            {\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"productOutputGroupings\": [\n            1396,\n            4996\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": 2444,\n      \"name\": \"string\",\n      \"products\": [\n        {\n          \"id\": 6626,\n          \"productId\": 6333,\n          \"name\": \"string\",\n          \"productType\": \"Asset\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"filters\": [\n            {\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"productOutputGroupings\": [\n            6126,\n            1633\n          ]\n        },\n        {\n          \"id\": 3052,\n          \"productId\": 5285,\n          \"name\": \"string\",\n          \"productType\": \"Liability\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"filters\": [\n            {\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"field\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"productOutputGroupings\": [\n            3240,\n            3145\n          ]\n        }\n      ]\n    }\n  ],\n  \"virtualFolders\": [\n    \"string\",\n    \"string\"\n  ],\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"dataTables\": [\n    {\n      \"tableStructureId\": 9321,\n      \"tableStructureName\": \"string\",\n      \"dataTableId\": 118,\n      \"dataTableName\": \"string\",\n      \"dataTableVersionNumber\": 7221,\n      \"isRequired\": true\n    },\n    {\n      \"tableStructureId\": 7064,\n      \"tableStructureName\": \"string\",\n      \"dataTableId\": 1595,\n      \"dataTableName\": \"string\",\n      \"dataTableVersionNumber\": 3072,\n      \"isRequired\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9ecad72-4b3c-415d-9f27-db3b6b7629af",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"scenarioTableId\": \"<integer>\",\n  \"scenarioSubset\": \"<string>\",\n  \"startDate\": \"<dateTime>\",\n  \"periodInMonths\": \"<integer>\",\n  \"outputAllResults\": \"<boolean>\",\n  \"disableModelPointOutput\": \"<boolean>\",\n  \"forceStaticProcessing\": \"<boolean>\",\n  \"numberOfCores\": \"<integer>\",\n  \"validateModelPointFiles\": \"<boolean>\",\n  \"dataTables\": [\n    {\n      \"tableStructureId\": \"<integer>\",\n      \"tableStructureName\": \"<string>\",\n      \"dataTableId\": \"<integer>\",\n      \"dataTableName\": \"<string>\",\n      \"dataTableVersion\": \"<integer>\"\n    },\n    {\n      \"tableStructureId\": \"<integer>\",\n      \"tableStructureName\": \"<string>\",\n      \"dataTableId\": \"<integer>\",\n      \"dataTableName\": \"<string>\",\n      \"dataTableVersion\": \"<integer>\"\n    }\n  ],\n  \"portfolios\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"products\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\",\n            \"key_2\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"products\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"virtualFolders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isLocked\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "686b1018-6c91-4661-a367-0a9358ce3c03",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"scenarioTableId\": \"<integer>\",\n  \"scenarioSubset\": \"<string>\",\n  \"startDate\": \"<dateTime>\",\n  \"periodInMonths\": \"<integer>\",\n  \"outputAllResults\": \"<boolean>\",\n  \"disableModelPointOutput\": \"<boolean>\",\n  \"forceStaticProcessing\": \"<boolean>\",\n  \"numberOfCores\": \"<integer>\",\n  \"validateModelPointFiles\": \"<boolean>\",\n  \"dataTables\": [\n    {\n      \"tableStructureId\": \"<integer>\",\n      \"tableStructureName\": \"<string>\",\n      \"dataTableId\": \"<integer>\",\n      \"dataTableName\": \"<string>\",\n      \"dataTableVersion\": \"<integer>\"\n    },\n    {\n      \"tableStructureId\": \"<integer>\",\n      \"tableStructureName\": \"<string>\",\n      \"dataTableId\": \"<integer>\",\n      \"dataTableName\": \"<string>\",\n      \"dataTableVersion\": \"<integer>\"\n    }\n  ],\n  \"portfolios\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"products\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\",\n            \"key_2\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"products\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"virtualFolders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isLocked\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "850b0bbe-40f4-44bd-8567-693a3b04bdbb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"scenarioTableId\": \"<integer>\",\n  \"scenarioSubset\": \"<string>\",\n  \"startDate\": \"<dateTime>\",\n  \"periodInMonths\": \"<integer>\",\n  \"outputAllResults\": \"<boolean>\",\n  \"disableModelPointOutput\": \"<boolean>\",\n  \"forceStaticProcessing\": \"<boolean>\",\n  \"numberOfCores\": \"<integer>\",\n  \"validateModelPointFiles\": \"<boolean>\",\n  \"dataTables\": [\n    {\n      \"tableStructureId\": \"<integer>\",\n      \"tableStructureName\": \"<string>\",\n      \"dataTableId\": \"<integer>\",\n      \"dataTableName\": \"<string>\",\n      \"dataTableVersion\": \"<integer>\"\n    },\n    {\n      \"tableStructureId\": \"<integer>\",\n      \"tableStructureName\": \"<string>\",\n      \"dataTableId\": \"<integer>\",\n      \"dataTableName\": \"<string>\",\n      \"dataTableVersion\": \"<integer>\"\n    }\n  ],\n  \"portfolios\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"products\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\",\n            \"key_2\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"products\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"virtualFolders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isLocked\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "84fabfc2-d686-4cd8-8f3e-24e9a0f85988",
+              "name": "Not Allowed To Access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"scenarioTableId\": \"<integer>\",\n  \"scenarioSubset\": \"<string>\",\n  \"startDate\": \"<dateTime>\",\n  \"periodInMonths\": \"<integer>\",\n  \"outputAllResults\": \"<boolean>\",\n  \"disableModelPointOutput\": \"<boolean>\",\n  \"forceStaticProcessing\": \"<boolean>\",\n  \"numberOfCores\": \"<integer>\",\n  \"validateModelPointFiles\": \"<boolean>\",\n  \"dataTables\": [\n    {\n      \"tableStructureId\": \"<integer>\",\n      \"tableStructureName\": \"<string>\",\n      \"dataTableId\": \"<integer>\",\n      \"dataTableName\": \"<string>\",\n      \"dataTableVersion\": \"<integer>\"\n    },\n    {\n      \"tableStructureId\": \"<integer>\",\n      \"tableStructureName\": \"<string>\",\n      \"dataTableId\": \"<integer>\",\n      \"dataTableName\": \"<string>\",\n      \"dataTableVersion\": \"<integer>\"\n    }\n  ],\n  \"portfolios\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"products\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\",\n            \"key_2\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"products\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"virtualFolders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isLocked\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ee2248b9-535a-46f8-b301-9c9be278dc6f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"scenarioTableId\": \"<integer>\",\n  \"scenarioSubset\": \"<string>\",\n  \"startDate\": \"<dateTime>\",\n  \"periodInMonths\": \"<integer>\",\n  \"outputAllResults\": \"<boolean>\",\n  \"disableModelPointOutput\": \"<boolean>\",\n  \"forceStaticProcessing\": \"<boolean>\",\n  \"numberOfCores\": \"<integer>\",\n  \"validateModelPointFiles\": \"<boolean>\",\n  \"dataTables\": [\n    {\n      \"tableStructureId\": \"<integer>\",\n      \"tableStructureName\": \"<string>\",\n      \"dataTableId\": \"<integer>\",\n      \"dataTableName\": \"<string>\",\n      \"dataTableVersion\": \"<integer>\"\n    },\n    {\n      \"tableStructureId\": \"<integer>\",\n      \"tableStructureName\": \"<string>\",\n      \"dataTableId\": \"<integer>\",\n      \"dataTableName\": \"<string>\",\n      \"dataTableVersion\": \"<integer>\"\n    }\n  ],\n  \"portfolios\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"products\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\",\n            \"key_2\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"products\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"virtualFolders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isLocked\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "df2d07a5-9889-4fd3-a58c-27e912fd765c",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"scenarioTableId\": \"<integer>\",\n  \"scenarioSubset\": \"<string>\",\n  \"startDate\": \"<dateTime>\",\n  \"periodInMonths\": \"<integer>\",\n  \"outputAllResults\": \"<boolean>\",\n  \"disableModelPointOutput\": \"<boolean>\",\n  \"forceStaticProcessing\": \"<boolean>\",\n  \"numberOfCores\": \"<integer>\",\n  \"validateModelPointFiles\": \"<boolean>\",\n  \"dataTables\": [\n    {\n      \"tableStructureId\": \"<integer>\",\n      \"tableStructureName\": \"<string>\",\n      \"dataTableId\": \"<integer>\",\n      \"dataTableName\": \"<string>\",\n      \"dataTableVersion\": \"<integer>\"\n    },\n    {\n      \"tableStructureId\": \"<integer>\",\n      \"tableStructureName\": \"<string>\",\n      \"dataTableId\": \"<integer>\",\n      \"dataTableName\": \"<string>\",\n      \"dataTableVersion\": \"<integer>\"\n    }\n  ],\n  \"portfolios\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"products\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\",\n            \"key_2\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"products\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"modelPointFile\": {\n            \"fileId\": \"<integer>\",\n            \"filePath\": \"<string>\",\n            \"fileVersion\": \"<integer>\",\n            \"delimiter\": \"<string>\",\n            \"excelSheetName\": \"<string>\"\n          },\n          \"modelPointFilters\": {\n            \"key_0\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"virtualFolders\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isLocked\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3689bf2c-4fde-47cd-a593-43539c61ef79",
+          "name": "Start a projection run.",
+          "request": {
+            "name": "Start a projection run.",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "Projections",
+                ":projectionId",
+                "Run"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "projectionId",
+                  "description": "(Required) Projection ID"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d19766a6-a1f3-4ae0-95fa-d47dd58c288c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId",
+                    "Run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c1ff4f85-cbfd-4a4c-8c97-9755c3879cea",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId",
+                    "Run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d1eb28a7-ba56-4147-a224-da6e9604b58f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId",
+                    "Run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b69f593d-3bcd-4b59-80e7-334f785f83bb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId",
+                    "Run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6074aaed-b3a3-4c42-9337-a27e1623c0d6",
+              "name": "Not Allowed To Access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId",
+                    "Run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "85d573fe-6198-4300-a18d-0e426ed2c997",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId",
+                    "Run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a7a22234-a6c4-43f3-9186-afd667aa64e0",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId",
+                    "Run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9454254-2e7b-45da-a24d-f96ac24d1812",
+          "name": "Add a new product to a portfolio on a projection.",
+          "request": {
+            "name": "Add a new product to a portfolio on a projection.",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "Projections",
+                "Portfolios",
+                ":portfolioId",
+                "Products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "portfolioId",
+                  "description": "(Required) Portfolio ID on the projection"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"productId\": \"<integer>\",\n  \"modelPointFile\": {\n    \"fileId\": \"<integer>\",\n    \"filePath\": \"<string>\",\n    \"fileVersion\": \"<integer>\",\n    \"delimiter\": \"<string>\",\n    \"excelSheetName\": \"<string>\"\n  },\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"productOutputGroupings\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8464efdf-05a8-4629-980a-6a6dda8bbafe",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    "Portfolios",
+                    ":portfolioId",
+                    "Products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "portfolioId",
+                      "description": "(Required) Portfolio ID on the projection"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"productId\": \"<integer>\",\n  \"modelPointFile\": {\n    \"fileId\": \"<integer>\",\n    \"filePath\": \"<string>\",\n    \"fileVersion\": \"<integer>\",\n    \"delimiter\": \"<string>\",\n    \"excelSheetName\": \"<string>\"\n  },\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"productOutputGroupings\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 7601\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6649af6c-9693-4ebd-919f-a22721480728",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    "Portfolios",
+                    ":portfolioId",
+                    "Products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "portfolioId",
+                      "description": "(Required) Portfolio ID on the projection"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"productId\": \"<integer>\",\n  \"modelPointFile\": {\n    \"fileId\": \"<integer>\",\n    \"filePath\": \"<string>\",\n    \"fileVersion\": \"<integer>\",\n    \"delimiter\": \"<string>\",\n    \"excelSheetName\": \"<string>\"\n  },\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"productOutputGroupings\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fefbe7c7-0e58-4f96-b3d7-f2f0446b769c",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    "Portfolios",
+                    ":portfolioId",
+                    "Products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "portfolioId",
+                      "description": "(Required) Portfolio ID on the projection"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"productId\": \"<integer>\",\n  \"modelPointFile\": {\n    \"fileId\": \"<integer>\",\n    \"filePath\": \"<string>\",\n    \"fileVersion\": \"<integer>\",\n    \"delimiter\": \"<string>\",\n    \"excelSheetName\": \"<string>\"\n  },\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"productOutputGroupings\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "736184e3-30c6-4103-a356-71b3c9341e51",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    "Portfolios",
+                    ":portfolioId",
+                    "Products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "portfolioId",
+                      "description": "(Required) Portfolio ID on the projection"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"productId\": \"<integer>\",\n  \"modelPointFile\": {\n    \"fileId\": \"<integer>\",\n    \"filePath\": \"<string>\",\n    \"fileVersion\": \"<integer>\",\n    \"delimiter\": \"<string>\",\n    \"excelSheetName\": \"<string>\"\n  },\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"productOutputGroupings\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "50de00a9-7e07-44aa-a91f-f5c2b73a341d",
+              "name": "Not Allowed To Access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    "Portfolios",
+                    ":portfolioId",
+                    "Products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "portfolioId",
+                      "description": "(Required) Portfolio ID on the projection"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"productId\": \"<integer>\",\n  \"modelPointFile\": {\n    \"fileId\": \"<integer>\",\n    \"filePath\": \"<string>\",\n    \"fileVersion\": \"<integer>\",\n    \"delimiter\": \"<string>\",\n    \"excelSheetName\": \"<string>\"\n  },\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"productOutputGroupings\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e8ac34e2-7126-4bc9-9316-079161905bca",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    "Portfolios",
+                    ":portfolioId",
+                    "Products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "portfolioId",
+                      "description": "(Required) Portfolio ID on the projection"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"productId\": \"<integer>\",\n  \"modelPointFile\": {\n    \"fileId\": \"<integer>\",\n    \"filePath\": \"<string>\",\n    \"fileVersion\": \"<integer>\",\n    \"delimiter\": \"<string>\",\n    \"excelSheetName\": \"<string>\"\n  },\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"productOutputGroupings\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0bcb7ac3-021b-41d3-8fa4-5ac0da093a20",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    "Portfolios",
+                    ":portfolioId",
+                    "Products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "portfolioId",
+                      "description": "(Required) Portfolio ID on the projection"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"productId\": \"<integer>\",\n  \"modelPointFile\": {\n    \"fileId\": \"<integer>\",\n    \"filePath\": \"<string>\",\n    \"fileVersion\": \"<integer>\",\n    \"delimiter\": \"<string>\",\n    \"excelSheetName\": \"<string>\"\n  },\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"productOutputGroupings\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76cef70a-3104-4885-911b-816ebb0167df",
+          "name": "Copies a projection.",
+          "request": {
+            "name": "Copies a projection.",
+            "description": {
+              "content": "SetTablesToLatestVersion will default to True if omitted.<br/>ProjectionName will default to the copied projection's name if omitted.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "Projections",
+                ":projectionId",
+                "Copy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "projectionId",
+                  "description": "(Required) Projection ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectionName\": \"<string>\",\n  \"setTablesToLatestVersion\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f5569cff-cc7e-4ab8-a068-c349975b8314",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId",
+                    "Copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"projectionName\": \"<string>\",\n  \"setTablesToLatestVersion\": \"<boolean>\",\n  \"key_0\": {},\n  \"key_1\": {},\n  \"key_2\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6377,\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77446cea-fd4a-46d4-8197-bdf9dbfcdadc",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId",
+                    "Copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"projectionName\": \"<string>\",\n  \"setTablesToLatestVersion\": \"<boolean>\",\n  \"key_0\": {},\n  \"key_1\": {},\n  \"key_2\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8f527e42-6e54-4fab-913b-5d3fa3e8f341",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId",
+                    "Copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"projectionName\": \"<string>\",\n  \"setTablesToLatestVersion\": \"<boolean>\",\n  \"key_0\": {},\n  \"key_1\": {},\n  \"key_2\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9d676fd7-bd11-4361-b3f7-6872e15a3383",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId",
+                    "Copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"projectionName\": \"<string>\",\n  \"setTablesToLatestVersion\": \"<boolean>\",\n  \"key_0\": {},\n  \"key_1\": {},\n  \"key_2\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "edfc764b-6368-48a9-bdbc-b7cc97bcbc8c",
+              "name": "Not Allowed To Access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId",
+                    "Copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"projectionName\": \"<string>\",\n  \"setTablesToLatestVersion\": \"<boolean>\",\n  \"key_0\": {},\n  \"key_1\": {},\n  \"key_2\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "49ace9ae-c6b4-4cc2-8367-542be8f1f699",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId",
+                    "Copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"projectionName\": \"<string>\",\n  \"setTablesToLatestVersion\": \"<boolean>\",\n  \"key_0\": {},\n  \"key_1\": {},\n  \"key_2\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4ec3660a-f098-42ad-b1ae-101a9ce1ae25",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    ":projectionId",
+                    "Copy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "projectionId",
+                      "description": "(Required) Projection ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"projectionName\": \"<string>\",\n  \"setTablesToLatestVersion\": \"<boolean>\",\n  \"key_0\": {},\n  \"key_1\": {},\n  \"key_2\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "838c735a-4b17-4870-98a1-22b5e9264081",
+          "name": "Remove a product from a projection's portfolio.",
+          "request": {
+            "name": "Remove a product from a projection's portfolio.",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "Projections",
+                "Portfolios",
+                "Products",
+                ":productId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "productId",
+                  "description": "(Required) Product ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5f15553c-68ad-4fc6-a074-3b6bbbbcd70e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    "Portfolios",
+                    "Products",
+                    ":productId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "productId",
+                      "description": "(Required) Product ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b43ca7a9-b132-4d19-ba93-95a97f1bbe3d",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    "Portfolios",
+                    "Products",
+                    ":productId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "productId",
+                      "description": "(Required) Product ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f33a6cb5-00ae-4b87-b95b-782422f8fbea",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    "Portfolios",
+                    "Products",
+                    ":productId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "productId",
+                      "description": "(Required) Product ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3b6de46d-a074-476f-9e8b-ad177a8a8fa9",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    "Portfolios",
+                    "Products",
+                    ":productId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "productId",
+                      "description": "(Required) Product ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "34f50aad-e020-41aa-aca0-639e69647ced",
+              "name": "Not Allowed To Access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    "Portfolios",
+                    "Products",
+                    ":productId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "productId",
+                      "description": "(Required) Product ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "10d31c39-0ab8-4b7d-bc91-b8ab374beb0e",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    "Portfolios",
+                    "Products",
+                    ":productId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "productId",
+                      "description": "(Required) Product ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c34e9b69-3cae-4d96-8df6-49c363a2101c",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "Projections",
+                    "Portfolios",
+                    "Products",
+                    ":productId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "productId",
+                      "description": "(Required) Product ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4935fc44-64b7-4f30-b47d-569682a0fa0e",
+    "name": "Slope Arrays Projections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

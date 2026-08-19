@@ -1,0 +1,117 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Slope Arrays TableStructures API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TableStructures",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a table structure by id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/TableStructures/:TableStructureId",
+            "params": [
+              {
+                "name": "TableStructureId",
+                "value": "",
+                "type": "path",
+                "description": "Table Structure Id"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              }
+            ]
+          },
+          "docs": "Get a table structure by id."
+        },
+        {
+          "info": {
+            "name": "Get a list of Data Tables given a Table Structure Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/TableStructures/:TableStructureId/DataTables",
+            "params": [
+              {
+                "name": "TableStructureId",
+                "value": "",
+                "type": "path",
+                "description": "Table Structure ID"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              },
+              {
+                "name": "Limit",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to limit the number of items returned. Default is 200."
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to offset the items returned. Default is 0."
+              }
+            ]
+          },
+          "docs": "Get a list of Data Tables given a Table Structure Id"
+        },
+        {
+          "info": {
+            "name": "Get a list of Columns given a Table Structure Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/TableStructures/:TableStructureId/Columns",
+            "params": [
+              {
+                "name": "TableStructureId",
+                "value": "",
+                "type": "path",
+                "description": "Table Structure ID"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              },
+              {
+                "name": "Limit",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to limit the number of items returned. Default is 200."
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to offset the items returned. Default is 0."
+              }
+            ]
+          },
+          "docs": "Get a list of Columns given a Table Structure Id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

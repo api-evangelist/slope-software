@@ -1,0 +1,210 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Slope Arrays Projections API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a paginated list of projections in the workspace.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/Projections",
+            "params": [
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              },
+              {
+                "name": "Limit",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to limit the number of items returned. Default is 200."
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to offset the items returned. Default is 0."
+              }
+            ]
+          },
+          "docs": "Returns projections accessible to the current user. Workspace API tokens see all projections; Personal API tokens only see projections for models the user has access to."
+        },
+        {
+          "info": {
+            "name": "Create a projection using an existing projection template.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/Projections",
+            "params": [
+              {
+                "name": "TemplateId",
+                "value": "",
+                "type": "query",
+                "description": "Template ID"
+              },
+              {
+                "name": "Name",
+                "value": "",
+                "type": "query",
+                "description": "Projection Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a projection using an existing projection template."
+        },
+        {
+          "info": {
+            "name": "Get Projection Details by Id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/Projections/:projectionId",
+            "params": [
+              {
+                "name": "projectionId",
+                "value": "",
+                "type": "path",
+                "description": "Projection ID"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. The list must be in CSV format.\nExample: field1,field2,field3"
+              }
+            ]
+          },
+          "docs": "Get Projection Details by Id."
+        },
+        {
+          "info": {
+            "name": "Update projection properties.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v1/Projections/:projectionId",
+            "params": [
+              {
+                "name": "projectionId",
+                "value": "",
+                "type": "path",
+                "description": "Projection ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validating model point files is limited to 100K rows with 20 columns.<br/><b>For larger model point files set ValidateModelPointFiles to false.</b>"
+        },
+        {
+          "info": {
+            "name": "Start a projection run.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/Projections/:projectionId/Run",
+            "params": [
+              {
+                "name": "projectionId",
+                "value": "",
+                "type": "path",
+                "description": "Projection ID"
+              }
+            ]
+          },
+          "docs": "Start a projection run."
+        },
+        {
+          "info": {
+            "name": "Add a new product to a portfolio on a projection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/Projections/Portfolios/:portfolioId/Products",
+            "params": [
+              {
+                "name": "portfolioId",
+                "value": "",
+                "type": "path",
+                "description": "Portfolio ID on the projection"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a new product to a portfolio on a projection."
+        },
+        {
+          "info": {
+            "name": "Copies a projection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/Projections/:projectionId/Copy",
+            "params": [
+              {
+                "name": "projectionId",
+                "value": "",
+                "type": "path",
+                "description": "Projection ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "SetTablesToLatestVersion will default to True if omitted.<br/>ProjectionName will default to the copied projection's name if omitted."
+        },
+        {
+          "info": {
+            "name": "Remove a product from a projection's portfolio.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/Projections/Portfolios/Products/:productId",
+            "params": [
+              {
+                "name": "productId",
+                "value": "",
+                "type": "path",
+                "description": "Product ID"
+              }
+            ]
+          },
+          "docs": "Remove a product from a projection's portfolio."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

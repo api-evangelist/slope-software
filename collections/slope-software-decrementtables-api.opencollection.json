@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Slope Arrays DecrementTables API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DecrementTables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a decrement table.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/v1/DecrementTables/:DecrementTableId",
+            "params": [
+              {
+                "name": "DecrementTableId",
+                "value": "",
+                "type": "path",
+                "description": "Decrement Table Id"
+              },
+              {
+                "name": "Fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional parameter to filter the top-level fields that are returned. \nThe list must be in CSV format. Example: field1,field2,field3"
+              }
+            ]
+          },
+          "docs": "Get a decrement table."
+        },
+        {
+          "info": {
+            "name": "Delete a decrement table.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/DecrementTables/:DecrementTableId",
+            "params": [
+              {
+                "name": "DecrementTableId",
+                "value": "",
+                "type": "path",
+                "description": "Decrement Table Id"
+              }
+            ]
+          },
+          "docs": "Delete a decrement table."
+        },
+        {
+          "info": {
+            "name": "Create a decrement table using an existing file.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/DecrementTables",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a decrement table using an existing file."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
