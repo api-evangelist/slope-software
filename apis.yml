@@ -36,6 +36,19 @@ tags:
 - Insurance
 - Actuarial Modeling
 - Valuation
+- Financial-Services
+- Life Insurance
+- Annuities
+- Pension
+- Risk Management
+- Cloud
+- Reporting
+tags_raw:
+- Company
+- Actuarial
+- Insurance
+- Actuarial Modeling
+- Valuation
 - Financial Services
 - Life Insurance
 - Annuities
@@ -87,6 +100,8 @@ apis:
   humanURL: https://api.slopesoftware.com/
   baseURL: https://api.slopesoftware.com
   tags:
+  - Data Tables
+  tags_raw:
   - DataTables
   properties:
   - type: OpenAPI
@@ -123,6 +138,8 @@ apis:
   humanURL: https://api.slopesoftware.com/
   baseURL: https://api.slopesoftware.com
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
@@ -195,6 +212,8 @@ apis:
   humanURL: https://api.slopesoftware.com/
   baseURL: https://api.slopesoftware.com
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -285,6 +304,8 @@ apis:
   humanURL: https://api.slopesoftware.com/
   baseURL: https://api.slopesoftware.com
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
