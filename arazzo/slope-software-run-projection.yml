@@ -3,6 +3,17 @@ info:
   title: Run a SLOPE projection from a template
   version: 1.0.0
   summary: Find a model, create a projection from a template, run it, and poll for completion.
+  x-realizes-capability-ids:
+  - BC-2180
+  x-capability-derivation:
+    method: 'deterministic join: sourceDescriptions -> per-tag OpenAPI -> tag/capability edge. No classification at this step.'
+    min_confidence: 0.7
+    sources:
+    - capability_id: BC-2180
+      capability_name: Actuarial Management
+      spec: slope-software-projections-api-openapi.yml
+      confidence: 0.8
+    model: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities, CC BY 4.0
 sourceDescriptions:
 - name: modelsApi
   url: ../openapi/slope-software-models-api-openapi.yml
