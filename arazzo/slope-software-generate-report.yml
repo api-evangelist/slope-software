@@ -4,8 +4,11 @@ info:
   version: 1.0.0
   summary: Kick off a workbook report, poll for completion, and fetch a download URL.
 sourceDescriptions:
-- name: slopeApi
-  url: ../openapi/slope-software-openapi-original.json
+- name: filesApi
+  url: ../openapi/slope-software-files-api-openapi.yml
+  type: openapi
+- name: reportsApi
+  url: ../openapi/slope-software-reports-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: generate-workbook-report

@@ -4,8 +4,11 @@ info:
   version: 1.0.0
   summary: Find a model, create a projection from a template, run it, and poll for completion.
 sourceDescriptions:
-- name: slopeApi
-  url: ../openapi/slope-software-openapi-original.json
+- name: modelsApi
+  url: ../openapi/slope-software-models-api-openapi.yml
+  type: openapi
+- name: projectionsApi
+  url: ../openapi/slope-software-projections-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: run-projection-from-template
