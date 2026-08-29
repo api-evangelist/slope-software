@@ -1,0 +1,68 @@
+slug: slope-software
+provider: Slope Software
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Insurance
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Projections
+  spec_file: slope-software-projections-api-openapi.yml
+  capability_id: BC-2180
+  capability_id_l1: BC-2180
+  capability_name: Actuarial Management
+  confidence: 0.8
+  evidence: '"RunProjectionById  Start a projection run."; "AddProductToPortfolio  Add a new product to
+    a portfolio on a projection."'
+  reason: Executing actuarial projection runs over product portfolios is the core actuarial modelling
+    capability (valuation, pricing, ALM). Which actuarial sub-use applies is not determined by the API,
+    so L1 only.
+- tag: Models
+  spec_file: slope-software-models-api-openapi.yml
+  capability_id: BC-2180
+  capability_id_l1: BC-2180
+  capability_name: Actuarial Management
+  confidence: 0.75
+  evidence: '"ListModels  Get a paginated list of models by type (Library, Workspace, or Production).";
+    GetDecrementTablesByModelId, GetInvestmentStrategiesByModelId'
+  reason: These are actuarial projection models composed of decrement tables, scenario tables, improvement
+    scales and products — the core of the actuarial modelling capability. Spans pricing, reserving and
+    capital uses, so L1 only.
+- tag: DecrementTables
+  spec_file: slope-software-decrementtables-api-openapi.yml
+  capability_id: BC-2180.40
+  capability_id_l1: BC-2180
+  capability_name: Experience Studies & Assumption Management
+  confidence: 0.7
+  evidence: 'schemas: MortalityTableType, SelectPeriodFrequencyType; "CreateDecrementTable  Create a decrement
+    table using an existing file."'
+  reason: Decrement tables with mortality table typing are actuarial decrement (mortality/lapse) assumptions,
+    matching experience studies and assumption management. Some chance they serve reserving/pricing more
+    broadly, hence 0.7.
+- tag: ImprovementScales
+  spec_file: slope-software-improvementscales-api-openapi.yml
+  capability_id: BC-2180.40
+  capability_id_l1: BC-2180
+  capability_name: Experience Studies & Assumption Management
+  confidence: 0.7
+  evidence: '"CreateImprovementScale  Create an improvement scale using an existing file."; schema ImprovementScaleType'
+  reason: Mortality improvement scales are actuarial assumptions used in mortality/longevity projections,
+    fitting assumption management within actuarial modelling.
+- tag: ScenarioTables
+  spec_file: slope-software-scenariotables-api-openapi.yml
+  capability_id: BC-2180
+  capability_id_l1: BC-2180
+  capability_name: Actuarial Management
+  confidence: 0.7
+  evidence: '"GenerateScenarioTableFromGenerator  Generate a scenario table from a generator."; schemas
+    NaicGeneratorParametersRequestV1, YieldCurveRateType'
+  reason: Economic scenario generation (NAIC generator, yield curves) is an actuarial modelling input
+    for stochastic valuation and capital work; sub-capability ambiguous between reserving and capital
+    modelling.
