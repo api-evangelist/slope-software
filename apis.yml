@@ -112,7 +112,7 @@ apis:
   humanURL: https://api.slopesoftware.com/
   baseURL: https://api.slopesoftware.com
   tags:
-  - Data Tables
+  - DataTables
   tags_raw:
   - DataTables
   properties:
