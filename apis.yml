@@ -107,26 +107,6 @@ apis:
     url: conventions/slope-software-conventions.yml
   - type: DataModel
     url: data-model/slope-software-data-model.yml
-- aid: slope-software:slope-software-datatables-api
-  name: Slope Software DataTables API
-  description: The DataTables API from Slope Software — 7 operation(s) for datatables.
-  humanURL: https://api.slopesoftware.com/
-  baseURL: https://api.slopesoftware.com
-  tags:
-  - Data Tables
-  tags_raw:
-  - DataTables
-  properties:
-  - type: OpenAPI
-    url: openapi/slope-software-datatables-api-openapi.yml
-  - type: Authentication
-    url: authentication/slope-software-authentication.yml
-  - type: ErrorCatalog
-    url: errors/slope-software-problem-types.yml
-  - type: Conventions
-    url: conventions/slope-software-conventions.yml
-  - type: DataModel
-    url: data-model/slope-software-data-model.yml
 - aid: slope-software:slope-software-decrementtables-api
   name: Slope Software DecrementTables API
   description: The DecrementTables API from Slope Software — 2 operation(s) for decrementtables.
@@ -323,6 +303,24 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/slope-software-users-api-openapi.yml
+  - type: Authentication
+    url: authentication/slope-software-authentication.yml
+  - type: ErrorCatalog
+    url: errors/slope-software-problem-types.yml
+  - type: Conventions
+    url: conventions/slope-software-conventions.yml
+  - type: DataModel
+    url: data-model/slope-software-data-model.yml
+- aid: slope-software:slope-software-data-tables-api
+  name: Slope Software Data Tables API
+  description: The Data Tables API from Slope Software — 7 operation(s) for data tables.
+  humanURL: https://api.slopesoftware.com/
+  baseURL: https://api.slopesoftware.com
+  tags:
+  - Data Tables
+  properties:
+  - type: OpenAPI
+    url: openapi/slope-software-data-tables-api-openapi.yml
   - type: Authentication
     url: authentication/slope-software-authentication.yml
   - type: ErrorCatalog
