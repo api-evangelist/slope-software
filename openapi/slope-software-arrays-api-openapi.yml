@@ -1,4 +1,4 @@
-openapi: 3.0.4
+openapi: 3.2.0
 info:
   title: Slope Arrays API
   version: '1.0'
@@ -9,8 +9,29 @@ paths:
     get:
       tags:
       - Arrays
-      summary: Get detailed information about a specific array including all values and type-specific properties.
-      description: "This endpoint returns array details with properties varying based on the array type:\n            \n- **Static Arrays**: Returns a list of string values in order\n- **Product Output Grouping Arrays**: Returns the product output grouping ID\n- **Calculated Range Arrays**: Returns start/end/step value configurations (variable, constant, or time index)\n- **Data Table Arrays**: Returns the data table variable name and calculation level\n- **Multi-Dimensional Arrays**: Returns the IDs of both dimension arrays\n            \nThis endpoint can be used with:\n- Production models (using a Workspace token ONLY)\n- Workspace models (using a Workspace or Personal token)\n            \nThe user must have appropriate permissions to access the model containing the array."
+      summary: Get detailed information about a specific array including all values and…
+      description: 'This endpoint returns array details with properties varying based on the array type:
+
+
+        - **Static Arrays**: Returns a list of string values in order
+
+        - **Product Output Grouping Arrays**: Returns the product output grouping ID
+
+        - **Calculated Range Arrays**: Returns start/end/step value configurations (variable, constant, or time index)
+
+        - **Data Table Arrays**: Returns the data table variable name and calculation level
+
+        - **Multi-Dimensional Arrays**: Returns the IDs of both dimension arrays
+
+
+        This endpoint can be used with:
+
+        - Production models (using a Workspace token ONLY)
+
+        - Workspace models (using a Workspace or Personal token)
+
+
+        The user must have appropriate permissions to access the model containing the array.'
       operationId: GetArrayDetails
       parameters:
       - name: arrayId
@@ -46,8 +67,11 @@ paths:
     put:
       tags:
       - Arrays
-      summary: Update the values in a static array.
-      description: "This endpoint can be used to replace all existing values in a static array.\n            \nAll values must be unique and non-empty. Each value can be up to 200 characters."
+      summary: Update the values in a static array
+      description: 'This endpoint can be used to replace all existing values in a static array.
+
+
+        All values must be unique and non-empty. Each value can be up to 200 characters.'
       operationId: UpdateStaticArrayValues
       parameters:
       - name: ArrayId
@@ -114,6 +138,66 @@ paths:
       - API Token: []
 components:
   schemas:
+    UpdateStaticArrayValuesResponseV1:
+      type: object
+      properties:
+        arrayId:
+          type: integer
+          description: The ID of the updated array
+          format: int32
+        values:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: The updated list of array values in order
+      additionalProperties: false
+    CalculationType:
+      enum:
+      - Product
+      - Portfolio
+      - Company
+      type: string
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
+    RangeArrayVariableType:
+      enum:
+      - Variable
+      - Constant
+      - TimeIndex
+      type: string
+    ArrayType:
+      enum:
+      - Static
+      - ProductOutputGrouping
+      - Range
+      - DataTable
+      - MultiDimensional
+      type: string
     ArrayValueItemV1:
       required:
       - value
@@ -125,12 +209,6 @@ components:
           type: string
           description: The value for the array item. Maximum 200 characters.
       additionalProperties: false
-    RangeArrayVariableType:
-      enum:
-      - Variable
-      - Constant
-      - TimeIndex
-      type: string
     GetArrayDetailsResponse:
       type: object
       properties:
@@ -138,21 +216,24 @@ components:
           type: integer
           format: int32
         name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         arraySource:
           $ref: '#/components/schemas/ArrayType'
         level:
           $ref: '#/components/schemas/CalculationType'
         values:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             type: string
-          nullable: true
         productOutputGroupingId:
-          type: integer
+          type:
+          - integer
+          - 'null'
           format: int32
-          nullable: true
         startValue:
           $ref: '#/components/schemas/RangeArrayValue'
         endValue:
@@ -160,37 +241,20 @@ components:
         stepValue:
           $ref: '#/components/schemas/RangeArrayValue'
         variableName:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         dimension1ArrayId:
-          type: integer
+          type:
+          - integer
+          - 'null'
           format: int32
-          nullable: true
         dimension2ArrayId:
-          type: integer
+          type:
+          - integer
+          - 'null'
           format: int32
-          nullable: true
       additionalProperties: false
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type: string
-          nullable: true
-        title:
-          type: string
-          nullable: true
-        status:
-          type: integer
-          format: int32
-          nullable: true
-        detail:
-          type: string
-          nullable: true
-        instance:
-          type: string
-          nullable: true
-      additionalProperties: {}
     UpdateStaticArrayValuesRequestV1:
       required:
       - values
@@ -205,49 +269,23 @@ components:
 
             This will completely replace all existing values.'
       additionalProperties: false
-    CalculationType:
-      enum:
-      - Product
-      - Portfolio
-      - Company
-      type: string
     RangeArrayValue:
       type: object
       properties:
         type:
           $ref: '#/components/schemas/RangeArrayVariableType'
         variableName:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         value:
-          type: number
+          type:
+          - number
+          - 'null'
           format: double
-          nullable: true
-      additionalProperties: false
-    ArrayType:
-      enum:
-      - Static
-      - ProductOutputGrouping
-      - Range
-      - DataTable
-      - MultiDimensional
-      type: string
-    UpdateStaticArrayValuesResponseV1:
-      type: object
-      properties:
-        arrayId:
-          type: integer
-          description: The ID of the updated array
-          format: int32
-        values:
-          type: array
-          items:
-            type: string
-          description: The updated list of array values in order
-          nullable: true
       additionalProperties: false
   securitySchemes:
-    API Token:
+    API_Token:
       type: http
       description: The API token received from the Authorize endpoint goes here.
       scheme: Bearer

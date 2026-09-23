@@ -1,20 +1,7 @@
 {
   "provider": "slope-software",
   "sources": [
-    "slope-software-arrays-api-openapi.yml",
-    "slope-software-authorize-api-openapi.yml",
-    "slope-software-datatables-api-openapi.yml",
-    "slope-software-decrementtables-api-openapi.yml",
-    "slope-software-files-api-openapi.yml",
-    "slope-software-improvementscales-api-openapi.yml",
-    "slope-software-modelpointfields-api-openapi.yml",
-    "slope-software-models-api-openapi.yml",
-    "slope-software-products-api-openapi.yml",
-    "slope-software-projections-api-openapi.yml",
-    "slope-software-reports-api-openapi.yml",
-    "slope-software-scenariotables-api-openapi.yml",
-    "slope-software-tablestructures-api-openapi.yml",
-    "slope-software-users-api-openapi.yml"
+    "_original/slope-software-openapi-original.json"
   ],
   "outputs": [
     "slope-software-arrays-api-openapi.yml",
@@ -32,9 +19,45 @@
     "slope-software-tablestructures-api-openapi.yml",
     "slope-software-users-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "slope-software-openapi-original.json: upgraded openapi 3.0.4 -> OpenAPI 3.2.0; renamed 1 component key(s) illegal in 3.x (e.g. API Token)",
+    "slope-software-openapi-original.json: declared missing tag: Arrays",
+    "slope-software-openapi-original.json: declared missing tag: Authorize",
+    "slope-software-openapi-original.json: declared missing tag: DataTables",
+    "slope-software-openapi-original.json: declared missing tag: DecrementTables",
+    "slope-software-openapi-original.json: declared missing tag: Files",
+    "slope-software-openapi-original.json: declared missing tag: ImprovementScales",
+    "slope-software-openapi-original.json: declared missing tag: ModelPointFields",
+    "slope-software-openapi-original.json: declared missing tag: Models",
+    "slope-software-openapi-original.json: declared missing tag: Products",
+    "slope-software-openapi-original.json: declared missing tag: Projections",
+    "slope-software-openapi-original.json: declared missing tag: Reports",
+    "slope-software-openapi-original.json: declared missing tag: ScenarioTables",
+    "slope-software-openapi-original.json: declared missing tag: TableStructures",
+    "slope-software-openapi-original.json: declared missing tag: Users",
+    "superseded outputs removed: slope-software-data-tables-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 14 total)"
+  ],
+  "skipped": [
+    "slope-software-arrays-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "slope-software-authorize-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "slope-software-data-tables-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "slope-software-decrementtables-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "slope-software-files-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "slope-software-improvementscales-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "slope-software-modelpointfields-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "slope-software-models-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "slope-software-products-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "slope-software-projections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "slope-software-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "slope-software-scenariotables-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "slope-software-tablestructures-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "slope-software-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

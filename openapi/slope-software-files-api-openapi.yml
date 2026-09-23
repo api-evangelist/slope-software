@@ -1,6 +1,6 @@
-openapi: 3.0.4
+openapi: 3.2.0
 info:
-  title: Slope Arrays Files API
+  title: Slope Files API
   version: '1.0'
 tags:
 - name: Files
@@ -9,7 +9,7 @@ paths:
     get:
       tags:
       - Files
-      summary: Get all currently available latest-version files.
+      summary: Get all currently available latest-version files
       operationId: GetFiles
       parameters:
       - name: Folders
@@ -59,7 +59,7 @@ paths:
     post:
       tags:
       - Files
-      summary: Get a temporary URL to download a file.
+      summary: Get a temporary URL to download a file
       operationId: GetDownloadUrl
       requestBody:
         content:
@@ -97,8 +97,21 @@ paths:
     post:
       tags:
       - Files
-      summary: Get a temporary URL to upload a file to a certain file path via a PUT request with the file data.
-      description: Passing in the ContentType and ContentMD5 values is optional. If provided, they will be included in the signature, but are not stored at this point. <br/><br/>Exclude the <i>'Content-Type'</i> header from the PUT request if this is not set. <br/>If included, the <i>'Content-Type'</i> header in the PUT request must match the provided ContentType value. <br/><br/>Exclude the <i>'ContentMD5'</i> header from the PUT request if this is not set. <br/>If included, the <i>'Content-MD5'</i> header in the PUT request must match the provided ContentMD5 value. <br/><br/><b>NOTE:</b> There is a 5GB limit on the size of the file.
+      summary: Get a temporary URL to upload a file to a certain file path via a PUT request…
+      description: 'Passing in the ContentType and ContentMD5 values is optional. If provided, they will be included in the signature, but are not stored at this point.
+
+
+        Exclude the ''Content-Type'' header from the PUT request if this is not set.
+
+        If included, the ''Content-Type'' header in the PUT request must match the provided ContentType value.
+
+
+        Exclude the ''ContentMD5'' header from the PUT request if this is not set.
+
+        If included, the ''Content-MD5'' header in the PUT request must match the provided ContentMD5 value.
+
+
+        NOTE: There is a 5GB limit on the size of the file.'
       operationId: GetUploadUrl
       requestBody:
         content:
@@ -136,7 +149,7 @@ paths:
     post:
       tags:
       - Files
-      summary: Save the file that was uploaded via the upload url returned by the GetUploadUrl endpoint.
+      summary: Save the file that was uploaded via the upload url returned by the GetUploadUrl…
       operationId: SaveUpload
       requestBody:
         content:
@@ -172,39 +185,138 @@ paths:
       - API Token: []
 components:
   schemas:
+    GetUploadUrlFilePathDtoV1:
+      type: object
+      properties:
+        filePath:
+          type:
+          - string
+          - 'null'
+          description: File Path
+        contentType:
+          type:
+          - string
+          - 'null'
+          description: Optional File Content Type
+        contentMD5:
+          type:
+          - string
+          - 'null'
+          description: Optional MD5 Hash for File Content
+      additionalProperties: false
+    PaginatedResponseGetFilesResponseItemV1:
+      type: object
+      properties:
+        items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GetFilesResponseItemV1'
+          description: Items within the page
+        offset:
+          type:
+          - integer
+          - 'null'
+          description: Offset to retrieve the next page. Null when there are no further records.
+          format: int32
+          readOnly: true
+      additionalProperties: false
+      description: Paginated response that will only return an offset if there are remaining pages
     SaveUploadFilePathDtoV1:
       type: object
       properties:
         filePath:
-          type: string
+          type:
+          - string
+          - 'null'
           description: File Path
-          nullable: true
         contentMD5:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Optional MD5 Hash for File Content
-          nullable: true
         metadata:
-          type: object
+          type:
+          - object
+          - 'null'
           additionalProperties:
-            type: string
-            nullable: true
+            type:
+            - string
+            - 'null'
           description: Metadata to include with the file when saved
-          nullable: true
       additionalProperties: false
     GetDownloadUrlResponseV1:
       type: object
       properties:
         downloadUrl:
-          type: string
+          type:
+          - string
+          - 'null'
           description: URL to use to download file content
-          nullable: true
         metadata:
-          type: object
+          type:
+          - object
+          - 'null'
           additionalProperties:
-            type: string
-            nullable: true
+            type:
+            - string
+            - 'null'
           description: Metadata for the download file
-          nullable: true
+      additionalProperties: false
+    GetUploadUrlResponseV1:
+      type: object
+      properties:
+        uploadUrl:
+          type:
+          - string
+          - 'null'
+          description: URL to use to upload file content
+      additionalProperties: false
+    FilePathAndVersionDtoV1:
+      type: object
+      properties:
+        filePath:
+          type:
+          - string
+          - 'null'
+          description: File Path
+        version:
+          type:
+          - integer
+          - 'null'
+          description: File Version
+          format: int32
+      additionalProperties: false
+    GetFilesResponseItemV1:
+      type: object
+      properties:
+        fileId:
+          type: integer
+          format: int32
+        fileKey:
+          type:
+          - string
+          - 'null'
+        folder:
+          type:
+          - string
+          - 'null'
+        notes:
+          type:
+          - string
+          - 'null'
+        sizeInBytes:
+          type: integer
+          format: int64
+        uploadedOnUtc:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        version:
+          type: integer
+          format: int32
       additionalProperties: false
     SaveUploadResponseV1:
       type: object
@@ -214,88 +326,8 @@ components:
           description: File ID of the saved file at the provided path
           format: int32
       additionalProperties: false
-    GetUploadUrlResponseV1:
-      type: object
-      properties:
-        uploadUrl:
-          type: string
-          description: URL to use to upload file content
-          nullable: true
-      additionalProperties: false
-    GetUploadUrlFilePathDtoV1:
-      type: object
-      properties:
-        filePath:
-          type: string
-          description: File Path
-          nullable: true
-        contentType:
-          type: string
-          description: Optional File Content Type
-          nullable: true
-        contentMD5:
-          type: string
-          description: Optional MD5 Hash for File Content
-          nullable: true
-      additionalProperties: false
-    PaginatedResponseGetFilesResponseItemV1:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/GetFilesResponseItemV1'
-          description: Items within the page
-          nullable: true
-        offset:
-          type: integer
-          description: Offset to retrieve the next page. Null when there are no further records.
-          format: int32
-          nullable: true
-          readOnly: true
-      additionalProperties: false
-      description: Paginated response that will only return an offset if there are remaining pages
-    GetFilesResponseItemV1:
-      type: object
-      properties:
-        fileId:
-          type: integer
-          format: int32
-        fileKey:
-          type: string
-          nullable: true
-        folder:
-          type: string
-          nullable: true
-        notes:
-          type: string
-          nullable: true
-        sizeInBytes:
-          type: integer
-          format: int64
-        uploadedOnUtc:
-          type: string
-          format: date-time
-          nullable: true
-        version:
-          type: integer
-          format: int32
-      additionalProperties: false
-    FilePathAndVersionDtoV1:
-      type: object
-      properties:
-        filePath:
-          type: string
-          description: File Path
-          nullable: true
-        version:
-          type: integer
-          description: File Version
-          format: int32
-          nullable: true
-      additionalProperties: false
   securitySchemes:
-    API Token:
+    API_Token:
       type: http
       description: The API token received from the Authorize endpoint goes here.
       scheme: Bearer

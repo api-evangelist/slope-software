@@ -1,6 +1,6 @@
-openapi: 3.0.4
+openapi: 3.2.0
 info:
-  title: Slope Arrays Reports API
+  title: Slope Reports API
   version: '1.0'
 tags:
 - name: Reports
@@ -9,7 +9,7 @@ paths:
     post:
       tags:
       - Reports
-      summary: Start a workbook report generation. Use the returned URL to check the status of the report generation.
+      summary: Start a workbook report generation.
       operationId: GenerateWorkbookReport
       parameters:
       - name: workbookId
@@ -55,7 +55,7 @@ paths:
     get:
       tags:
       - Reports
-      summary: Get workbook report generation status. If successful, then a URL will be available to download the report.
+      summary: Get workbook report generation status.
       operationId: GetWorkbookReportGenerationStatus
       parameters:
       - name: generationId
@@ -88,26 +88,42 @@ paths:
       - API Token: []
 components:
   schemas:
-    WorkbookReportFormatType:
-      enum:
-      - Csv
-      - Excel
-      - Png
-      type: string
+    GenerateWorkbookReportResponseV1:
+      type: object
+      properties:
+        generationId:
+          type:
+          - string
+          - 'null'
+          description: Generation ID
+        reportStatusUrl:
+          type:
+          - string
+          - 'null'
+          description: The status URL to use with the generation ID.
+      additionalProperties: false
     GetWorkbookReportGenerationStatusResponseV1:
       type: object
       properties:
         status:
           $ref: '#/components/schemas/ReportGenerationStatus'
         downloadUrl:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Download URL
-          nullable: true
         message:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Message
-          nullable: true
       additionalProperties: false
+    WorkbookReportFormatType:
+      enum:
+      - Csv
+      - Excel
+      - Png
+      type: string
     ReportGenerationStatus:
       enum:
       - Running
@@ -118,43 +134,36 @@ components:
       type: object
       properties:
         elementId:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Workbook Element ID
-          nullable: true
         reportFormat:
           $ref: '#/components/schemas/WorkbookReportFormatType'
         rowLimit:
-          type: integer
+          type:
+          - integer
+          - 'null'
           description: Row Limit
           format: int32
-          nullable: true
         offset:
-          type: integer
+          type:
+          - integer
+          - 'null'
           description: Offset
           format: int32
-          nullable: true
         parameters:
-          type: object
+          type:
+          - object
+          - 'null'
           additionalProperties:
-            type: string
-            nullable: true
+            type:
+            - string
+            - 'null'
           description: Parameters
-          nullable: true
-      additionalProperties: false
-    GenerateWorkbookReportResponseV1:
-      type: object
-      properties:
-        generationId:
-          type: string
-          description: Generation ID
-          nullable: true
-        reportStatusUrl:
-          type: string
-          description: The status URL to use with the generation ID.
-          nullable: true
       additionalProperties: false
   securitySchemes:
-    API Token:
+    API_Token:
       type: http
       description: The API token received from the Authorize endpoint goes here.
       scheme: Bearer

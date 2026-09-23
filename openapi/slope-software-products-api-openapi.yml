@@ -1,6 +1,6 @@
-openapi: 3.0.4
+openapi: 3.2.0
 info:
-  title: Slope Arrays Products API
+  title: Slope Products API
   version: '1.0'
 tags:
 - name: Products
@@ -9,7 +9,7 @@ paths:
     get:
       tags:
       - Products
-      summary: Get all model point fields for a product.
+      summary: Get all model point fields for a product
       description: 'This endpoint will:
 
         - Validate the user has permission to view the model
@@ -96,22 +96,58 @@ components:
       type: object
       properties:
         type:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         title:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
+    GetModelPointFieldsResponseItemV1:
+      type: object
+      properties:
+        fieldId:
           type: integer
           format: int32
-          nullable: true
-        detail:
-          type: string
-          nullable: true
-        instance:
-          type: string
-          nullable: true
-      additionalProperties: {}
+        fieldName:
+          type:
+          - string
+          - 'null'
+        dataType:
+          $ref: '#/components/schemas/FieldDataType'
+        isRequired:
+          type: boolean
+        scalesOnPurchaseOrSale:
+          type: boolean
+        defaultValueSource:
+          $ref: '#/components/schemas/ModelPointFieldDefaultMethodType'
+        defaultValue:
+          type:
+          - string
+          - 'null'
+        aliases:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        isSystemField:
+          type: boolean
+      additionalProperties: false
     FieldDataType:
       enum:
       - Integer
@@ -126,53 +162,27 @@ components:
       - ScenarioTable
       - YieldCurve
       type: string
-    GetModelPointFieldsResponseItemV1:
-      type: object
-      properties:
-        fieldId:
-          type: integer
-          format: int32
-        fieldName:
-          type: string
-          nullable: true
-        dataType:
-          $ref: '#/components/schemas/FieldDataType'
-        isRequired:
-          type: boolean
-        scalesOnPurchaseOrSale:
-          type: boolean
-        defaultValueSource:
-          $ref: '#/components/schemas/ModelPointFieldDefaultMethodType'
-        defaultValue:
-          type: string
-          nullable: true
-        aliases:
-          type: array
-          items:
-            type: string
-          nullable: true
-        isSystemField:
-          type: boolean
-      additionalProperties: false
     PaginatedResponseGetModelPointFieldsResponseItemV1:
       type: object
       properties:
         items:
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/GetModelPointFieldsResponseItemV1'
           description: Items within the page
-          nullable: true
         offset:
-          type: integer
+          type:
+          - integer
+          - 'null'
           description: Offset to retrieve the next page. Null when there are no further records.
           format: int32
-          nullable: true
           readOnly: true
       additionalProperties: false
       description: Paginated response that will only return an offset if there are remaining pages
   securitySchemes:
-    API Token:
+    API_Token:
       type: http
       description: The API token received from the Authorize endpoint goes here.
       scheme: Bearer

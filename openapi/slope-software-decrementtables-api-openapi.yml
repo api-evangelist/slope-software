@@ -1,6 +1,6 @@
-openapi: 3.0.4
+openapi: 3.2.0
 info:
-  title: Slope Arrays DecrementTables API
+  title: Slope Decrement Tables API
   version: '1.0'
 tags:
 - name: DecrementTables
@@ -9,7 +9,7 @@ paths:
     get:
       tags:
       - DecrementTables
-      summary: Get a decrement table.
+      summary: Get a decrement table
       operationId: GetDecrementTableById
       parameters:
       - name: DecrementTableId
@@ -49,7 +49,7 @@ paths:
     delete:
       tags:
       - DecrementTables
-      summary: Delete a decrement table.
+      summary: Delete a decrement table
       operationId: DeleteDecrementTableById
       parameters:
       - name: DecrementTableId
@@ -81,7 +81,7 @@ paths:
     post:
       tags:
       - DecrementTables
-      summary: Create a decrement table using an existing file.
+      summary: Create a decrement table using an existing file
       operationId: CreateDecrementTable
       requestBody:
         content:
@@ -119,11 +119,6 @@ paths:
       - API Token: []
 components:
   schemas:
-    SelectPeriodFrequencyType:
-      enum:
-      - Annual
-      - Monthly
-      type: string
     CreateOrUpdateDecrementTableResponseV1:
       type: object
       properties:
@@ -132,9 +127,10 @@ components:
           description: Decrement Table ID
           format: int32
         name:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Decrement Table Name
-          nullable: true
         type:
           $ref: '#/components/schemas/MortalityTableType'
         version:
@@ -142,12 +138,56 @@ components:
           description: Decrement Table Version
           format: int32
       additionalProperties: false
-    MortalityTableType:
-      enum:
-      - Standard
-      - Improving
-      - SelectAndUltimate
-      type: string
+    CreateDecrementTableRequestV1:
+      type: object
+      properties:
+        fileId:
+          type:
+          - integer
+          - 'null'
+          description: File ID
+          format: int32
+        filePath:
+          type:
+          - string
+          - 'null'
+          description: File Path
+        fileVersion:
+          type:
+          - integer
+          - 'null'
+          description: File Version
+          format: int32
+        delimiter:
+          type:
+          - string
+          - 'null'
+          description: Delimiter
+        excelSheetName:
+          type:
+          - string
+          - 'null'
+          description: Excel Sheet Name
+        modelId:
+          type: integer
+          description: Model ID
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+          description: Decrement Table Name
+        decrementTableType:
+          $ref: '#/components/schemas/MortalityTableType'
+        improvementBaseYear:
+          type:
+          - integer
+          - 'null'
+          description: Improvement Base Year
+          format: int32
+        selectPeriodFrequency:
+          $ref: '#/components/schemas/SelectPeriodFrequencyType'
+      additionalProperties: false
     GetDecrementTableResponseV1:
       type: object
       properties:
@@ -160,27 +200,31 @@ components:
           description: Model ID
           format: int32
         name:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Decrement Table Name
-          nullable: true
         description:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Decrement Table Description
-          nullable: true
         decrementTableType:
           $ref: '#/components/schemas/MortalityTableType'
         improvementBaseYear:
-          type: integer
+          type:
+          - integer
+          - 'null'
           description: Improvement Base Year
           format: int32
-          nullable: true
         selectPeriodFrequency:
           $ref: '#/components/schemas/SelectPeriodFrequencyType'
         selectPeriod:
-          type: integer
+          type:
+          - integer
+          - 'null'
           description: Select Period
           format: int32
-          nullable: true
         version:
           type: integer
           description: Decrement Table Version
@@ -189,51 +233,19 @@ components:
           type: boolean
           description: Is Latest Version?
       additionalProperties: false
-    CreateDecrementTableRequestV1:
-      type: object
-      properties:
-        fileId:
-          type: integer
-          description: File ID
-          format: int32
-          nullable: true
-        filePath:
-          type: string
-          description: File Path
-          nullable: true
-        fileVersion:
-          type: integer
-          description: File Version
-          format: int32
-          nullable: true
-        delimiter:
-          type: string
-          description: Delimiter
-          nullable: true
-        excelSheetName:
-          type: string
-          description: Excel Sheet Name
-          nullable: true
-        modelId:
-          type: integer
-          description: Model ID
-          format: int32
-        name:
-          type: string
-          description: Decrement Table Name
-          nullable: true
-        decrementTableType:
-          $ref: '#/components/schemas/MortalityTableType'
-        improvementBaseYear:
-          type: integer
-          description: Improvement Base Year
-          format: int32
-          nullable: true
-        selectPeriodFrequency:
-          $ref: '#/components/schemas/SelectPeriodFrequencyType'
-      additionalProperties: false
+    SelectPeriodFrequencyType:
+      enum:
+      - Annual
+      - Monthly
+      type: string
+    MortalityTableType:
+      enum:
+      - Standard
+      - Improving
+      - SelectAndUltimate
+      type: string
   securitySchemes:
-    API Token:
+    API_Token:
       type: http
       description: The API token received from the Authorize endpoint goes here.
       scheme: Bearer

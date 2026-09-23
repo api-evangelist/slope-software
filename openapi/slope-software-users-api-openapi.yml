@@ -1,6 +1,6 @@
-openapi: 3.0.4
+openapi: 3.2.0
 info:
-  title: Slope Arrays Users API
+  title: Slope Users API
   version: '1.0'
 tags:
 - name: Users
@@ -9,7 +9,7 @@ paths:
     get:
       tags:
       - Users
-      summary: Get a paginated list of users.
+      summary: Get a paginated list of users
       description: 'Possible status values: Locked (account has been locked), Activated (user has logged in at least once), Invited (invited but has not yet verified their email), Pending login (verified email but has not yet logged in).'
       parameters:
       - name: Limit
@@ -50,35 +50,42 @@ paths:
           description: Unauthorized
       security:
       - API Token: []
+      operationId: getApiV1Users
+      x-operation-id-source: derived
 components:
   schemas:
     GetUsersResponseItemV1:
       type: object
       properties:
         userEmail:
-          type: string
+          type:
+          - string
+          - 'null'
           description: User's Email
-          nullable: true
         userName:
-          type: string
+          type:
+          - string
+          - 'null'
           description: User's Name
-          nullable: true
         roles:
-          type: string
+          type:
+          - string
+          - 'null'
           description: User's Roles
-          nullable: true
         status:
-          type: string
+          type:
+          - string
+          - 'null'
           description: User's Status
-          nullable: true
         lastVisitDate:
-          type: string
+          type:
+          - string
+          - 'null'
           description: User's Last Visit Date
           format: date-time
-          nullable: true
       additionalProperties: false
   securitySchemes:
-    API Token:
+    API_Token:
       type: http
       description: The API token received from the Authorize endpoint goes here.
       scheme: Bearer
