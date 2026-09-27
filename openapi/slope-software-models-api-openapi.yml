@@ -691,6 +691,64 @@ paths:
       - API Token: []
 components:
   schemas:
+    PaginatedResponseGetModelScenarioTablesResponseItemV1:
+      type: object
+      properties:
+        items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GetModelScenarioTablesResponseItemV1'
+          description: Items within the page
+        offset:
+          type:
+          - integer
+          - 'null'
+          description: Offset to retrieve the next page. Null when there are no further records.
+          format: int32
+          readOnly: true
+      additionalProperties: false
+      description: Paginated response that will only return an offset if there are remaining pages
+    ModelTypeFilter:
+      enum:
+      - Library
+      - Workspace
+      - Production
+      type: string
+    GetModelProjectionTemplatesResponseItemV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ListModelsResponseItemV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Model ID
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+          description: Model Name
+        lastModifiedOn:
+          type: string
+          description: Last Modified Date
+          format: date-time
+        folderPath:
+          type:
+          - string
+          - 'null'
+          description: Folder path (if model is in a folder)
+      additionalProperties: false
     PaginatedResponseGetModelArraysResponseItemV1:
       type: object
       properties:
@@ -700,119 +758,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/GetModelArraysResponseItemV1'
-          description: Items within the page
-        offset:
-          type:
-          - integer
-          - 'null'
-          description: Offset to retrieve the next page. Null when there are no further records.
-          format: int32
-          readOnly: true
-      additionalProperties: false
-      description: Paginated response that will only return an offset if there are remaining pages
-    GetModelDataTablesResponseItemV1:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Data Table ID
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-          description: Data Table Name
-        tableStructureId:
-          type:
-          - integer
-          - 'null'
-          description: Data Table Structure ID
-          format: int32
-        tableStructureName:
-          type:
-          - string
-          - 'null'
-          description: Data Table Structure Name
-        version:
-          type: integer
-          description: Data Table Version
-          format: int32
-        isLatestVersion:
-          type: boolean
-          description: Is Latest Version of Data Table?
-      additionalProperties: false
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        detail:
-          type:
-          - string
-          - 'null'
-        instance:
-          type:
-          - string
-          - 'null'
-      additionalProperties: {}
-    PaginatedResponseGetModelInvestmentStrategiesResponseItemV1:
-      type: object
-      properties:
-        items:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/GetModelInvestmentStrategiesResponseItemV1'
-          description: Items within the page
-        offset:
-          type:
-          - integer
-          - 'null'
-          description: Offset to retrieve the next page. Null when there are no further records.
-          format: int32
-          readOnly: true
-      additionalProperties: false
-      description: Paginated response that will only return an offset if there are remaining pages
-    PaginatedResponseGetModelProductsResponseItemV1:
-      type: object
-      properties:
-        items:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/GetModelProductsResponseItemV1'
-          description: Items within the page
-        offset:
-          type:
-          - integer
-          - 'null'
-          description: Offset to retrieve the next page. Null when there are no further records.
-          format: int32
-          readOnly: true
-      additionalProperties: false
-      description: Paginated response that will only return an offset if there are remaining pages
-    PaginatedResponseGetModelVariableRatesResponseItemV1:
-      type: object
-      properties:
-        items:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/GetModelVariableRatesResponseItemV1'
           description: Items within the page
         offset:
           type:
@@ -848,13 +793,47 @@ components:
           type: boolean
           description: Is Latest Version of Investment Strategy?
       additionalProperties: false
-    ModelTypeFilter:
+    GetModelProductsResponseItemV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Product ID
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+          description: Product Name
+        description:
+          type:
+          - string
+          - 'null'
+          description: Product Description
+        type:
+          $ref: '#/components/schemas/ProductType'
+      additionalProperties: false
+    CopyModelResponseV1:
+      type: object
+      properties:
+        copyToken:
+          type:
+          - string
+          - 'null'
+          description: Token used to check the status of the copy operation
+        statusUrl:
+          type:
+          - string
+          - 'null'
+          description: URL to poll for copy operation status
+      additionalProperties: false
+    YieldCurveRateType:
       enum:
-      - Library
-      - Workspace
-      - Production
+      - BondEquivalent
+      - AnnualEffective
+      - SpotRate
       type: string
-    PaginatedResponseGetModelDecrementTablesResponseItemV1:
+    PaginatedResponseGetModelProductsResponseItemV1:
       type: object
       properties:
         items:
@@ -862,7 +841,7 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/GetModelDecrementTablesResponseItemV1'
+            $ref: '#/components/schemas/GetModelProductsResponseItemV1'
           description: Items within the page
         offset:
           type:
@@ -873,63 +852,12 @@ components:
           readOnly: true
       additionalProperties: false
       description: Paginated response that will only return an offset if there are remaining pages
-    PaginatedResponseGetModelDataTablesResponseItemV1:
-      type: object
-      properties:
-        items:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/GetModelDataTablesResponseItemV1'
-          description: Items within the page
-        offset:
-          type:
-          - integer
-          - 'null'
-          description: Offset to retrieve the next page. Null when there are no further records.
-          format: int32
-          readOnly: true
-      additionalProperties: false
-      description: Paginated response that will only return an offset if there are remaining pages
-    PaginatedResponseListModelsResponseItemV1:
-      type: object
-      properties:
-        items:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ListModelsResponseItemV1'
-          description: Items within the page
-        offset:
-          type:
-          - integer
-          - 'null'
-          description: Offset to retrieve the next page. Null when there are no further records.
-          format: int32
-          readOnly: true
-      additionalProperties: false
-      description: Paginated response that will only return an offset if there are remaining pages
-    PaginatedResponseGetModelProjectionTemplatesResponseItemV1:
-      type: object
-      properties:
-        items:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/GetModelProjectionTemplatesResponseItemV1'
-          description: Items within the page
-        offset:
-          type:
-          - integer
-          - 'null'
-          description: Offset to retrieve the next page. Null when there are no further records.
-          format: int32
-          readOnly: true
-      additionalProperties: false
-      description: Paginated response that will only return an offset if there are remaining pages
+    VariableRateType:
+      enum:
+      - MonthlyReturns
+      - AnnualReturns
+      - IndexValues
+      type: string
     GetModelImprovementScalesResponseItemV1:
       type: object
       properties:
@@ -966,42 +894,7 @@ components:
           description: Version
           format: int32
       additionalProperties: false
-    CopyModelRequestV1:
-      required:
-      - folderPath
-      - newModelName
-      type: object
-      properties:
-        newModelName:
-          maxLength: 128
-          minLength: 1
-          type: string
-          description: The name for the new copied model
-        folderPath:
-          minLength: 1
-          type: string
-          description: 'The folder path where the copied model should be placed.
-
-            Use folder names as displayed in the UI (e.g., "/Top Folder/Sub-Folder").
-
-            Use "/" or null for the root folder.'
-          example: string
-      additionalProperties: false
-    CopyModelResponseV1:
-      type: object
-      properties:
-        copyToken:
-          type:
-          - string
-          - 'null'
-          description: Token used to check the status of the copy operation
-        statusUrl:
-          type:
-          - string
-          - 'null'
-          description: URL to poll for copy operation status
-      additionalProperties: false
-    PaginatedResponseGetModelTableStructuresResponseItemV1:
+    PaginatedResponseListModelsResponseItemV1:
       type: object
       properties:
         items:
@@ -1009,7 +902,7 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/GetModelTableStructuresResponseItemV1'
+            $ref: '#/components/schemas/ListModelsResponseItemV1'
           description: Items within the page
         offset:
           type:
@@ -1020,12 +913,223 @@ components:
           readOnly: true
       additionalProperties: false
       description: Paginated response that will only return an offset if there are remaining pages
-    VariableRateType:
+    PaginatedResponseGetModelImprovementScalesResponseItemV1:
+      type: object
+      properties:
+        items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GetModelImprovementScalesResponseItemV1'
+          description: Items within the page
+        offset:
+          type:
+          - integer
+          - 'null'
+          description: Offset to retrieve the next page. Null when there are no further records.
+          format: int32
+          readOnly: true
+      additionalProperties: false
+      description: Paginated response that will only return an offset if there are remaining pages
+    PaginatedResponseGetModelInvestmentStrategiesResponseItemV1:
+      type: object
+      properties:
+        items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GetModelInvestmentStrategiesResponseItemV1'
+          description: Items within the page
+        offset:
+          type:
+          - integer
+          - 'null'
+          description: Offset to retrieve the next page. Null when there are no further records.
+          format: int32
+          readOnly: true
+      additionalProperties: false
+      description: Paginated response that will only return an offset if there are remaining pages
+    ImprovementScaleType:
       enum:
-      - MonthlyReturns
-      - AnnualReturns
-      - IndexValues
+      - Standard
+      - Generational
       type: string
+    GetModelScenarioTablesResponseItemV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Scenario Table ID
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+          description: Scenario Table Name
+        startDate:
+          type: string
+          description: Start Date
+          format: date-time
+        yieldCurveRateType:
+          $ref: '#/components/schemas/YieldCurveRateType'
+        shortTermInterpolationMethod:
+          $ref: '#/components/schemas/ShortTermInterpolationMethod'
+        version:
+          type: integer
+          description: Scenario Table Version
+          format: int32
+        fileReference:
+          $ref: '#/components/schemas/GetModelScenarioTablesFileReferenceV1'
+      additionalProperties: false
+    ShortTermInterpolationMethod:
+      enum:
+      - AnnualEffectiveRate
+      - FromZero
+      type: string
+    PaginatedResponseGetModelProjectionTemplatesResponseItemV1:
+      type: object
+      properties:
+        items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GetModelProjectionTemplatesResponseItemV1'
+          description: Items within the page
+        offset:
+          type:
+          - integer
+          - 'null'
+          description: Offset to retrieve the next page. Null when there are no further records.
+          format: int32
+          readOnly: true
+      additionalProperties: false
+      description: Paginated response that will only return an offset if there are remaining pages
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
+    ProductType:
+      enum:
+      - Asset
+      - Liability
+      type: string
+    GetModelDataTablesResponseItemV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Data Table ID
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+          description: Data Table Name
+        tableStructureId:
+          type:
+          - integer
+          - 'null'
+          description: Data Table Structure ID
+          format: int32
+        tableStructureName:
+          type:
+          - string
+          - 'null'
+          description: Data Table Structure Name
+        version:
+          type: integer
+          description: Data Table Version
+          format: int32
+        isLatestVersion:
+          type: boolean
+          description: Is Latest Version of Data Table?
+      additionalProperties: false
+    PaginatedResponseGetModelVariableRatesResponseItemV1:
+      type: object
+      properties:
+        items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GetModelVariableRatesResponseItemV1'
+          description: Items within the page
+        offset:
+          type:
+          - integer
+          - 'null'
+          description: Offset to retrieve the next page. Null when there are no further records.
+          format: int32
+          readOnly: true
+      additionalProperties: false
+      description: Paginated response that will only return an offset if there are remaining pages
+    ModelCopyStatusResponseV1:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/ModelCopyStatusV1'
+        newModelId:
+          type:
+          - integer
+          - 'null'
+          description: ID of the newly created model (only populated when Status is Completed)
+          format: int32
+        errorMessage:
+          type:
+          - string
+          - 'null'
+          description: Error message if the copy operation failed (only populated when Status is Failed)
+      additionalProperties: false
+    PaginatedResponseGetModelDataTablesResponseItemV1:
+      type: object
+      properties:
+        items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GetModelDataTablesResponseItemV1'
+          description: Items within the page
+        offset:
+          type:
+          - integer
+          - 'null'
+          description: Offset to retrieve the next page. Null when there are no further records.
+          format: int32
+          readOnly: true
+      additionalProperties: false
+      description: Paginated response that will only return an offset if there are remaining pages
+    ModelCopyStatusV1:
+      enum:
+      - Running
+      - Completed
+      - Failed
+      type: string
+      description: Status of a model copy operation
     GetModelDecrementTablesResponseItemV1:
       type: object
       properties:
@@ -1070,111 +1174,6 @@ components:
           type: boolean
           description: Is Latest Version of Decrement Table?
       additionalProperties: false
-    ModelCopyStatusResponseV1:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/ModelCopyStatusV1'
-        newModelId:
-          type:
-          - integer
-          - 'null'
-          description: ID of the newly created model (only populated when Status is Completed)
-          format: int32
-        errorMessage:
-          type:
-          - string
-          - 'null'
-          description: Error message if the copy operation failed (only populated when Status is Failed)
-      additionalProperties: false
-    YieldCurveRateType:
-      enum:
-      - BondEquivalent
-      - AnnualEffective
-      - SpotRate
-      type: string
-    MortalityTableType:
-      enum:
-      - Standard
-      - Improving
-      - SelectAndUltimate
-      type: string
-    GetModelTableStructuresResponseItemV1:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Table Structure ID
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-          description: Table Structure Name
-        description:
-          type:
-          - string
-          - 'null'
-          description: Table Structure Description
-      additionalProperties: false
-    ProductType:
-      enum:
-      - Asset
-      - Liability
-      type: string
-    GetModelProductsResponseItemV1:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Product ID
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-          description: Product Name
-        description:
-          type:
-          - string
-          - 'null'
-          description: Product Description
-        type:
-          $ref: '#/components/schemas/ProductType'
-      additionalProperties: false
-    ListModelsResponseItemV1:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Model ID
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-          description: Model Name
-        lastModifiedOn:
-          type: string
-          description: Last Modified Date
-          format: date-time
-        folderPath:
-          type:
-          - string
-          - 'null'
-          description: Folder path (if model is in a folder)
-      additionalProperties: false
-    GetModelProjectionTemplatesResponseItemV1:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     GetModelScenarioTablesFileReferenceV1:
       type: object
       properties:
@@ -1202,106 +1201,6 @@ components:
           - 'null'
           description: Excel Sheet Name
       additionalProperties: false
-    ImprovementScaleType:
-      enum:
-      - Standard
-      - Generational
-      type: string
-    ShortTermInterpolationMethod:
-      enum:
-      - AnnualEffectiveRate
-      - FromZero
-      type: string
-    GetModelScenarioTablesResponseItemV1:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Scenario Table ID
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-          description: Scenario Table Name
-        startDate:
-          type: string
-          description: Start Date
-          format: date-time
-        yieldCurveRateType:
-          $ref: '#/components/schemas/YieldCurveRateType'
-        shortTermInterpolationMethod:
-          $ref: '#/components/schemas/ShortTermInterpolationMethod'
-        version:
-          type: integer
-          description: Scenario Table Version
-          format: int32
-        fileReference:
-          $ref: '#/components/schemas/GetModelScenarioTablesFileReferenceV1'
-      additionalProperties: false
-    ModelCopyStatusV1:
-      enum:
-      - Running
-      - Completed
-      - Failed
-      type: string
-      description: Status of a model copy operation
-    PaginatedResponseGetModelImprovementScalesResponseItemV1:
-      type: object
-      properties:
-        items:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/GetModelImprovementScalesResponseItemV1'
-          description: Items within the page
-        offset:
-          type:
-          - integer
-          - 'null'
-          description: Offset to retrieve the next page. Null when there are no further records.
-          format: int32
-          readOnly: true
-      additionalProperties: false
-      description: Paginated response that will only return an offset if there are remaining pages
-    GetModelArraysResponseItemV1:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Array ID
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-          description: Array Name
-        arraySource:
-          type:
-          - string
-          - 'null'
-          description: Array Source
-      additionalProperties: false
-    PaginatedResponseGetModelScenarioTablesResponseItemV1:
-      type: object
-      properties:
-        items:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/GetModelScenarioTablesResponseItemV1'
-          description: Items within the page
-        offset:
-          type:
-          - integer
-          - 'null'
-          description: Offset to retrieve the next page. Null when there are no further records.
-          format: int32
-          readOnly: true
-      additionalProperties: false
-      description: Paginated response that will only return an offset if there are remaining pages
     GetModelVariableRatesResponseItemV1:
       type: object
       properties:
@@ -1321,6 +1220,107 @@ components:
           description: Variable Rate Description
         rateInputType:
           $ref: '#/components/schemas/VariableRateType'
+      additionalProperties: false
+    PaginatedResponseGetModelDecrementTablesResponseItemV1:
+      type: object
+      properties:
+        items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GetModelDecrementTablesResponseItemV1'
+          description: Items within the page
+        offset:
+          type:
+          - integer
+          - 'null'
+          description: Offset to retrieve the next page. Null when there are no further records.
+          format: int32
+          readOnly: true
+      additionalProperties: false
+      description: Paginated response that will only return an offset if there are remaining pages
+    PaginatedResponseGetModelTableStructuresResponseItemV1:
+      type: object
+      properties:
+        items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GetModelTableStructuresResponseItemV1'
+          description: Items within the page
+        offset:
+          type:
+          - integer
+          - 'null'
+          description: Offset to retrieve the next page. Null when there are no further records.
+          format: int32
+          readOnly: true
+      additionalProperties: false
+      description: Paginated response that will only return an offset if there are remaining pages
+    MortalityTableType:
+      enum:
+      - Standard
+      - Improving
+      - SelectAndUltimate
+      type: string
+    GetModelTableStructuresResponseItemV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Table Structure ID
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+          description: Table Structure Name
+        description:
+          type:
+          - string
+          - 'null'
+          description: Table Structure Description
+      additionalProperties: false
+    GetModelArraysResponseItemV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Array ID
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+          description: Array Name
+        arraySource:
+          type:
+          - string
+          - 'null'
+          description: Array Source
+      additionalProperties: false
+    CopyModelRequestV1:
+      required:
+      - folderPath
+      - newModelName
+      type: object
+      properties:
+        newModelName:
+          maxLength: 128
+          minLength: 1
+          type: string
+          description: The name for the new copied model
+        folderPath:
+          minLength: 1
+          type: string
+          description: 'The folder path where the copied model should be placed.
+
+            Use folder names as displayed in the UI (e.g., "/Top Folder/Sub-Folder").
+
+            Use "/" or null for the root folder.'
+          example: string
       additionalProperties: false
   securitySchemes:
     API_Token:

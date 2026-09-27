@@ -181,20 +181,6 @@ paths:
       - API Token: []
 components:
   schemas:
-    CreateModelPointFieldResponseV1:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The ID of the newly created model point field.
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-          description: The name of the newly created model point field.
-      additionalProperties: false
-      description: Response model for model point field creation.
     CreateModelPointFieldRequestV1:
       required:
       - dataType
@@ -237,11 +223,56 @@ components:
           description: Alternative names for this field. Must be unique within the product.
       additionalProperties: false
       description: Request model for creating a new model point field.
-    ModelPointFieldDefaultMethodType:
-      enum:
-      - None
-      - DefinedValue
-      type: string
+    CreateModelPointFieldResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the newly created model point field.
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+          description: The name of the newly created model point field.
+      additionalProperties: false
+      description: Response model for model point field creation.
+    UpdateModelPointFieldResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the updated model point field.
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+          description: The name of the updated model point field.
+        dataType:
+          $ref: '#/components/schemas/FieldDataType'
+        isRequired:
+          type: boolean
+          description: Whether the field is required in model point files.
+        isScaledOnPurchaseOrSale:
+          type: boolean
+          description: Whether the field scales on purchase or sale.
+        defaultValueSource:
+          $ref: '#/components/schemas/ModelPointFieldDefaultMethodType'
+        defaultValue:
+          type:
+          - string
+          - 'null'
+          description: The default value if using defined value method.
+        aliases:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: Alternative names for this field.
+      additionalProperties: false
+      description: Response model for model point field update.
     UpdateModelPointFieldRequestV1:
       type: object
       properties:
@@ -296,42 +327,11 @@ components:
       - ScenarioTable
       - YieldCurve
       type: string
-    UpdateModelPointFieldResponseV1:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The ID of the updated model point field.
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-          description: The name of the updated model point field.
-        dataType:
-          $ref: '#/components/schemas/FieldDataType'
-        isRequired:
-          type: boolean
-          description: Whether the field is required in model point files.
-        isScaledOnPurchaseOrSale:
-          type: boolean
-          description: Whether the field scales on purchase or sale.
-        defaultValueSource:
-          $ref: '#/components/schemas/ModelPointFieldDefaultMethodType'
-        defaultValue:
-          type:
-          - string
-          - 'null'
-          description: The default value if using defined value method.
-        aliases:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-          description: Alternative names for this field.
-      additionalProperties: false
-      description: Response model for model point field update.
+    ModelPointFieldDefaultMethodType:
+      enum:
+      - None
+      - DefinedValue
+      type: string
   securitySchemes:
     API_Token:
       type: http

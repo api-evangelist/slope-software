@@ -223,46 +223,13 @@ components:
           readOnly: true
       additionalProperties: false
       description: Paginated response that will only return an offset if there are remaining pages
-    SaveUploadFilePathDtoV1:
+    SaveUploadResponseV1:
       type: object
       properties:
-        filePath:
-          type:
-          - string
-          - 'null'
-          description: File Path
-        contentMD5:
-          type:
-          - string
-          - 'null'
-          description: Optional MD5 Hash for File Content
-        metadata:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type:
-            - string
-            - 'null'
-          description: Metadata to include with the file when saved
-      additionalProperties: false
-    GetDownloadUrlResponseV1:
-      type: object
-      properties:
-        downloadUrl:
-          type:
-          - string
-          - 'null'
-          description: URL to use to download file content
-        metadata:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type:
-            - string
-            - 'null'
-          description: Metadata for the download file
+        fileId:
+          type: integer
+          description: File ID of the saved file at the provided path
+          format: int32
       additionalProperties: false
     GetUploadUrlResponseV1:
       type: object
@@ -272,21 +239,6 @@ components:
           - string
           - 'null'
           description: URL to use to upload file content
-      additionalProperties: false
-    FilePathAndVersionDtoV1:
-      type: object
-      properties:
-        filePath:
-          type:
-          - string
-          - 'null'
-          description: File Path
-        version:
-          type:
-          - integer
-          - 'null'
-          description: File Version
-          format: int32
       additionalProperties: false
     GetFilesResponseItemV1:
       type: object
@@ -318,13 +270,61 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    SaveUploadResponseV1:
+    FilePathAndVersionDtoV1:
       type: object
       properties:
-        fileId:
-          type: integer
-          description: File ID of the saved file at the provided path
+        filePath:
+          type:
+          - string
+          - 'null'
+          description: File Path
+        version:
+          type:
+          - integer
+          - 'null'
+          description: File Version
           format: int32
+      additionalProperties: false
+    GetDownloadUrlResponseV1:
+      type: object
+      properties:
+        downloadUrl:
+          type:
+          - string
+          - 'null'
+          description: URL to use to download file content
+        metadata:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - string
+            - 'null'
+          description: Metadata for the download file
+      additionalProperties: false
+    SaveUploadFilePathDtoV1:
+      type: object
+      properties:
+        filePath:
+          type:
+          - string
+          - 'null'
+          description: File Path
+        contentMD5:
+          type:
+          - string
+          - 'null'
+          description: Optional MD5 Hash for File Content
+        metadata:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - string
+            - 'null'
+          description: Metadata to include with the file when saved
       additionalProperties: false
   securitySchemes:
     API_Token:

@@ -87,11 +87,6 @@ paths:
       - API Token: []
 components:
   schemas:
-    ModelPointFieldDefaultMethodType:
-      enum:
-      - None
-      - DefinedValue
-      type: string
     ProblemDetails:
       type: object
       properties:
@@ -117,6 +112,39 @@ components:
           - string
           - 'null'
       additionalProperties: {}
+    PaginatedResponseGetModelPointFieldsResponseItemV1:
+      type: object
+      properties:
+        items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GetModelPointFieldsResponseItemV1'
+          description: Items within the page
+        offset:
+          type:
+          - integer
+          - 'null'
+          description: Offset to retrieve the next page. Null when there are no further records.
+          format: int32
+          readOnly: true
+      additionalProperties: false
+      description: Paginated response that will only return an offset if there are remaining pages
+    FieldDataType:
+      enum:
+      - Integer
+      - Decimal
+      - String
+      - Date
+      - Invalid
+      - Boolean
+      - DataTable
+      - DecrementTable
+      - Dynamic
+      - ScenarioTable
+      - YieldCurve
+      type: string
     GetModelPointFieldsResponseItemV1:
       type: object
       properties:
@@ -148,39 +176,11 @@ components:
         isSystemField:
           type: boolean
       additionalProperties: false
-    FieldDataType:
+    ModelPointFieldDefaultMethodType:
       enum:
-      - Integer
-      - Decimal
-      - String
-      - Date
-      - Invalid
-      - Boolean
-      - DataTable
-      - DecrementTable
-      - Dynamic
-      - ScenarioTable
-      - YieldCurve
+      - None
+      - DefinedValue
       type: string
-    PaginatedResponseGetModelPointFieldsResponseItemV1:
-      type: object
-      properties:
-        items:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/GetModelPointFieldsResponseItemV1'
-          description: Items within the page
-        offset:
-          type:
-          - integer
-          - 'null'
-          description: Offset to retrieve the next page. Null when there are no further records.
-          format: int32
-          readOnly: true
-      additionalProperties: false
-      description: Paginated response that will only return an offset if there are remaining pages
   securitySchemes:
     API_Token:
       type: http

@@ -96,6 +96,13 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    RefreshParametersV1:
+      type: object
+      properties:
+        refreshToken:
+          type: string
+          format: uuid
+      additionalProperties: false
     AuthorizeParametersV1:
       type: object
       properties:
@@ -103,13 +110,6 @@ components:
           type: string
           format: uuid
         apiSecretKey:
-          type: string
-          format: uuid
-      additionalProperties: false
-    RefreshParametersV1:
-      type: object
-      properties:
-        refreshToken:
           type: string
           format: uuid
       additionalProperties: false

@@ -218,6 +218,161 @@ paths:
       - API Token: []
 components:
   schemas:
+    GenerateScenarioTableRequestV1:
+      required:
+      - filePath
+      - modelId
+      - name
+      - yearsToProject
+      type: object
+      properties:
+        modelId:
+          type: integer
+          description: Model ID.
+          format: int32
+        generatorType:
+          enum:
+          - NAICGenerator
+          type:
+          - string
+          - 'null'
+          description: 'Economic scenario generator type. Valid values: NAICGenerator'
+        name:
+          minLength: 1
+          type: string
+          description: Name of the scenario table to be generated.
+        filePath:
+          minLength: 1
+          type: string
+          description: Slope file path where the generated scenario table will be stored.
+        yearsToProject:
+          type: integer
+          description: Number of years to project.
+          format: int32
+        yieldCurveRateType:
+          enum:
+          - BondEquivalent
+          - SpotRate
+          type:
+          - string
+          - 'null'
+          description: 'Yield curve rate type for generated scenario tables. Valid values: BondEquivalent, SpotRate'
+        naicGeneratorParameters:
+          $ref: '#/components/schemas/NaicGeneratorParametersRequestV1'
+      additionalProperties: false
+    GenerationStatus:
+      enum:
+      - NotStarted
+      - Running
+      - Failed
+      - Completed
+      type: string
+    CreateScenarioTableRequestV1:
+      required:
+      - name
+      - startDate
+      type: object
+      properties:
+        fileId:
+          type:
+          - integer
+          - 'null'
+          description: File ID
+          format: int32
+        filePath:
+          type:
+          - string
+          - 'null'
+          description: File Path
+        fileVersion:
+          type:
+          - integer
+          - 'null'
+          description: File Version
+          format: int32
+        delimiter:
+          type:
+          - string
+          - 'null'
+          description: Delimiter
+        excelSheetName:
+          type:
+          - string
+          - 'null'
+          description: Excel Sheet Name
+        modelId:
+          type: integer
+          description: Model ID
+          format: int32
+        name:
+          minLength: 1
+          type: string
+          description: Scenario Table Name
+        startDate:
+          minLength: 1
+          type: string
+          description: Scenario Start Date
+        yieldCurveRateType:
+          $ref: '#/components/schemas/YieldCurveRateType'
+        shortTermInterpolationMethod:
+          $ref: '#/components/schemas/ShortTermInterpolationMethod'
+        validateFile:
+          type:
+          - boolean
+          - 'null'
+          description: 'Validate the uploaded file. Defaults to true. Set to false to skip validation on upload and avoid request
+
+            timeouts for large files; the file will instead be validated when a projection is run.'
+      additionalProperties: false
+    NaicGeneratorParametersRequestV1:
+      required:
+      - datasetDate
+      type: object
+      properties:
+        datasetDate:
+          minLength: 1
+          type: string
+          description: 'Dataset date for the NAIC generator. Expected format: YYYY-MM-DD'
+        scenarioSet:
+          enum:
+          - Full10000Scenarios
+          - SubsetScenarios
+          - StochasticExclusionTestScenarios
+          type:
+          - string
+          - 'null'
+          description: 'The NAIC generator scenario set type. Valid values: Full10000Scenarios, SubsetScenarios, StochasticExclusionTestScenarios'
+        numberOfScenarios:
+          type:
+          - integer
+          - 'null'
+          description: Number of scenarios to generate. Used by the NAIC generator.
+          format: int32
+        scenarioSubsetMethod:
+          enum:
+          - SignificanceValue
+          - LargeCapGrowthWealthFactor
+          - FirstN
+          type:
+          - string
+          - 'null'
+          description: 'The NAIC generator scenario subset method. Valid values: SignificanceValue, LargeCapGrowthWealthFactor, FirstN'
+        scenarioNumbering:
+          enum:
+          - RenumberInAscendingOrder
+          - KeepOriginalScenarioNumbers
+          type:
+          - string
+          - 'null'
+          description: 'The NAIC generator scenario numbering method. Valid values: RenumberInAscendingOrder, KeepOriginalScenarioNumbers'
+        variableRateMappings:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/NaicVariableRateMappingRequestV1'
+          description: List of variable rate mappings for the NAIC scenario generator.
+      additionalProperties: false
     GenerateScenarioTableResponseV1:
       type: object
       properties:
@@ -282,62 +437,26 @@ components:
           - 'null'
           description: Scenario Table File Excel Shet Name
       additionalProperties: false
-    NaicGeneratorParametersRequestV1:
+    NaicVariableRateMappingRequestV1:
       required:
-      - datasetDate
+      - returnComponentName
+      - returnTypeName
+      - variableRateId
       type: object
       properties:
-        datasetDate:
+        variableRateId:
+          type: integer
+          description: Variable rate ID.
+          format: int32
+        returnTypeName:
           minLength: 1
           type: string
-          description: 'Dataset date for the NAIC generator. Expected format: YYYY-MM-DD'
-        scenarioSet:
-          enum:
-          - Full10000Scenarios
-          - SubsetScenarios
-          - StochasticExclusionTestScenarios
-          type:
-          - string
-          - 'null'
-          description: 'The NAIC generator scenario set type. Valid values: Full10000Scenarios, SubsetScenarios, StochasticExclusionTestScenarios'
-        numberOfScenarios:
-          type:
-          - integer
-          - 'null'
-          description: Number of scenarios to generate. Used by the NAIC generator.
-          format: int32
-        scenarioSubsetMethod:
-          enum:
-          - SignificanceValue
-          - LargeCapGrowthWealthFactor
-          - FirstN
-          type:
-          - string
-          - 'null'
-          description: 'The NAIC generator scenario subset method. Valid values: SignificanceValue, LargeCapGrowthWealthFactor, FirstN'
-        scenarioNumbering:
-          enum:
-          - RenumberInAscendingOrder
-          - KeepOriginalScenarioNumbers
-          type:
-          - string
-          - 'null'
-          description: 'The NAIC generator scenario numbering method. Valid values: RenumberInAscendingOrder, KeepOriginalScenarioNumbers'
-        variableRateMappings:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/NaicVariableRateMappingRequestV1'
-          description: List of variable rate mappings for the NAIC scenario generator.
+          description: Return type name.
+        returnComponentName:
+          minLength: 1
+          type: string
+          description: Return component name.
       additionalProperties: false
-    GenerationStatus:
-      enum:
-      - NotStarted
-      - Running
-      - Failed
-      - Completed
-      type: string
     UpdateScenarioTableRequestV1:
       type: object
       properties:
@@ -390,11 +509,6 @@ components:
 
             timeouts for large files; the file will instead be validated when a projection is run.'
       additionalProperties: false
-    ShortTermInterpolationMethod:
-      enum:
-      - AnnualEffectiveRate
-      - FromZero
-      type: string
     GenerateScenarioTableStatusResponseV1:
       type: object
       properties:
@@ -442,131 +556,17 @@ components:
           description: Version
           format: int32
       additionalProperties: false
-    NaicVariableRateMappingRequestV1:
-      required:
-      - returnComponentName
-      - returnTypeName
-      - variableRateId
-      type: object
-      properties:
-        variableRateId:
-          type: integer
-          description: Variable rate ID.
-          format: int32
-        returnTypeName:
-          minLength: 1
-          type: string
-          description: Return type name.
-        returnComponentName:
-          minLength: 1
-          type: string
-          description: Return component name.
-      additionalProperties: false
+    ShortTermInterpolationMethod:
+      enum:
+      - AnnualEffectiveRate
+      - FromZero
+      type: string
     YieldCurveRateType:
       enum:
       - BondEquivalent
       - AnnualEffective
       - SpotRate
       type: string
-    CreateScenarioTableRequestV1:
-      required:
-      - name
-      - startDate
-      type: object
-      properties:
-        fileId:
-          type:
-          - integer
-          - 'null'
-          description: File ID
-          format: int32
-        filePath:
-          type:
-          - string
-          - 'null'
-          description: File Path
-        fileVersion:
-          type:
-          - integer
-          - 'null'
-          description: File Version
-          format: int32
-        delimiter:
-          type:
-          - string
-          - 'null'
-          description: Delimiter
-        excelSheetName:
-          type:
-          - string
-          - 'null'
-          description: Excel Sheet Name
-        modelId:
-          type: integer
-          description: Model ID
-          format: int32
-        name:
-          minLength: 1
-          type: string
-          description: Scenario Table Name
-        startDate:
-          minLength: 1
-          type: string
-          description: Scenario Start Date
-        yieldCurveRateType:
-          $ref: '#/components/schemas/YieldCurveRateType'
-        shortTermInterpolationMethod:
-          $ref: '#/components/schemas/ShortTermInterpolationMethod'
-        validateFile:
-          type:
-          - boolean
-          - 'null'
-          description: 'Validate the uploaded file. Defaults to true. Set to false to skip validation on upload and avoid request
-
-            timeouts for large files; the file will instead be validated when a projection is run.'
-      additionalProperties: false
-    GenerateScenarioTableRequestV1:
-      required:
-      - filePath
-      - modelId
-      - name
-      - yearsToProject
-      type: object
-      properties:
-        modelId:
-          type: integer
-          description: Model ID.
-          format: int32
-        generatorType:
-          enum:
-          - NAICGenerator
-          type:
-          - string
-          - 'null'
-          description: 'Economic scenario generator type. Valid values: NAICGenerator'
-        name:
-          minLength: 1
-          type: string
-          description: Name of the scenario table to be generated.
-        filePath:
-          minLength: 1
-          type: string
-          description: Slope file path where the generated scenario table will be stored.
-        yearsToProject:
-          type: integer
-          description: Number of years to project.
-          format: int32
-        yieldCurveRateType:
-          enum:
-          - BondEquivalent
-          - SpotRate
-          type:
-          - string
-          - 'null'
-          description: 'Yield curve rate type for generated scenario tables. Valid values: BondEquivalent, SpotRate'
-        naicGeneratorParameters:
-          $ref: '#/components/schemas/NaicGeneratorParametersRequestV1'
-      additionalProperties: false
   securitySchemes:
     API_Token:
       type: http

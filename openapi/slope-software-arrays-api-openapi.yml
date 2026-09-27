@@ -138,27 +138,6 @@ paths:
       - API Token: []
 components:
   schemas:
-    UpdateStaticArrayValuesResponseV1:
-      type: object
-      properties:
-        arrayId:
-          type: integer
-          description: The ID of the updated array
-          format: int32
-        values:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-          description: The updated list of array values in order
-      additionalProperties: false
-    CalculationType:
-      enum:
-      - Product
-      - Portfolio
-      - Company
-      type: string
     ProblemDetails:
       type: object
       properties:
@@ -190,25 +169,41 @@ components:
       - Constant
       - TimeIndex
       type: string
-    ArrayType:
-      enum:
-      - Static
-      - ProductOutputGrouping
-      - Range
-      - DataTable
-      - MultiDimensional
-      type: string
-    ArrayValueItemV1:
-      required:
-      - value
+    RangeArrayValue:
       type: object
       properties:
+        type:
+          $ref: '#/components/schemas/RangeArrayVariableType'
+        variableName:
+          type:
+          - string
+          - 'null'
         value:
-          maxLength: 200
-          minLength: 0
-          type: string
-          description: The value for the array item. Maximum 200 characters.
+          type:
+          - number
+          - 'null'
+          format: double
       additionalProperties: false
+    UpdateStaticArrayValuesRequestV1:
+      required:
+      - values
+      type: object
+      properties:
+        values:
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/ArrayValueItemV1'
+          description: 'The list of values to set for the static array.
+
+            This will completely replace all existing values.'
+      additionalProperties: false
+    CalculationType:
+      enum:
+      - Product
+      - Portfolio
+      - Company
+      type: string
     GetArrayDetailsResponse:
       type: object
       properties:
@@ -255,35 +250,40 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
-    UpdateStaticArrayValuesRequestV1:
+    ArrayValueItemV1:
       required:
-      - values
+      - value
       type: object
       properties:
-        values:
-          minItems: 1
-          type: array
-          items:
-            $ref: '#/components/schemas/ArrayValueItemV1'
-          description: 'The list of values to set for the static array.
-
-            This will completely replace all existing values.'
-      additionalProperties: false
-    RangeArrayValue:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/RangeArrayVariableType'
-        variableName:
-          type:
-          - string
-          - 'null'
         value:
-          type:
-          - number
-          - 'null'
-          format: double
+          maxLength: 200
+          minLength: 0
+          type: string
+          description: The value for the array item. Maximum 200 characters.
       additionalProperties: false
+    UpdateStaticArrayValuesResponseV1:
+      type: object
+      properties:
+        arrayId:
+          type: integer
+          description: The ID of the updated array
+          format: int32
+        values:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: The updated list of array values in order
+      additionalProperties: false
+    ArrayType:
+      enum:
+      - Static
+      - ProductOutputGrouping
+      - Range
+      - DataTable
+      - MultiDimensional
+      type: string
   securitySchemes:
     API_Token:
       type: http
