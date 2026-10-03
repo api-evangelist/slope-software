@@ -87,6 +87,11 @@ paths:
       - API Token: []
 components:
   schemas:
+    ModelPointFieldDefaultMethodType:
+      enum:
+      - None
+      - DefinedValue
+      type: string
     ProblemDetails:
       type: object
       properties:
@@ -112,6 +117,20 @@ components:
           - string
           - 'null'
       additionalProperties: {}
+    FieldDataType:
+      enum:
+      - Integer
+      - Decimal
+      - String
+      - Date
+      - Invalid
+      - Boolean
+      - DataTable
+      - DecrementTable
+      - Dynamic
+      - ScenarioTable
+      - YieldCurve
+      type: string
     PaginatedResponseGetModelPointFieldsResponseItemV1:
       type: object
       properties:
@@ -131,20 +150,6 @@ components:
           readOnly: true
       additionalProperties: false
       description: Paginated response that will only return an offset if there are remaining pages
-    FieldDataType:
-      enum:
-      - Integer
-      - Decimal
-      - String
-      - Date
-      - Invalid
-      - Boolean
-      - DataTable
-      - DecrementTable
-      - Dynamic
-      - ScenarioTable
-      - YieldCurve
-      type: string
     GetModelPointFieldsResponseItemV1:
       type: object
       properties:
@@ -176,11 +181,6 @@ components:
         isSystemField:
           type: boolean
       additionalProperties: false
-    ModelPointFieldDefaultMethodType:
-      enum:
-      - None
-      - DefinedValue
-      type: string
   securitySchemes:
     API_Token:
       type: http

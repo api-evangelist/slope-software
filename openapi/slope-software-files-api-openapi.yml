@@ -185,61 +185,6 @@ paths:
       - API Token: []
 components:
   schemas:
-    GetUploadUrlFilePathDtoV1:
-      type: object
-      properties:
-        filePath:
-          type:
-          - string
-          - 'null'
-          description: File Path
-        contentType:
-          type:
-          - string
-          - 'null'
-          description: Optional File Content Type
-        contentMD5:
-          type:
-          - string
-          - 'null'
-          description: Optional MD5 Hash for File Content
-      additionalProperties: false
-    PaginatedResponseGetFilesResponseItemV1:
-      type: object
-      properties:
-        items:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/GetFilesResponseItemV1'
-          description: Items within the page
-        offset:
-          type:
-          - integer
-          - 'null'
-          description: Offset to retrieve the next page. Null when there are no further records.
-          format: int32
-          readOnly: true
-      additionalProperties: false
-      description: Paginated response that will only return an offset if there are remaining pages
-    SaveUploadResponseV1:
-      type: object
-      properties:
-        fileId:
-          type: integer
-          description: File ID of the saved file at the provided path
-          format: int32
-      additionalProperties: false
-    GetUploadUrlResponseV1:
-      type: object
-      properties:
-        uploadUrl:
-          type:
-          - string
-          - 'null'
-          description: URL to use to upload file content
-      additionalProperties: false
     GetFilesResponseItemV1:
       type: object
       properties:
@@ -270,21 +215,25 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    FilePathAndVersionDtoV1:
+    PaginatedResponseGetFilesResponseItemV1:
       type: object
       properties:
-        filePath:
+        items:
           type:
-          - string
+          - array
           - 'null'
-          description: File Path
-        version:
+          items:
+            $ref: '#/components/schemas/GetFilesResponseItemV1'
+          description: Items within the page
+        offset:
           type:
           - integer
           - 'null'
-          description: File Version
+          description: Offset to retrieve the next page. Null when there are no further records.
           format: int32
+          readOnly: true
       additionalProperties: false
+      description: Paginated response that will only return an offset if there are remaining pages
     GetDownloadUrlResponseV1:
       type: object
       properties:
@@ -302,6 +251,25 @@ components:
             - string
             - 'null'
           description: Metadata for the download file
+      additionalProperties: false
+    GetUploadUrlFilePathDtoV1:
+      type: object
+      properties:
+        filePath:
+          type:
+          - string
+          - 'null'
+          description: File Path
+        contentType:
+          type:
+          - string
+          - 'null'
+          description: Optional File Content Type
+        contentMD5:
+          type:
+          - string
+          - 'null'
+          description: Optional MD5 Hash for File Content
       additionalProperties: false
     SaveUploadFilePathDtoV1:
       type: object
@@ -325,6 +293,38 @@ components:
             - string
             - 'null'
           description: Metadata to include with the file when saved
+      additionalProperties: false
+    SaveUploadResponseV1:
+      type: object
+      properties:
+        fileId:
+          type: integer
+          description: File ID of the saved file at the provided path
+          format: int32
+      additionalProperties: false
+    FilePathAndVersionDtoV1:
+      type: object
+      properties:
+        filePath:
+          type:
+          - string
+          - 'null'
+          description: File Path
+        version:
+          type:
+          - integer
+          - 'null'
+          description: File Version
+          format: int32
+      additionalProperties: false
+    GetUploadUrlResponseV1:
+      type: object
+      properties:
+        uploadUrl:
+          type:
+          - string
+          - 'null'
+          description: URL to use to upload file content
       additionalProperties: false
   securitySchemes:
     API_Token:

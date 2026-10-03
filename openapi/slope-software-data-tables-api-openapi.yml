@@ -437,6 +437,238 @@ paths:
       - API Token: []
 components:
   schemas:
+    UpdateDataTableRequestV1:
+      type: object
+      properties:
+        fileId:
+          type:
+          - integer
+          - 'null'
+          description: File ID
+          format: int32
+        filePath:
+          type:
+          - string
+          - 'null'
+          description: File Path
+        fileVersion:
+          type:
+          - integer
+          - 'null'
+          description: File Version
+          format: int32
+        delimiter:
+          type:
+          - string
+          - 'null'
+          description: Delimiter
+        excelSheetName:
+          type:
+          - string
+          - 'null'
+          description: Excel Sheet Name
+        dataTableId:
+          type:
+          - integer
+          - 'null'
+          description: Date Table ID
+          format: int32
+        tableStructureId:
+          type:
+          - integer
+          - 'null'
+          description: Table Structure ID
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+          description: Date Table Name
+        isFileOnly:
+          type: boolean
+          description: Is File Only?
+        indexes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DataTableIndexV1'
+      additionalProperties: false
+    DataTableIndexV2:
+      required:
+      - columnName
+      type: object
+      properties:
+        columnName:
+          type:
+          - string
+          - 'null'
+        indexReadMethod:
+          $ref: '#/components/schemas/DataTableIndexReadMethod'
+      additionalProperties: false
+    UpdateDataTableDataRequestV1:
+      required:
+      - rows
+      type: object
+      properties:
+        rows:
+          type: array
+          items:
+            type: array
+            items:
+              type: string
+          description: 'Row data to replace existing table data.
+
+            Each row is an array of string values matching the column order from GET /Data endpoint.
+
+            Index columns first (sorted by SortOrder), then data columns (sorted by SortOrder).'
+        indexes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DataTableIndexV1'
+          description: 'Optional - Update index read methods while updating data.
+
+            If not provided, existing index read methods are preserved.'
+      additionalProperties: false
+      description: Request model for updating data table row data without a file upload.
+    DataTableIndexV1:
+      required:
+      - columnName
+      type: object
+      properties:
+        columnName:
+          type:
+          - string
+          - 'null'
+        indexReadMethod:
+          $ref: '#/components/schemas/DataTableIndexReadMethod'
+      additionalProperties: false
+    GetDataTableResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+        tableStructureId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        filePath:
+          type:
+          - string
+          - 'null'
+        fileVersion:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        columns:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GetDataTableResponseColumnV1'
+        rows:
+          type:
+          - array
+          - 'null'
+          items:
+            type: array
+            items:
+              type: string
+        offset:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    DataTableIndexReadMethod:
+      enum:
+      - ExactMatch
+      - RangeLowerBound
+      type: string
+    GetDataTableResponseColumnV1:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        order:
+          type: integer
+          format: int32
+        isIndex:
+          type: boolean
+        indexReadMethod:
+          type:
+          - string
+          - 'null'
+        dataType:
+          type:
+          - string
+          - 'null'
+        displayPrecision:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        dropDownListArrayId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        nestedTableStructureId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    DataTableIndexRequestV2:
+      required:
+      - columnName
+      type: object
+      properties:
+        columnName:
+          minLength: 1
+          type: string
+          description: Column name to index (required)
+          example: Age
+        indexReadMethod:
+          $ref: '#/components/schemas/DataTableIndexReadMethod'
+      additionalProperties: false
+      description: Defines an index on a data table column for optimized lookups
+    ImportDataTableResponseV2:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+        tableStructureId:
+          type: integer
+          format: int32
+        tableStructureName:
+          type:
+          - string
+          - 'null'
+        isFileOnly:
+          type: boolean
+        version:
+          type: integer
+          format: int32
+        isLatestVersion:
+          type: boolean
+      additionalProperties: false
     CreateDataTableRequestV2:
       required:
       - name
@@ -521,123 +753,52 @@ components:
         isLatestVersion:
           type: boolean
       additionalProperties: false
-    DataTableIndexRequestV2:
-      required:
-      - columnName
-      type: object
-      properties:
-        columnName:
-          minLength: 1
-          type: string
-          description: Column name to index (required)
-          example: Age
-        indexReadMethod:
-          $ref: '#/components/schemas/DataTableIndexReadMethod'
-      additionalProperties: false
-      description: Defines an index on a data table column for optimized lookups
-    DataTableIndexReadMethod:
-      enum:
-      - ExactMatch
-      - RangeLowerBound
-      type: string
-    GetDataTableResponseV1:
+    UpdateDataTableDataResponseV1:
       type: object
       properties:
         id:
           type: integer
+          description: The data table ID (may differ from request if table was versioned).
           format: int32
-        name:
-          type:
-          - string
-          - 'null'
-        tableStructureId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        filePath:
-          type:
-          - string
-          - 'null'
-        fileVersion:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        columns:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/GetDataTableResponseColumnV1'
-        rows:
-          type:
-          - array
-          - 'null'
-          items:
-            type: array
-            items:
-              type: string
-        offset:
-          type:
-          - integer
-          - 'null'
+        version:
+          type: integer
+          description: The current version number of the data table.
           format: int32
       additionalProperties: false
-    OverwriteDataTableRequestV2:
+      description: Response model for successful data table data update.
+    UpdateDataTableRequestV2:
       type: object
       properties:
-        fileId:
-          type:
-          - integer
-          - 'null'
-          description: File ID
-          format: int32
-        filePath:
+        name:
+          maxLength: 128
+          minLength: 0
           type:
           - string
           - 'null'
-          description: File Path
-        fileVersion:
-          type:
-          - integer
-          - 'null'
-          description: File Version
-          format: int32
-        delimiter:
-          type:
-          - string
-          - 'null'
-          description: Delimiter
-        excelSheetName:
-          type:
-          - string
-          - 'null'
-          description: Excel Sheet Name
-        isFileOnly:
-          type: boolean
-          description: Is File Only?
+          description: 'Updated name for the data table (optional).
+
+            If not provided, the existing name will be retained.'
+          example: Updated Pension Conversion Table
         indexes:
           type:
           - array
           - 'null'
           items:
             $ref: '#/components/schemas/DataTableIndexV2'
-          description: Optional list of indexes to update index read methods.
+          description: 'Updated list of indexes for the data table (optional).
+
+            If not provided, existing indexes will be retained.
+
+            Pass an empty array to remove all indexes.'
+          example:
+          - columnName: Age
+            indexReadMethod: ExactMatch
+          - columnName: Duration
+            indexReadMethod: RangeLowerBound
       additionalProperties: false
-      description: Request model for overwriting an existing data table from a file.
-    DataTableIndexV1:
-      required:
-      - columnName
-      type: object
-      properties:
-        columnName:
-          type:
-          - string
-          - 'null'
-        indexReadMethod:
-          $ref: '#/components/schemas/DataTableIndexReadMethod'
-      additionalProperties: false
+      description: 'Request model for updating individual properties of a data table.
+
+        Only properties that are provided will be updated.'
     ImportDataTableRequestV2:
       required:
       - name
@@ -692,7 +853,24 @@ components:
             $ref: '#/components/schemas/DataTableIndexV2'
           description: Optional list of indexes
       additionalProperties: false
-    UpdateDataTableRequestV1:
+    UpdateDataTableResponseV2:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the updated data table.
+          format: int32
+          example: 12345
+        version:
+          type: integer
+          description: 'The version number of the data table after the update.
+
+            This may be incremented if the table was versioned due to being used in projections.'
+          format: int32
+          example: 2
+      additionalProperties: false
+      description: Response model for data table update operations.
+    OverwriteDataTableRequestV2:
       type: object
       properties:
         fileId:
@@ -722,23 +900,6 @@ components:
           - string
           - 'null'
           description: Excel Sheet Name
-        dataTableId:
-          type:
-          - integer
-          - 'null'
-          description: Date Table ID
-          format: int32
-        tableStructureId:
-          type:
-          - integer
-          - 'null'
-          description: Table Structure ID
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-          description: Date Table Name
         isFileOnly:
           type: boolean
           description: Is File Only?
@@ -747,171 +908,10 @@ components:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/DataTableIndexV1'
-      additionalProperties: false
-    GetDataTableResponseColumnV1:
-      type: object
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-        order:
-          type: integer
-          format: int32
-        isIndex:
-          type: boolean
-        indexReadMethod:
-          type:
-          - string
-          - 'null'
-        dataType:
-          type:
-          - string
-          - 'null'
-        displayPrecision:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        dropDownListArrayId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        nestedTableStructureId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    ImportDataTableResponseV2:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-        tableStructureId:
-          type: integer
-          format: int32
-        tableStructureName:
-          type:
-          - string
-          - 'null'
-        isFileOnly:
-          type: boolean
-        version:
-          type: integer
-          format: int32
-        isLatestVersion:
-          type: boolean
-      additionalProperties: false
-    UpdateDataTableRequestV2:
-      type: object
-      properties:
-        name:
-          maxLength: 128
-          minLength: 0
-          type:
-          - string
-          - 'null'
-          description: 'Updated name for the data table (optional).
-
-            If not provided, the existing name will be retained.'
-          example: Updated Pension Conversion Table
-        indexes:
-          type:
-          - array
-          - 'null'
-          items:
             $ref: '#/components/schemas/DataTableIndexV2'
-          description: 'Updated list of indexes for the data table (optional).
-
-            If not provided, existing indexes will be retained.
-
-            Pass an empty array to remove all indexes.'
-          example:
-          - columnName: Age
-            indexReadMethod: ExactMatch
-          - columnName: Duration
-            indexReadMethod: RangeLowerBound
+          description: Optional list of indexes to update index read methods.
       additionalProperties: false
-      description: 'Request model for updating individual properties of a data table.
-
-        Only properties that are provided will be updated.'
-    DataTableIndexV2:
-      required:
-      - columnName
-      type: object
-      properties:
-        columnName:
-          type:
-          - string
-          - 'null'
-        indexReadMethod:
-          $ref: '#/components/schemas/DataTableIndexReadMethod'
-      additionalProperties: false
-    UpdateDataTableDataResponseV1:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The data table ID (may differ from request if table was versioned).
-          format: int32
-        version:
-          type: integer
-          description: The current version number of the data table.
-          format: int32
-      additionalProperties: false
-      description: Response model for successful data table data update.
-    UpdateDataTableDataRequestV1:
-      required:
-      - rows
-      type: object
-      properties:
-        rows:
-          type: array
-          items:
-            type: array
-            items:
-              type: string
-          description: 'Row data to replace existing table data.
-
-            Each row is an array of string values matching the column order from GET /Data endpoint.
-
-            Index columns first (sorted by SortOrder), then data columns (sorted by SortOrder).'
-        indexes:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/DataTableIndexV1'
-          description: 'Optional - Update index read methods while updating data.
-
-            If not provided, existing index read methods are preserved.'
-      additionalProperties: false
-      description: Request model for updating data table row data without a file upload.
-    UpdateDataTableResponseV2:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The ID of the updated data table.
-          format: int32
-          example: 12345
-        version:
-          type: integer
-          description: 'The version number of the data table after the update.
-
-            This may be incremented if the table was versioned due to being used in projections.'
-          format: int32
-          example: 2
-      additionalProperties: false
-      description: Response model for data table update operations.
+      description: Request model for overwriting an existing data table from a file.
   securitySchemes:
     API_Token:
       type: http

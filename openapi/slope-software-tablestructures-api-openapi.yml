@@ -154,6 +154,71 @@ paths:
       - API Token: []
 components:
   schemas:
+    TableStructureColumnType:
+      enum:
+      - Integer
+      - Decimal
+      - String
+      - Date
+      - Boolean
+      - MortalityTable
+      - DataTable
+      - DropDownList
+      - ScenarioTable
+      type: string
+    GetTableStructureColumnsResponseItemV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Column ID
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+          description: Column Name
+        dataType:
+          $ref: '#/components/schemas/TableStructureColumnType'
+        tableStructureId:
+          type:
+          - integer
+          - 'null'
+          description: Nested Table Structure ID (when DataType is DataTable)
+          format: int32
+        dropDownListArrayId:
+          type:
+          - integer
+          - 'null'
+          description: Array ID (when DataType is DropDownList)
+          format: int32
+        isIndex:
+          type: boolean
+          description: Is Index?
+        sortOrder:
+          type: integer
+          description: Sort Order
+          format: int32
+      additionalProperties: false
+    PaginatedResponseGetTableStructureDataTablesResponseItemV1:
+      type: object
+      properties:
+        items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GetTableStructureDataTablesResponseItemV1'
+          description: Items within the page
+        offset:
+          type:
+          - integer
+          - 'null'
+          description: Offset to retrieve the next page. Null when there are no further records.
+          format: int32
+          readOnly: true
+      additionalProperties: false
+      description: Paginated response that will only return an offset if there are remaining pages
     GetTableStructureResponseV1:
       type: object
       properties:
@@ -176,25 +241,6 @@ components:
           - 'null'
           description: Table Structure Description
       additionalProperties: false
-    PaginatedResponseGetTableStructureDataTablesResponseItemV1:
-      type: object
-      properties:
-        items:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/GetTableStructureDataTablesResponseItemV1'
-          description: Items within the page
-        offset:
-          type:
-          - integer
-          - 'null'
-          description: Offset to retrieve the next page. Null when there are no further records.
-          format: int32
-          readOnly: true
-      additionalProperties: false
-      description: Paginated response that will only return an offset if there are remaining pages
     PaginatedResponseGetTableStructureColumnsResponseItemV1:
       type: object
       properties:
@@ -244,52 +290,6 @@ components:
           - string
           - 'null'
           description: Table Structure Name
-      additionalProperties: false
-    TableStructureColumnType:
-      enum:
-      - Integer
-      - Decimal
-      - String
-      - Date
-      - Boolean
-      - MortalityTable
-      - DataTable
-      - DropDownList
-      - ScenarioTable
-      type: string
-    GetTableStructureColumnsResponseItemV1:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Column ID
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-          description: Column Name
-        dataType:
-          $ref: '#/components/schemas/TableStructureColumnType'
-        tableStructureId:
-          type:
-          - integer
-          - 'null'
-          description: Nested Table Structure ID (when DataType is DataTable)
-          format: int32
-        dropDownListArrayId:
-          type:
-          - integer
-          - 'null'
-          description: Array ID (when DataType is DropDownList)
-          format: int32
-        isIndex:
-          type: boolean
-          description: Is Index?
-        sortOrder:
-          type: integer
-          description: Sort Order
-          format: int32
       additionalProperties: false
   securitySchemes:
     API_Token:

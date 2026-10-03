@@ -163,11 +163,11 @@ components:
           - string
           - 'null'
       additionalProperties: {}
-    RangeArrayVariableType:
+    CalculationType:
       enum:
-      - Variable
-      - Constant
-      - TimeIndex
+      - Product
+      - Portfolio
+      - Company
       type: string
     RangeArrayValue:
       type: object
@@ -198,12 +198,40 @@ components:
 
             This will completely replace all existing values.'
       additionalProperties: false
-    CalculationType:
+    ArrayType:
       enum:
-      - Product
-      - Portfolio
-      - Company
+      - Static
+      - ProductOutputGrouping
+      - Range
+      - DataTable
+      - MultiDimensional
       type: string
+    ArrayValueItemV1:
+      required:
+      - value
+      type: object
+      properties:
+        value:
+          maxLength: 200
+          minLength: 0
+          type: string
+          description: The value for the array item. Maximum 200 characters.
+      additionalProperties: false
+    UpdateStaticArrayValuesResponseV1:
+      type: object
+      properties:
+        arrayId:
+          type: integer
+          description: The ID of the updated array
+          format: int32
+        values:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: The updated list of array values in order
+      additionalProperties: false
     GetArrayDetailsResponse:
       type: object
       properties:
@@ -250,39 +278,11 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
-    ArrayValueItemV1:
-      required:
-      - value
-      type: object
-      properties:
-        value:
-          maxLength: 200
-          minLength: 0
-          type: string
-          description: The value for the array item. Maximum 200 characters.
-      additionalProperties: false
-    UpdateStaticArrayValuesResponseV1:
-      type: object
-      properties:
-        arrayId:
-          type: integer
-          description: The ID of the updated array
-          format: int32
-        values:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-          description: The updated list of array values in order
-      additionalProperties: false
-    ArrayType:
+    RangeArrayVariableType:
       enum:
-      - Static
-      - ProductOutputGrouping
-      - Range
-      - DataTable
-      - MultiDimensional
+      - Variable
+      - Constant
+      - TimeIndex
       type: string
   securitySchemes:
     API_Token:

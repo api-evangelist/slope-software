@@ -138,12 +138,6 @@ components:
           description: Decrement Table Version
           format: int32
       additionalProperties: false
-    MortalityTableType:
-      enum:
-      - Standard
-      - Improving
-      - SelectAndUltimate
-      type: string
     CreateDecrementTableRequestV1:
       type: object
       properties:
@@ -198,6 +192,12 @@ components:
       enum:
       - Annual
       - Monthly
+      type: string
+    MortalityTableType:
+      enum:
+      - Standard
+      - Improving
+      - SelectAndUltimate
       type: string
     GetDecrementTableResponseV1:
       type: object
