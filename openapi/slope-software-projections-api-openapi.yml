@@ -357,6 +357,122 @@ paths:
       - API Token: []
 components:
   schemas:
+    GetProjectionPortfolioProductV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        productId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+        productType:
+          $ref: '#/components/schemas/ProductType'
+        modelPointFile:
+          $ref: '#/components/schemas/FileReferenceDto'
+        filters:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GetProjectionProductModelPointFilterV1'
+        productOutputGroupings:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+      additionalProperties: false
+    CopyProjectionRequestV1:
+      type: object
+      properties:
+        projectionName:
+          type:
+          - string
+          - 'null'
+        setTablesToLatestVersion:
+          type: boolean
+      additionalProperties: {}
+    GetProjectionResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+        status:
+          $ref: '#/components/schemas/ProjectionRunStatus'
+        isRunning:
+          type: boolean
+        startDate:
+          type: string
+          format: date-time
+        periodInMonths:
+          type: integer
+          format: int32
+        runStartDateUtc:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        runCompletedDateUtc:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        outputAllResults:
+          type: boolean
+        disableModelPointOutput:
+          type: boolean
+        forceStaticProcessing:
+          type: boolean
+        isLocked:
+          type: boolean
+        numberOfCores:
+          type: integer
+          format: int32
+        scenarioTableId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        model:
+          $ref: '#/components/schemas/GetProjectionModelV1'
+        portfolios:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GetProjectionPortfolioV1'
+        virtualFolders:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        tags:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        dataTables:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GetProjectionDataTableV1'
+      additionalProperties: false
     ListProjectionsResponseItemV1:
       type: object
       properties:
@@ -402,42 +518,6 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    GetProjectionModelV1:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    CopyProjectionRequestV1:
-      type: object
-      properties:
-        projectionName:
-          type:
-          - string
-          - 'null'
-        setTablesToLatestVersion:
-          type: boolean
-      additionalProperties: {}
-    CreateProjectionFromTemplateRequestV1:
-      type: object
-      properties:
-        templateId:
-          type:
-          - integer
-          - 'null'
-          description: Template ID
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-          description: Projection Name
-      additionalProperties: {}
     AddProductToPortfolioRequestV1:
       required:
       - name
@@ -471,96 +551,94 @@ components:
             format: int32
           description: Product Output Grouping IDs
       additionalProperties: {}
-    AddProductFilterRequestV1:
-      required:
-      - field
-      - value
+    FileReferenceDto:
       type: object
       properties:
-        field:
-          minLength: 1
-          type: string
-          description: Model Point Field Name
-        value:
-          minLength: 1
-          type: string
-          description: Filter Value
-      additionalProperties: false
-    PaginatedResponseListProjectionsResponseItemV1:
-      type: object
-      properties:
-        items:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ListProjectionsResponseItemV1'
-          description: Items within the page
-        offset:
+        fileId:
           type:
           - integer
           - 'null'
-          description: Offset to retrieve the next page. Null when there are no further records.
           format: int32
-          readOnly: true
+        filePath:
+          type:
+          - string
+          - 'null'
+        fileVersion:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        delimiter:
+          type:
+          - string
+          - 'null'
+        excelSheetName:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
-      description: Paginated response that will only return an offset if there are remaining pages
-    GetProjectionPortfolioV1:
+    UpdateProjectionProductDto:
       type: object
       properties:
         id:
-          type: integer
+          type:
+          - integer
+          - 'null'
+          description: Product ID
           format: int32
         name:
           type:
           - string
           - 'null'
+          description: Product Name
+        modelPointFile:
+          $ref: '#/components/schemas/FileReferenceDto'
+        modelPointFilters:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - string
+            - 'null'
+          description: Model Point Filters
+      additionalProperties: false
+    CreateProjectionFromTemplateRequestV1:
+      type: object
+      properties:
+        templateId:
+          type:
+          - integer
+          - 'null'
+          description: Template ID
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+          description: Projection Name
+      additionalProperties: {}
+    UpdateProjectionPortfolioDto:
+      type: object
+      properties:
+        id:
+          type:
+          - integer
+          - 'null'
+          description: Portfolio ID
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+          description: Portfolio Name
         products:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/GetProjectionPortfolioProductV1'
-      additionalProperties: false
-    GetProjectionPortfolioProductV1:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int32
-        productId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-        productType:
-          $ref: '#/components/schemas/ProductType'
-        modelPointFile:
-          $ref: '#/components/schemas/FileReferenceDto'
-        filters:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/GetProjectionProductModelPointFilterV1'
-        productOutputGroupings:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-      additionalProperties: false
-    AddProductToPortfolioResponseV1:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int32
+            $ref: '#/components/schemas/UpdateProjectionProductDto'
+          description: Portfolio Products
       additionalProperties: false
     CreateProjectionFromTemplateResponseV1:
       type: object
@@ -573,25 +651,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ProjectionRunStatus:
-      enum:
-      - NotStarted
-      - Running
-      - Completed
-      - Failed
-      - Queued
-      - Cancelled
-      - CompletedWithErrors
-      - ErrorLimitReached
-      - WaitingForInserts
-      - Queuing
-      - Deleting
-      - Preparing
-      - FailedToStart
-      - Validating
-      - ValidationFailed
-      - CompletedWithWarnings
-      type: string
     UpdateProjectionRequestV1:
       type: object
       properties:
@@ -683,85 +742,6 @@ components:
           - 'null'
           description: Lock or unlock a projection. Locking requires LockProjections permission or a workspace token. Unlocking requires UnlockProjections permission or a workspace token. Only projections in a completed/failed status can be locked.
       additionalProperties: false
-    UpdateProjectionPortfolioDto:
-      type: object
-      properties:
-        id:
-          type:
-          - integer
-          - 'null'
-          description: Portfolio ID
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-          description: Portfolio Name
-        products:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/UpdateProjectionProductDto'
-          description: Portfolio Products
-      additionalProperties: false
-    UpdateProjectionProductDto:
-      type: object
-      properties:
-        id:
-          type:
-          - integer
-          - 'null'
-          description: Product ID
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-          description: Product Name
-        modelPointFile:
-          $ref: '#/components/schemas/FileReferenceDto'
-        modelPointFilters:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type:
-            - string
-            - 'null'
-          description: Model Point Filters
-      additionalProperties: false
-    FileReferenceDto:
-      type: object
-      properties:
-        fileId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        filePath:
-          type:
-          - string
-          - 'null'
-        fileVersion:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        delimiter:
-          type:
-          - string
-          - 'null'
-        excelSheetName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ProductType:
-      enum:
-      - Asset
-      - Liability
-      type: string
     GetProjectionProductModelPointFilterV1:
       type: object
       properties:
@@ -773,79 +753,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    GetProjectionResponseV1:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-        status:
-          $ref: '#/components/schemas/ProjectionRunStatus'
-        isRunning:
-          type: boolean
-        startDate:
-          type: string
-          format: date-time
-        periodInMonths:
-          type: integer
-          format: int32
-        runStartDateUtc:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        runCompletedDateUtc:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        outputAllResults:
-          type: boolean
-        disableModelPointOutput:
-          type: boolean
-        forceStaticProcessing:
-          type: boolean
-        isLocked:
-          type: boolean
-        numberOfCores:
-          type: integer
-          format: int32
-        scenarioTableId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        model:
-          $ref: '#/components/schemas/GetProjectionModelV1'
-        portfolios:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/GetProjectionPortfolioV1'
-        virtualFolders:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-        tags:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-        dataTables:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/GetProjectionDataTableV1'
       additionalProperties: false
     GetProjectionDataTableV1:
       type: object
@@ -887,6 +794,32 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    PaginatedResponseListProjectionsResponseItemV1:
+      type: object
+      properties:
+        items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ListProjectionsResponseItemV1'
+          description: Items within the page
+        offset:
+          type:
+          - integer
+          - 'null'
+          description: Offset to retrieve the next page. Null when there are no further records.
+          format: int32
+          readOnly: true
+      additionalProperties: false
+      description: Paginated response that will only return an offset if there are remaining pages
+    AddProductToPortfolioResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+      additionalProperties: false
     AddProductModelPointFileRequestV1:
       type: object
       properties:
@@ -918,6 +851,62 @@ components:
           - 'null'
           description: Excel Sheet Name
       additionalProperties: false
+    GetProjectionPortfolioV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+        products:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GetProjectionPortfolioProductV1'
+      additionalProperties: false
+    ProductType:
+      enum:
+      - Asset
+      - Liability
+      type: string
+    AddProductFilterRequestV1:
+      required:
+      - field
+      - value
+      type: object
+      properties:
+        field:
+          minLength: 1
+          type: string
+          description: Model Point Field Name
+        value:
+          minLength: 1
+          type: string
+          description: Filter Value
+      additionalProperties: false
+    ProjectionRunStatus:
+      enum:
+      - NotStarted
+      - Running
+      - Completed
+      - Failed
+      - Queued
+      - Cancelled
+      - CompletedWithErrors
+      - ErrorLimitReached
+      - WaitingForInserts
+      - Queuing
+      - Deleting
+      - Preparing
+      - FailedToStart
+      - Validating
+      - ValidationFailed
+      - CompletedWithWarnings
+      type: string
     UpdateProjectionDataTableDto:
       type: object
       properties:
@@ -949,6 +938,17 @@ components:
           - 'null'
           description: Data Table Version
           format: int32
+      additionalProperties: false
+    GetProjectionModelV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     API_Token:

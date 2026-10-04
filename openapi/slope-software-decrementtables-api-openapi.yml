@@ -119,6 +119,12 @@ paths:
       - API Token: []
 components:
   schemas:
+    MortalityTableType:
+      enum:
+      - Standard
+      - Improving
+      - SelectAndUltimate
+      type: string
     CreateOrUpdateDecrementTableResponseV1:
       type: object
       properties:
@@ -137,6 +143,56 @@ components:
           type: integer
           description: Decrement Table Version
           format: int32
+      additionalProperties: false
+    SelectPeriodFrequencyType:
+      enum:
+      - Annual
+      - Monthly
+      type: string
+    GetDecrementTableResponseV1:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Decrement Table ID
+          format: int32
+        modelId:
+          type: integer
+          description: Model ID
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+          description: Decrement Table Name
+        description:
+          type:
+          - string
+          - 'null'
+          description: Decrement Table Description
+        decrementTableType:
+          $ref: '#/components/schemas/MortalityTableType'
+        improvementBaseYear:
+          type:
+          - integer
+          - 'null'
+          description: Improvement Base Year
+          format: int32
+        selectPeriodFrequency:
+          $ref: '#/components/schemas/SelectPeriodFrequencyType'
+        selectPeriod:
+          type:
+          - integer
+          - 'null'
+          description: Select Period
+          format: int32
+        version:
+          type: integer
+          description: Decrement Table Version
+          format: int32
+        isLatestVersion:
+          type: boolean
+          description: Is Latest Version?
       additionalProperties: false
     CreateDecrementTableRequestV1:
       type: object
@@ -187,62 +243,6 @@ components:
           format: int32
         selectPeriodFrequency:
           $ref: '#/components/schemas/SelectPeriodFrequencyType'
-      additionalProperties: false
-    SelectPeriodFrequencyType:
-      enum:
-      - Annual
-      - Monthly
-      type: string
-    MortalityTableType:
-      enum:
-      - Standard
-      - Improving
-      - SelectAndUltimate
-      type: string
-    GetDecrementTableResponseV1:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Decrement Table ID
-          format: int32
-        modelId:
-          type: integer
-          description: Model ID
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-          description: Decrement Table Name
-        description:
-          type:
-          - string
-          - 'null'
-          description: Decrement Table Description
-        decrementTableType:
-          $ref: '#/components/schemas/MortalityTableType'
-        improvementBaseYear:
-          type:
-          - integer
-          - 'null'
-          description: Improvement Base Year
-          format: int32
-        selectPeriodFrequency:
-          $ref: '#/components/schemas/SelectPeriodFrequencyType'
-        selectPeriod:
-          type:
-          - integer
-          - 'null'
-          description: Select Period
-          format: int32
-        version:
-          type: integer
-          description: Decrement Table Version
-          format: int32
-        isLatestVersion:
-          type: boolean
-          description: Is Latest Version?
       additionalProperties: false
   securitySchemes:
     API_Token:

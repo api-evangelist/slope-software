@@ -78,16 +78,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    AuthorizeParametersV1:
-      type: object
-      properties:
-        apiKey:
-          type: string
-          format: uuid
-        apiSecretKey:
-          type: string
-          format: uuid
-      additionalProperties: false
     ApiTokenDto:
       type: object
       properties:
@@ -110,6 +100,16 @@ components:
       type: object
       properties:
         refreshToken:
+          type: string
+          format: uuid
+      additionalProperties: false
+    AuthorizeParametersV1:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          format: uuid
+        apiSecretKey:
           type: string
           format: uuid
       additionalProperties: false

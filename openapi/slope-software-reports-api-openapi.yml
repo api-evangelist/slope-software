@@ -88,48 +88,6 @@ paths:
       - API Token: []
 components:
   schemas:
-    GenerateWorkbookReportResponseV1:
-      type: object
-      properties:
-        generationId:
-          type:
-          - string
-          - 'null'
-          description: Generation ID
-        reportStatusUrl:
-          type:
-          - string
-          - 'null'
-          description: The status URL to use with the generation ID.
-      additionalProperties: false
-    ReportGenerationStatus:
-      enum:
-      - Running
-      - Completed
-      - Failed
-      type: string
-    WorkbookReportFormatType:
-      enum:
-      - Csv
-      - Excel
-      - Png
-      type: string
-    GetWorkbookReportGenerationStatusResponseV1:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/ReportGenerationStatus'
-        downloadUrl:
-          type:
-          - string
-          - 'null'
-          description: Download URL
-        message:
-          type:
-          - string
-          - 'null'
-          description: Message
-      additionalProperties: false
     GenerateWorkbookReportRequestV1:
       type: object
       properties:
@@ -162,6 +120,48 @@ components:
             - 'null'
           description: Parameters
       additionalProperties: false
+    GetWorkbookReportGenerationStatusResponseV1:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/ReportGenerationStatus'
+        downloadUrl:
+          type:
+          - string
+          - 'null'
+          description: Download URL
+        message:
+          type:
+          - string
+          - 'null'
+          description: Message
+      additionalProperties: false
+    GenerateWorkbookReportResponseV1:
+      type: object
+      properties:
+        generationId:
+          type:
+          - string
+          - 'null'
+          description: Generation ID
+        reportStatusUrl:
+          type:
+          - string
+          - 'null'
+          description: The status URL to use with the generation ID.
+      additionalProperties: false
+    ReportGenerationStatus:
+      enum:
+      - Running
+      - Completed
+      - Failed
+      type: string
+    WorkbookReportFormatType:
+      enum:
+      - Csv
+      - Excel
+      - Png
+      type: string
   securitySchemes:
     API_Token:
       type: http

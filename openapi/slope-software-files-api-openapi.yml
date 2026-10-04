@@ -185,35 +185,14 @@ paths:
       - API Token: []
 components:
   schemas:
-    GetFilesResponseItemV1:
+    GetUploadUrlResponseV1:
       type: object
       properties:
-        fileId:
-          type: integer
-          format: int32
-        fileKey:
+        uploadUrl:
           type:
           - string
           - 'null'
-        folder:
-          type:
-          - string
-          - 'null'
-        notes:
-          type:
-          - string
-          - 'null'
-        sizeInBytes:
-          type: integer
-          format: int64
-        uploadedOnUtc:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        version:
-          type: integer
-          format: int32
+          description: URL to use to upload file content
       additionalProperties: false
     PaginatedResponseGetFilesResponseItemV1:
       type: object
@@ -234,6 +213,14 @@ components:
           readOnly: true
       additionalProperties: false
       description: Paginated response that will only return an offset if there are remaining pages
+    SaveUploadResponseV1:
+      type: object
+      properties:
+        fileId:
+          type: integer
+          description: File ID of the saved file at the provided path
+          format: int32
+      additionalProperties: false
     GetDownloadUrlResponseV1:
       type: object
       properties:
@@ -271,6 +258,51 @@ components:
           - 'null'
           description: Optional MD5 Hash for File Content
       additionalProperties: false
+    FilePathAndVersionDtoV1:
+      type: object
+      properties:
+        filePath:
+          type:
+          - string
+          - 'null'
+          description: File Path
+        version:
+          type:
+          - integer
+          - 'null'
+          description: File Version
+          format: int32
+      additionalProperties: false
+    GetFilesResponseItemV1:
+      type: object
+      properties:
+        fileId:
+          type: integer
+          format: int32
+        fileKey:
+          type:
+          - string
+          - 'null'
+        folder:
+          type:
+          - string
+          - 'null'
+        notes:
+          type:
+          - string
+          - 'null'
+        sizeInBytes:
+          type: integer
+          format: int64
+        uploadedOnUtc:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        version:
+          type: integer
+          format: int32
+      additionalProperties: false
     SaveUploadFilePathDtoV1:
       type: object
       properties:
@@ -293,38 +325,6 @@ components:
             - string
             - 'null'
           description: Metadata to include with the file when saved
-      additionalProperties: false
-    SaveUploadResponseV1:
-      type: object
-      properties:
-        fileId:
-          type: integer
-          description: File ID of the saved file at the provided path
-          format: int32
-      additionalProperties: false
-    FilePathAndVersionDtoV1:
-      type: object
-      properties:
-        filePath:
-          type:
-          - string
-          - 'null'
-          description: File Path
-        version:
-          type:
-          - integer
-          - 'null'
-          description: File Version
-          format: int32
-      additionalProperties: false
-    GetUploadUrlResponseV1:
-      type: object
-      properties:
-        uploadUrl:
-          type:
-          - string
-          - 'null'
-          description: URL to use to upload file content
       additionalProperties: false
   securitySchemes:
     API_Token:
