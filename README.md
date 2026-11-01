@@ -64,6 +64,143 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Slope Software is a company surfaced as a portfolio company of techstars and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Slope Software builds SLOPE, a cloud-native actuarial modeling platform for life, annuity, pension, and supplemental health/disability/LTC insurers. SLOPE lets actuaries develop transparent, flexible projection models, aggregate and manage assumptions and data tables, run high-performance valuation, pricing, ALM, and experience-study calculations, and analyze results with dynamic reporting. The SLOPE REST API automates the full valuation workflow end to end: ingesting scenario and data tables, uploading model point files, creating projections from templates, kicking off runs, checking status, and pulling results back down to integrate with downstream systems.
 
-Backed by: techstars — https://slopesoftware.com/
+**Areas:** Company · Actuarial · Insurance · Actuarial Modeling · Valuation · Financial Services · Life Insurance · Annuities · Pensions · Risk Management · Cloud · Reporting
+
+## Slope Software on APIs.io
+
+Everything profiled for Slope Software is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/slope-software/](https://apis.io/providers/slope-software/)** — or go straight to one of the APIs or properties below.
+
+### APIs (14)
+
+- [Slope Software Arrays API](https://apis.io/apis/slope-software/slope-software-arrays-api/) — The Arrays API from Slope Software — 2 operation(s) for arrays.
+- [Slope Software Authorize API](https://apis.io/apis/slope-software/slope-software-authorize-api/) — The Authorize API from Slope Software — 2 operation(s) for authorize.
+- [Slope Software DecrementTables API](https://apis.io/apis/slope-software/slope-software-decrementtables-api/) — The DecrementTables API from Slope Software — 2 operation(s) for decrementtables.
+- [Slope Software Files API](https://apis.io/apis/slope-software/slope-software-files-api/) — The Files API from Slope Software — 4 operation(s) for files.
+- [Slope Software ImprovementScales API](https://apis.io/apis/slope-software/slope-software-improvementscales-api/) — The ImprovementScales API from Slope Software — 2 operation(s) for improvementscales.
+- [Slope Software ModelPointFields API](https://apis.io/apis/slope-software/slope-software-modelpointfields-api/) — The ModelPointFields API from Slope Software — 2 operation(s) for modelpointfields.
+- [Slope Software Models API](https://apis.io/apis/slope-software/slope-software-models-api/) — The Models API from Slope Software — 13 operation(s) for models.
+- [Slope Software Products API](https://apis.io/apis/slope-software/slope-software-products-api/) — The Products API from Slope Software — 1 operation(s) for products.
+- [Slope Software Projections API](https://apis.io/apis/slope-software/slope-software-projections-api/) — The Projections API from Slope Software — 6 operation(s) for projections.
+- [Slope Software Reports API](https://apis.io/apis/slope-software/slope-software-reports-api/) — The Reports API from Slope Software — 2 operation(s) for reports.
+- [Slope Software ScenarioTables API](https://apis.io/apis/slope-software/slope-software-scenariotables-api/) — The ScenarioTables API from Slope Software — 4 operation(s) for scenariotables.
+- [Slope Software TableStructures API](https://apis.io/apis/slope-software/slope-software-tablestructures-api/) — The TableStructures API from Slope Software — 3 operation(s) for tablestructures.
+- [Slope Software Users API](https://apis.io/apis/slope-software/slope-software-users-api/) — The Users API from Slope Software — 1 operation(s) for users.
+- [Slope Software Data Tables API](https://apis.io/apis/slope-software/slope-software-data-tables-api/) — The Data Tables API from Slope Software — 7 operation(s) for data tables.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Arazzo workflows (2)
+
+Multi-step workflows that chain operations into a business task.
+
+- [Generate and download a SLOPE workbook report](https://apis.io/arazzos/slope-software/slope-software-generate-report/)
+- [Run a SLOPE projection from a template](https://apis.io/arazzos/slope-software/slope-software-run-projection/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [slope-software](https://apis.io/servers/slope-software/slope-software/)
+
+#### Collections (14)
+
+Postman and Open Collection request collections.
+
+- [Slope Arrays API](https://apis.io/collections/slope-software/open-slope-software-arrays-api/)
+- [Slope Arrays Authorize API](https://apis.io/collections/slope-software/open-slope-software-authorize-api/)
+- [Slope Arrays DataTables API](https://apis.io/collections/slope-software/open-slope-software-datatables-api/)
+- [Slope Arrays DecrementTables API](https://apis.io/collections/slope-software/open-slope-software-decrementtables-api/)
+- [Slope Arrays Files API](https://apis.io/collections/slope-software/open-slope-software-files-api/)
+- [Slope Arrays ImprovementScales API](https://apis.io/collections/slope-software/open-slope-software-improvementscales-api/)
+- [Slope Arrays ModelPointFields API](https://apis.io/collections/slope-software/open-slope-software-modelpointfields-api/)
+- [Slope Arrays Models API](https://apis.io/collections/slope-software/open-slope-software-models-api/)
+- [Slope Arrays Products API](https://apis.io/collections/slope-software/open-slope-software-products-api/)
+- [Slope Arrays Projections API](https://apis.io/collections/slope-software/open-slope-software-projections-api/)
+- [Slope Arrays Reports API](https://apis.io/collections/slope-software/open-slope-software-reports-api/)
+- [Slope Arrays ScenarioTables API](https://apis.io/collections/slope-software/open-slope-software-scenariotables-api/)
+- [Slope Arrays TableStructures API](https://apis.io/collections/slope-software/open-slope-software-tablestructures-api/)
+- [Slope Arrays Users API](https://apis.io/collections/slope-software/open-slope-software-users-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Slope Software Overlay](https://apis.io/overlays/slope-software/slope-software-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Slope Software Authentication](https://apis.io/security/slope-software/slope-software-authentication/)
+- [Slope Software Domain Security](https://apis.io/security/slope-software/slope-software-domain-security/)
+- [Slope Software Trust Center](https://apis.io/security/slope-software/slope-software-trust-center/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://slopesoftware.com/)
+- [Documentation](https://slopesoftware.com/wp-content/uploads/2022/02/SLOPE-API.pdf)
+- [API reference](https://api.slopesoftware.com/)
+- [Sign up](https://slopesoftware.com/demo/)
+- [Blog](https://slopesoftware.com/blog/)
+- [Compliance](https://security.slopesoftware.com/)
+- [Privacy policy](https://slopesoftware.com/privacy-policy/)
+- [Status](https://status.slopesoftware.com/)
+
+## API Evangelist rating
+
+**Kin Score 37.6** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 41.8 |
+| Contract governance | 18.2 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 42.3 |
+| Access clarity | 39.5 |
+
+**Agent readiness 30.4** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 22.8** — Insurance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/slope-software/](https://apis.io/providers/slope-software/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Slope Software: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/slope-software/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
